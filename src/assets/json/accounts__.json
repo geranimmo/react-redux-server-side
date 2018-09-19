@@ -1,0 +1,101 @@
+[
+	{
+		"client_id": 1,
+		"first_name": "Default",
+		"last_name": "Client",
+		"business_name": "Default",
+		"phone_number": "+612529291002",
+		"email_address": "client@default.com",
+		"client_logo": "client-default-logo.png",
+		"user_password": "default123",
+		"shopping_cart": [],
+		"buy_history": [],
+		"client_special": []
+	}, {
+		"client_id": 2,
+		"first_name": "Unilever",
+		"last_name": "Client",
+		"business_name": "Unilever",
+		"phone_number": "+622192019349",
+		"email_address": "client@unilever.com",
+		"client_logo": "client-unilever-logo.png",
+		"user_password": "unilever123",
+		"shopping_cart": [],
+		"buy_history": [],
+		"client_special": [
+			{
+				"types": "free__items",
+				"package_id": "Classic",
+				"minimum_items": 3,
+				"free_items": 1
+			}
+		]
+	}, {
+		"client_id": 3,
+		"first_name": "Apple",
+		"last_name": "Client",
+		"business_name": "Apple",
+		"phone_number": "+122192019349",
+		"email_address": "client@apple.com",
+		"client_logo": "client-apple-logo.png",
+		"user_password": "apple123",
+		"shopping_cart": [],
+		"buy_history": [],
+		"client_special": [
+			{
+				"types": "discount__items",
+				"package_id": "Standout",
+				"minimum_items": 1,
+				"discount_price": "23"
+			}
+		]
+	}, {
+		"client_id": 4,
+		"first_name": "Nike",
+		"last_name": "Client",
+		"business_name": "Apple",
+		"phone_number": "+632192019349",
+		"email_address": "client@nike.com",
+		"client_logo": "client-nike-logo.png",
+		"user_password": "nike123",
+		"shopping_cart": [],
+		"buy_history": [],
+		"client_special": [
+			{
+				"types": "discount__items",
+				"package_id": "Premium",
+				"minimum_items": 4,
+				"discount_price": "15"
+			}
+		]
+	}, {
+		"client_id": 5,
+		"first_name": "Ford",
+		"last_name": "Client",
+		"business_name": "Ford",
+		"phone_number": "+632192019349",
+		"email_address": "client@ford.com",
+		"client_logo": "client-ford-logo.png",
+		"user_password": "ford123",
+		"shopping_cart": [],
+		"buy_history": [],
+		"client_special": [
+			{
+				"types": "free__items",
+				"package_id": "Classic",
+				"minimum_items": 5,
+				"free_items": 1
+			}, {
+				"types": "discount__items",
+				"package_id": "Standout",
+				"minimum_items": 1,
+				"discount_price": "13"
+			}, {
+				"types": "discount__items",
+				"package_id": "Premium",
+				"minimum_items": 3,
+				"discount_price": "5"
+			}
+		]
+	}
+]

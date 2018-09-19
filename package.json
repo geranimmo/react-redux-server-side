@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
-  "version": "1.0.0",
-  "description": "React + Webpack Template Starter",
+  "name": "job-cart",
+  "version": "0.1.0",
+  "description": "Job~Ad Cart Assestment",
   "main": "index.js",
   "scripts": {
     "start": "serve dist -s -c 1 -p 8082",
