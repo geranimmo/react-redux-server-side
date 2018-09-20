@@ -1,0 +1,729 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of ConnectedHome component +++ 1`] = `
+<div
+  className="main__container"
+>
+  <header
+    className="header__active"
+    id="header"
+  >
+    <nav
+      className="nav__left"
+    >
+      <a
+        aria-current={null}
+        href="/home"
+        onClick={[Function]}
+      >
+        <div
+          className="seek__logo"
+        />
+      </a>
+      <div
+        className="client__logo__wrapper"
+      >
+        <img
+          alt="Default"
+          src="../../assets/images/client-default-logo.png"
+        />
+      </div>
+    </nav>
+    <nav
+      className="nav__right"
+    >
+      <div
+        className="menu__btn__icon "
+        onClick={[Function]}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"
+          />
+        </svg>
+        <div
+          className="cart__notif "
+        >
+          2
+        </div>
+      </div>
+      <div
+        className="menu__btn__icon hidden"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon__close"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
+          />
+        </svg>
+      </div>
+    </nav>
+  </header>
+  <main
+    className="home__component"
+    id="home__page__wrapper"
+  >
+    <div
+      className="content__wrapper"
+      id="content__scroller"
+      onScroll={[Function]}
+    >
+      <div
+        className="slider__container"
+      >
+        <div
+          className="slider__nav__wrapper"
+        >
+          <div
+            className="slick-slider slick-initialized"
+          >
+            
+            <div
+              className="slick-list"
+            >
+              <div
+                className="slick-track"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                style={
+                  Object {
+                    "WebkitTransform": "translate3d(0px, 0px, 0px)",
+                    "WebkitTransition": "",
+                    "msTransform": "translateX(0px)",
+                    "opacity": 1,
+                    "transform": "translate3d(0px, 0px, 0px)",
+                    "transition": "",
+                  }
+                }
+              >
+                <div
+                  aria-hidden={false}
+                  className="slick-slide slick-active slick-current"
+                  data-index={0}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "outline": "none",
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="slider__card__nav "
+                      id="navClassic"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <h1
+                        className="no__margin"
+                      >
+                        Classic
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={false}
+                  className="slick-slide slick-active"
+                  data-index={1}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "outline": "none",
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="slider__card__nav nav__recommended"
+                      id="navStandout"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <h1
+                        className="no__margin"
+                      >
+                        Standout
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={false}
+                  className="slick-slide slick-active"
+                  data-index={2}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "outline": "none",
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="slider__card__nav "
+                      id="navPremium"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <h1
+                        className="no__margin"
+                      >
+                        Premium
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
+        </div>
+        <div
+          className="slider__content__wrapper"
+        >
+          <div
+            className="slick-slider slick-initialized"
+            dir="ltr"
+          >
+            <div
+              className="slick-list"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={null}
+              onMouseMove={null}
+              onMouseUp={[Function]}
+              onTouchCancel={null}
+              onTouchEnd={[Function]}
+              onTouchMove={null}
+              onTouchStart={[Function]}
+              style={Object {}}
+            >
+              <div
+                className="slick-track"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                style={
+                  Object {
+                    "WebkitTransform": "translate3d(0px, 0px, 0px)",
+                    "WebkitTransition": "",
+                    "msTransform": "translateX(0px)",
+                    "opacity": 1,
+                    "transform": "translate3d(0px, 0px, 0px)",
+                    "transition": "",
+                  }
+                }
+              >
+                <div
+                  aria-hidden={true}
+                  className="slick-slide slick-cloned"
+                  data-index={-1}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="section__carousel"
+                      id="Premium"
+                      itemProp="itemListElement"
+                      itemScope={true}
+                      itemType="http://schema.org/Product"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="slider__content"
+                      >
+                        <div
+                          className="slider__card__body"
+                        >
+                          <img
+                            alt="Premium"
+                            className="slider__images"
+                            src="../../assets/images/employeer-image-sample3.jpg"
+                          />
+                          <h2
+                            className="no__margin__top block width__100"
+                          >
+                            Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                          </h2>
+                          <span
+                            className="label__info hidden"
+                          >
+                            RECOMMENDED
+                          </span>
+                          <span
+                            className="pricing block width__100"
+                          >
+                            $
+                            394.99
+                          </span>
+                          <button
+                            className="button__buy__items"
+                            onClick={[Function]}
+                            type="button"
+                            value="Buy Ad"
+                          >
+                            Buy Ad
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={false}
+                  className="slick-slide slick-active slick-current"
+                  data-index={0}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "outline": "none",
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="section__carousel"
+                      id="Classic"
+                      itemProp="itemListElement"
+                      itemScope={true}
+                      itemType="http://schema.org/Product"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="slider__content"
+                      >
+                        <div
+                          className="slider__card__body"
+                        >
+                          <img
+                            alt="Classic"
+                            className="slider__images"
+                            src="../../assets/images/employeer-image-sample.jpg"
+                          />
+                          <h2
+                            className="no__margin__top block width__100"
+                          >
+                            Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                          </h2>
+                          <span
+                            className="label__info hidden"
+                          >
+                            RECOMMENDED
+                          </span>
+                          <span
+                            className="pricing block width__100"
+                          >
+                            $
+                            269.99
+                          </span>
+                          <button
+                            className="button__buy__items"
+                            onClick={[Function]}
+                            type="button"
+                            value="Buy Ad"
+                          >
+                            Buy Ad
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={true}
+                  className="slick-slide"
+                  data-index={1}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "outline": "none",
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="section__carousel"
+                      id="Standout"
+                      itemProp="itemListElement"
+                      itemScope={true}
+                      itemType="http://schema.org/Product"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="slider__content"
+                      >
+                        <div
+                          className="slider__card__body"
+                        >
+                          <img
+                            alt="Standout"
+                            className="slider__images"
+                            src="../../assets/images/employeer-image-sample2.jpg"
+                          />
+                          <h2
+                            className="no__margin__top block width__100"
+                          >
+                            Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                          </h2>
+                          <span
+                            className="label__info "
+                          >
+                            RECOMMENDED
+                          </span>
+                          <span
+                            className="pricing block width__100"
+                          >
+                            $
+                            322.99
+                          </span>
+                          <button
+                            className="button__buy__items"
+                            onClick={[Function]}
+                            type="button"
+                            value="Buy Ad"
+                          >
+                            Buy Ad
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={true}
+                  className="slick-slide"
+                  data-index={2}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "outline": "none",
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="section__carousel"
+                      id="Premium"
+                      itemProp="itemListElement"
+                      itemScope={true}
+                      itemType="http://schema.org/Product"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="slider__content"
+                      >
+                        <div
+                          className="slider__card__body"
+                        >
+                          <img
+                            alt="Premium"
+                            className="slider__images"
+                            src="../../assets/images/employeer-image-sample3.jpg"
+                          />
+                          <h2
+                            className="no__margin__top block width__100"
+                          >
+                            Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                          </h2>
+                          <span
+                            className="label__info hidden"
+                          >
+                            RECOMMENDED
+                          </span>
+                          <span
+                            className="pricing block width__100"
+                          >
+                            $
+                            394.99
+                          </span>
+                          <button
+                            className="button__buy__items"
+                            onClick={[Function]}
+                            type="button"
+                            value="Buy Ad"
+                          >
+                            Buy Ad
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={true}
+                  className="slick-slide slick-cloned"
+                  data-index={3}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="section__carousel"
+                      id="Classic"
+                      itemProp="itemListElement"
+                      itemScope={true}
+                      itemType="http://schema.org/Product"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="slider__content"
+                      >
+                        <div
+                          className="slider__card__body"
+                        >
+                          <img
+                            alt="Classic"
+                            className="slider__images"
+                            src="../../assets/images/employeer-image-sample.jpg"
+                          />
+                          <h2
+                            className="no__margin__top block width__100"
+                          >
+                            Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                          </h2>
+                          <span
+                            className="label__info hidden"
+                          >
+                            RECOMMENDED
+                          </span>
+                          <span
+                            className="pricing block width__100"
+                          >
+                            $
+                            269.99
+                          </span>
+                          <button
+                            className="button__buy__items"
+                            onClick={[Function]}
+                            type="button"
+                            value="Buy Ad"
+                          >
+                            Buy Ad
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={true}
+                  className="slick-slide slick-cloned"
+                  data-index={4}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="section__carousel"
+                      id="Standout"
+                      itemProp="itemListElement"
+                      itemScope={true}
+                      itemType="http://schema.org/Product"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="slider__content"
+                      >
+                        <div
+                          className="slider__card__body"
+                        >
+                          <img
+                            alt="Standout"
+                            className="slider__images"
+                            src="../../assets/images/employeer-image-sample2.jpg"
+                          />
+                          <h2
+                            className="no__margin__top block width__100"
+                          >
+                            Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                          </h2>
+                          <span
+                            className="label__info "
+                          >
+                            RECOMMENDED
+                          </span>
+                          <span
+                            className="pricing block width__100"
+                          >
+                            $
+                            322.99
+                          </span>
+                          <button
+                            className="button__buy__items"
+                            onClick={[Function]}
+                            type="button"
+                            value="Buy Ad"
+                          >
+                            Buy Ad
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-hidden={true}
+                  className="slick-slide slick-cloned"
+                  data-index={5}
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "width": 0,
+                    }
+                  }
+                  tabIndex="-1"
+                >
+                  <div>
+                    <div
+                      className="section__carousel"
+                      id="Premium"
+                      itemProp="itemListElement"
+                      itemScope={true}
+                      itemType="http://schema.org/Product"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                          "width": "100%",
+                        }
+                      }
+                      tabIndex={-1}
+                    >
+                      <div
+                        className="slider__content"
+                      >
+                        <div
+                          className="slider__card__body"
+                        >
+                          <img
+                            alt="Premium"
+                            className="slider__images"
+                            src="../../assets/images/employeer-image-sample3.jpg"
+                          />
+                          <h2
+                            className="no__margin__top block width__100"
+                          >
+                            Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                          </h2>
+                          <span
+                            className="label__info hidden"
+                          >
+                            RECOMMENDED
+                          </span>
+                          <span
+                            className="pricing block width__100"
+                          >
+                            $
+                            394.99
+                          </span>
+                          <button
+                            className="button__buy__items"
+                            onClick={[Function]}
+                            type="button"
+                            value="Buy Ad"
+                          >
+                            Buy Ad
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;

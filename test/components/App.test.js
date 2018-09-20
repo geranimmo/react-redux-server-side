@@ -3,9 +3,7 @@ import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {
-	Route
-} from "react-router-dom";
+import { Route } from "react-router-dom";
 import reducers from '../../src/components/reducers';
 import RouterComponent from '../../src/components/Routers';
 

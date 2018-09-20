@@ -7,7 +7,7 @@ import Header from '../header';
 import { CartFooter } from '../common';
 import './cart.less';
 
-class Cart extends Component {
+export class Cart extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -134,7 +134,7 @@ class Cart extends Component {
     }
 
     renderTrimDescription(data) {
-    	return data.substring(0,80)+'...';
+    	return data.substring(0, 80)+'...';
     }
 
     renderCartCollection() {
@@ -150,7 +150,7 @@ class Cart extends Component {
     					return (
     						<div
     							key={idx}
-    							id={`Cart${item.id}__${idx}__${item.buy_time}}`}
+    							id={`Cart__${item.id}__${idx}__${item.buy_time}`}
     							className={`cart__list__wrapper`}
     						>
     							<div className={`cart__info__wrapper`}>
@@ -199,7 +199,7 @@ class Cart extends Component {
     	return (
     		<div className={`main__container`}>
     			<Header onCart={true} />
-    			<main className={`cart__component`}>
+    			<main id={this.props.id} className={`cart__component`}>
     				{ this.renderCartCollection() }
     			</main>
     			{ this.renderCartFooter() }

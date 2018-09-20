@@ -6,7 +6,7 @@ import Header from '../header';
 import PackageSlider from '../packages';
 import './home.less';
 
-class Home extends Component {
+export class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { packagesList: [] };
@@ -61,7 +61,7 @@ class Home extends Component {
 		return (
 			<div className={`main__container`}>
 				<Header />
-				<main className={`home__component`}>
+				<main id={this.props.id} className={`home__component`}>
 					<div
 						id={`content__scroller`}
 						onScroll={this.handleScroll.bind(this)}

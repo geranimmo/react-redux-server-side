@@ -7,7 +7,7 @@ import * as reducers from '../../../src/components/reducers';
 const createMockStore = configureMockStore([thunk]);
 
 describe('>>> A C T I O N ---- Test Add & Remove Items in Cart Actions <<<', () => {
-	const requestPackageId = 'Default';
+	const requestPackageId = 'Classic';
 	const requestSampleDate = 1537425742947;
 	
 	it('+++ Action addToCart with auto generated dateTime +++', () => {

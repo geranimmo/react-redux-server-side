@@ -7,7 +7,7 @@ import {
 
 describe('>>> R E D U C E R S ---- Test ShoppingCartReducers <<<', () => {
 	const sampleDatas = [
-		{ id: 'Default', buy_time: 1537425742947 },
+		{ id: 'Classic', buy_time: 1537425742947 },
 		{ id: 'Premium', buy_time: 1537425742948 }
 	];
 	const newDatas = { id: 'Standout', buy_time: 1537425742957 };

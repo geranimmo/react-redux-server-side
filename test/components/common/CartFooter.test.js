@@ -1,8 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import { CartFooter } from '../../../src/components/common';
 
-describe('>>> C A R T  F O O T E R ---- Test Snapshot <<<', () => {
+describe('>>> C A R T  F O O T E R ---- Test & Snapshot <<<', () => {
 	let wrapper;
 	const propsValue = {
 		totalCartCost: 300,
@@ -29,5 +30,11 @@ describe('>>> C A R T  F O O T E R ---- Test Snapshot <<<', () => {
 		const targetComponent = wrapper.shallow().find('span').text();
 
 		expect(targetComponent).toEqual(`Total Cost:$${priceValue}`);
+	});
+    
+	it('+++ Capturing Snapshot of CartFooter +++', () => {
+		const renderedValue = renderer.create(<CartFooter {...propsValue}/>).toJSON();
+		
+		expect(renderedValue).toMatchSnapshot();
 	});
 });
