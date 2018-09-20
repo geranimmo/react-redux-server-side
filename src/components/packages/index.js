@@ -67,7 +67,7 @@ export class PackageSlider extends Component {
 								<div key={idx} id={item.package_id} className={`section__carousel`} itemProp="itemListElement" itemScope itemType="http://schema.org/Product">
 									<div className={`slider__content`}>
 										<div className={`slider__card__body`}>
-											<img className={`slider__images`} src={`../../assets/images/${item.package_image}`} alt={item.package_name}/>
+											<img className={`slider__images`} src={item.package_image} alt={item.package_name}/>
 											<h2 className={`no__margin__top block width__100`}>
 												{item.package_description}
 											</h2>

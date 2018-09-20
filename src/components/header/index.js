@@ -19,7 +19,7 @@ export class Header extends Component {
 			return (
 				<div className={`client__logo__wrapper`}>
 					<img
-						src={`../../assets/images/${Profile.client_logo}`}
+						src={Profile.client_logo}
 						alt={Profile.business_name}
 					/>
 				</div>

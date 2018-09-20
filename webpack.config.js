@@ -62,7 +62,7 @@ const config = {
 				use: [ { loader: "url-loader?limit=10000&mimetype=image/svg+xml" } ]
 			}, {
 				test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
-				use: 'file-loader'
+				use: ENV==='production' ? 'file-loader' : 'url-loader'
 			}, {
 				test: /\.(xml|html|txt|md)$/,
 				use: 'raw-loader'
@@ -87,8 +87,7 @@ const config = {
 			{ from: './favicon.ico', to: './' },
 			{ from: './manifest.json', to: './' },
 			{ from: './robots.txt', to: './' },
-			{ from: './assets/*/*.*', to: './assets', toType: 'dir' },
-			{ from: './assets/*.*', to: './assets', toType: 'dir' }
+			{ from: './assets/*/*.*', to: './', toType: 'dir' }
 		]),
 		new SWPrecacheWebpackPlugin({
 			staticFileGlobs: [
@@ -100,7 +99,7 @@ const config = {
 			minify: true
 		})
 	],
-	devtool: 'cheap-module-eval-source-map',
+	devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
 	devServer: {
 		host: process.env.HOST,
 		port: process.env.PORT,

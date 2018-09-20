@@ -5,20 +5,20 @@
         "package_recommend": false,
         "package_description": "Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         "package_price": 269.99,
-        "package_image": "employeer-image-sample.jpg"
+        "package_image": "/assets/images/employeer-image-sample.jpg"
     }, {
         "package_id": "Standout",
         "package_name": "Standout",
         "package_recommend": true,
         "package_description": "Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         "package_price": 322.99,
-        "package_image": "employeer-image-sample2.jpg"
+        "package_image": "/assets/images/employeer-image-sample2.jpg"
     }, {
         "package_id": "Premium",
         "package_name": "Premium",
         "package_recommend": false,
         "package_description": "Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         "package_price": 394.99,
-        "package_image": "employeer-image-sample3.jpg"
+        "package_image": "/assets/images/employeer-image-sample3.jpg"
     }
 ]
