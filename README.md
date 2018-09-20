@@ -37,10 +37,20 @@ npm run start
 npm stop
 ```
 
+### LOGIN ACCOUNT FOR TESTING
+
+```
+email: client@[CLIENT_ID in lowercase].com
+password: [CLIENT_ID in lowercase]123
+
+```
+
 ### Run Test
 
 ```
 npm run test
+
+For test result can be viewed in [PROJECT_FOLDER]/coverage/lcov-report/index.html
 ```
 
 ### Dependencies
