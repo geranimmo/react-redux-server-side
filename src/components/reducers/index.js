@@ -1,14 +1,12 @@
 import { combineReducers } from 'redux';
 import LoginReducer from './LoginReducers';
 import ProfileReducer from './ProfileReducers';
-import CartReducer from './CartReducers';
-import BuyHistoryReducer from './BuyHistoryReducers';
+import ShoppingCartReducer from './ShoppingCartReducers';
 import PackageReducer from './PackageReducers';
 
 export default combineReducers({
 	UserLogin: LoginReducer,
 	Profile: ProfileReducer,
-	ShoppingCart: CartReducer,
-	BuyHistory: BuyHistoryReducer,
+	ShoppingCart: ShoppingCartReducer,
 	Packages: PackageReducer
 });

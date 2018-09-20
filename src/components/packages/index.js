@@ -23,7 +23,8 @@ class PackageSlider extends Component {
 	}
 
 	initBuyAd(data) {
-		this.props.addToCart(data);
+		const datas = { id: data }; // object required for test case
+		this.props.addToCart(datas);
 	}
 
 	render() {

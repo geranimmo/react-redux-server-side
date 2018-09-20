@@ -62,7 +62,7 @@ class Cart extends Component {
 
     	if ( myCartList.length > 0 ) {
     		for ( let i = 0; i < myCartList.length; i++ ) {
-    			totalCost = Math.round((totalCost + myCartList[i].package_price) * 1e12) / 1e12;
+    			totalCost = parseFloat((totalCost + myCartList[i].package_price).toFixed(2));
     		}
     	}
         
@@ -85,16 +85,14 @@ class Cart extends Component {
     				if (getInCartPromoItems.length > 0) {
     					let pricePerItem = getInCartPromoItems[0].package_price;
     					let getTotalFreeItems = Math.floor(this.filterArrayById(client_special[i].package_id, myCartList).length / client_special[i].minimum_items);
-    					totalDiscount = Math.round((getTotalFreeItems * pricePerItem) * 1e12) / 1e12;
-    					console.log(totalDiscount);
+    					totalDiscount = parseFloat((getTotalFreeItems * pricePerItem).toFixed(2));
     				}
     			} else if ( client_special[i].types === 'discount__items' ) { // CALCULATE DISC-FOR-MIN-BUY
     				getInCartPromoItems = this.filterArrayById(client_special[i].package_id, myCartList);
                     
     				if (getInCartPromoItems.length >= client_special[i].minimum_items) {
     					let discountPrice = client_special[i].discount_price;
-    					totalDiscount = Math.round((discountPrice * getInCartPromoItems.length) * 1e12) / 1e12;
-    					console.log(totalDiscount);
+    					totalDiscount = parseFloat((discountPrice * getInCartPromoItems.length).toFixed(2));
     				}
     			}
     		}

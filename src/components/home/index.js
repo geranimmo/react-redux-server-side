@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import { packageFetch } from '../actions';
+import { getListPackage } from '../actions';
 import Header from '../header';
 import PackageSlider from '../packages';
 import './home.less';
@@ -16,7 +16,7 @@ class Home extends Component {
 		if (!this.props.UserLogin) {
 			this.props.history.push('/');
 		} else {
-			this.props.packageFetch();
+			this.props.getListPackage();
 		}
 		
 		document.addEventListener('scroll', this.handleScroll, true);
@@ -79,4 +79,4 @@ const mapStateToProps = state => {
 	return state;
 };
 
-export default withRouter(connect(mapStateToProps, { packageFetch })(Home));
+export default withRouter(connect(mapStateToProps, { getListPackage })(Home));

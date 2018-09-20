@@ -1,29 +1,11 @@
-import {
-	PACKAGES_LIST_FETCH,
-	PACKAGES_LIST_FETCH_SUCCESS,
-	PACKAGES_LIST_FETCH_FAILED
-} from './types';
+import { DISPATCH_PACKAGES_LIST } from './types';
 import ListPackages from '../../assets/json/packages__.json';
 
-export const packageFetch = () => {
+export const getListPackage = () => {
 	return (dispatch) => {
-		dispatch({ type: PACKAGES_LIST_FETCH });
-
-		if (ListPackages) {
-			packageFetchSuccess(dispatch, ListPackages);
-		} else {
-			packageFetchFailed(dispatch);
-		}
+		dispatch({
+			type: DISPATCH_PACKAGES_LIST,
+			payload: ListPackages
+		});
 	};
-};
-
-const packageFetchSuccess = (dispatch, datas) => {
-	dispatch({
-		type: PACKAGES_LIST_FETCH_SUCCESS,
-		payload: datas
-	});
-};
-
-const packageFetchFailed = (dispatch) => {
-	dispatch({ type: PACKAGES_LIST_FETCH_FAILED });
 };

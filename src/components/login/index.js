@@ -7,9 +7,13 @@ import {
 } from '../common';
 import Header from '../header';
 import './login.less';
-import { loginFetch } from '../actions';
+import {
+	loginFetch,
+	dispatchProfile,
+	dispatchShoppingCart
+} from '../actions';
 
-class Login extends Component {
+export class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -40,14 +44,23 @@ class Login extends Component {
 
 	initSignin() {
 		const { usernameValue, passwordValue } = this.state;
-
+		
 		if (usernameValue && passwordValue) {
-			this.props.loginFetch({
+			const requestUserData = {
 				username: usernameValue,
 				password: passwordValue
-			});
+			};
+
+			this.props.loginFetch(requestUserData);
+			this.props.dispatchProfile(requestUserData);
+			this.props.dispatchShoppingCart(requestUserData);
 		} else {
-			alert('Something Wrong With Your Username or Password');
+			if (!usernameValue) {
+				alert('Username is empty');
+			}
+			if (!passwordValue) {
+				alert('Password is empty');
+			}
 		}
 	}
 
@@ -104,7 +117,7 @@ class Login extends Component {
 				<Header />
 				<main className={`login__component`}>
 					<div className={`content__wrapper`}>
-						<form className={`sign__in__form`}>
+						<form id={this.props.formId} className={`sign__in__form`}>
 							<h1>Sign in</h1>
 							<div className={`form__wrapper`}>
 								<label htmlFor="username">Email Address</label>
@@ -132,4 +145,8 @@ const mapStateToProps = state => {
 	return state;
 };
 
-export default withRouter(connect(mapStateToProps, { loginFetch })(Login));
+export default withRouter(connect(mapStateToProps, {
+	loginFetch,
+	dispatchProfile,
+	dispatchShoppingCart
+})(Login));

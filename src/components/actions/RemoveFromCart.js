@@ -1,13 +1,10 @@
-import { DISPATCH_SHOPPING_CART } from './types';
+import { REMOVE_FROM_CART } from './types';
 
 export const removeFromCart = (data) => {
-	return (dispatch, getState) => {
-		const { ShoppingCart } = getState();
-		const updatedDatas = ShoppingCart.filter(e => e.buy_time !== data);
-        
+	return (dispatch) => {
 		dispatch({
-			type: DISPATCH_SHOPPING_CART,
-			payload: updatedDatas
+			type: REMOVE_FROM_CART,
+			payload: data
 		});
 	};
 };

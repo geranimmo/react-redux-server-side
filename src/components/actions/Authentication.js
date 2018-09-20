@@ -1,75 +1,57 @@
 import {
-	USER_LOGIN_FETCH,
-	USER_LOGIN_FETCH_SUCCESS,
-	USER_LOGIN_FETCH_FAILED,
+	DISPATCH_LOGIN,
 	DISPATCH_PROFILE_DATA,
-	DISPATCH_SHOPPING_CART,
-	DISPATCH_BUY_HISTORY
+	DISPATCH_SHOPPING_CART
 } from './types';
-import AuthenticationData from '../../assets/json/accounts__.json';
+import AccountList from '../../../src/assets/json/accounts__.json';
 
 export const loginFetch = (datas) => {
 	return (dispatch) => {
-		dispatch({ type: USER_LOGIN_FETCH });
-		
-		const matchData = AuthenticationData.filter((obj) => {
+		const matchAccountData = AccountList.filter((obj) => {
 			return obj.email_address === datas.username && obj.user_password === datas.password;
 		});
-
-		if (matchData.length > 0) {
-			let objData = new Object(matchData[0]);
-			loginFetchSuccess(dispatch, objData);
-		} else {
-			loginFetchFailed(dispatch);
-			alert('Something Wrong With Your Username or Password');
-		}
+		
+		dispatch({
+			type: DISPATCH_LOGIN,
+			payload: matchAccountData.length > 0
+		});
 	};
 };
 
-const loginFetchSuccess = (dispatch, datas) => {
-	dispatch({ type: USER_LOGIN_FETCH_SUCCESS });
-	
-	let profileData = {
-		client_id: datas.client_id,
-		first_name: datas.first_name,
-		last_name: datas.last_name,
-		business_name: datas.first_name,
-		phone_number: datas.first_name,
-		client_logo: datas.client_logo,
-		client_special: datas.client_special
+export const dispatchProfile = (datas) => {
+	return (dispatch) => {
+		const matchAccountData = AccountList.filter((obj) => {
+			return obj.email_address === datas.username && obj.user_password === datas.password;
+		});
+		const newData = new Object(matchAccountData[0]);
+		
+		let profileData = {
+			client_id: newData.client_id,
+			first_name: newData.first_name,
+			last_name: newData.last_name,
+			business_name: newData.first_name,
+			phone_number: newData.phone_number,
+			client_logo: newData.client_logo,
+			client_special: newData.client_special
+		};
+
+		dispatch({
+			type: DISPATCH_PROFILE_DATA,
+			payload: profileData
+		});
 	};
-	dispatchProfile(dispatch, profileData);
-
-	if (datas.shopping_cart) {
-		dispatchCartData(dispatch, datas.shopping_cart);
-	}
-	
-	if (datas.buy_history) {
-		dispatchBuyHistory(dispatch, datas.buy_history);
-	}
 };
 
-const loginFetchFailed = (dispatch) => {
-	dispatch({ type: USER_LOGIN_FETCH_FAILED });
-};
+export const dispatchShoppingCart = (datas) => {
+	return (dispatch) => {
+		const matchAccountData = AccountList.filter((obj) => {
+			return obj.email_address === datas.username && obj.user_password === datas.password;
+		});
+		const newData = new Object(matchAccountData[0]);
 
-const dispatchProfile = (dispatch, data) => {
-	dispatch({
-		type: DISPATCH_PROFILE_DATA,
-		payload: data
-	});
-};
-
-const dispatchCartData = (dispatch, data) => {
-	dispatch({
-		type: DISPATCH_SHOPPING_CART,
-		payload: data
-	});
-};
-
-const dispatchBuyHistory = (dispatch, data) => {
-	dispatch({
-		type: DISPATCH_BUY_HISTORY,
-		payload: data
-	});
+		dispatch({
+			type: DISPATCH_SHOPPING_CART,
+			payload: newData.shopping_cart
+		});
+	};
 };

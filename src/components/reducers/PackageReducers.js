@@ -1,19 +1,11 @@
-import {
-	PACKAGES_LIST_FETCH,
-	PACKAGES_LIST_FETCH_SUCCESS,
-	PACKAGES_LIST_FETCH_FAILED
-} from '../actions/types';
+import { DISPATCH_PACKAGES_LIST } from '../actions/types';
 
 const INITIAL_STATE = [];
 
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case PACKAGES_LIST_FETCH:
-			return [];
-		case PACKAGES_LIST_FETCH_SUCCESS:
+		case DISPATCH_PACKAGES_LIST:
 			return action.payload;
-		case PACKAGES_LIST_FETCH_FAILED:
-			return [];
 		default:
 			return state;
 	}

@@ -2,12 +2,13 @@ import React from 'react';
 import { Button } from './Button';
 
 const CartFooter = props => {
-	const fixedCost = Math.round((props.totalCartCost - props.totalCartDiscount) * 1e12) / 1e12;
+	let fixedCost = parseFloat((props.totalCartCost - props.totalCartDiscount).toFixed(2));
+	
 	const buttonProps = {
 		className: 'button__checkout',
 		value: `Checkout (${props.myCartList.length})`
 	};
-	console.log(props);
+	
 	return (
 		<div className={props.className}>
 			<div>
