@@ -37,7 +37,7 @@ npm run start
 npm stop
 ```
 
-### LOGIN ACCOUNT FOR TESTING
+### Login Account For Testing
 
 ```
 email: client@[CLIENT_ID in lowercase].com
