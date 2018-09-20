@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
 		<meta name="author" content="SEEK International">
 		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="assets/images/icons/seek-logo-circle-144.png">
+		<meta name="msapplication-TileImage" content="assets/images/seek-logo-circle-144.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="apple-mobile-web-app-title" content="SEEK - Job Ads">
@@ -15,21 +15,26 @@
 		<meta name="theme-color" content="#ffffff">
 		<meta name="description" content="SEEK International Job ads">
 		<meta name="keywords" content="seek,seek international,seek asia,job,jobs,ads,job ads,employer">
-		<meta property="og:image" content="assets/images/icons/seek-logo-circle-144.png">
+		<meta property="og:image" content="assets/images/seek-logo-circle-144.png">
 		<meta property="og:url" content="/jobads">
 		<meta property="og:title" content="SEEK - Job ads">
 		<meta property="og:description" content="SEEK International Job ads">
 		<title>SEEK - Job ads</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
-		<link rel="apple-touch-icon" type="image/png" sizes="192x192" href="assets/images/icons/seek-logo-circle-192.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/seek-logo-circle-32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/seek-logo-circle-16.png">
+		<link rel="apple-touch-icon" type="image/png" sizes="192x192" href="assets/images/seek-logo-circle-192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 		<link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
 		<link rel="manifest" href="manifest.json">
 		<base href="/">
 		<noscript>
 			This site requires Javascript. Please enable Javascript in your browser for this site.
 		</noscript>
+		<script>
+			if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === 'object') {
+				__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function() {};
+			}
+		</script>
 	</head>
     <body itemscope itemtype="http://schema.org/WebPage">
         <div id="app" />
