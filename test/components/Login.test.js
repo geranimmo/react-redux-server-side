@@ -9,11 +9,11 @@ describe('>>> L O G I N ---- Test Snapshot <<<', () => {
 		wrapper = shallow(<Login formId={'signInForm'} />);
 	});
 
-	it('+++ render the DUMB component', () => {
+	it('+++ Render the DUMB component +++', () => {
 		expect(wrapper.length).toEqual(1);
 	});
        
-	it('+++ contains output', () => {
+	it('+++ Contains props that assigned to the component +++', () => {
 		const targetComponent = wrapper.find('form').prop('id');
 
 		expect(targetComponent).toEqual('signInForm');
