@@ -37,6 +37,12 @@ npm run start
 npm stop
 ```
 
+### Run Test
+
+```
+npm run test
+```
+
 ### Dependencies
 
 What things you need to install the software and how to install them
