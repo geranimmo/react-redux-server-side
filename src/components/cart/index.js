@@ -7,7 +7,7 @@ import Header from '../header';
 import { CartFooter } from '../common';
 import './cart.less';
 
-class Cart extends Component {
+export class Cart extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

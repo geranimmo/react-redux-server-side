@@ -12,7 +12,7 @@ const CSS_MAPS = ENV!=='production';
 
 const config = {
 	context: path.resolve(__dirname, "src"),
-	entry: { main: './index.jsx' },
+	entry: { main: './index.js' },
 	output: {
 		publicPath: '/',
 		path: path.resolve(__dirname, 'dist'),

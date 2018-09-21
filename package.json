@@ -38,7 +38,8 @@
       "\\.(css|less)$": "identity-obj-proxy"
     },
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+      "src/**/*.{js,jsx}",
+      "!src/index.js"
     ]
   },
   "babel": {

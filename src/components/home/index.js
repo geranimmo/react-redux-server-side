@@ -6,7 +6,7 @@ import Header from '../header';
 import PackageSlider from '../packages';
 import './home.less';
 
-class Home extends Component {
+export class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { packagesList: [] };

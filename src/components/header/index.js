@@ -3,7 +3,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import './header.less';
 
-class Header extends Component {
+export class Header extends Component {
 	showCart() {
 		this.props.history.push('/cart');
 	}
