@@ -97,10 +97,7 @@ const config = {
 				'dist/*.html'
 			],
 			stripPrefix: 'dist',
-			minify: true,
-			runtimeCaching: [{
-				handler: 'fastest'
-			}]
+			minify: true
 		})
 	],
 	devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
