@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import { App } from '../../src/components/App';
 
 describe('>>> A P P ---- Test App.js Component <<<', () => {
-	it('+++ Renders correct routes to Login Page +++', () => {
+	it('+++ It renders correctly without error +++', () => {
 		const wrapper = shallow(<App />);
 		const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
 			const routeProps = route.props();

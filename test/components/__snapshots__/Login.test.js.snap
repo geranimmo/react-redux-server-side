@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>> L O G I N ---- Test & Snapshot <<< +++ Capturing Snapshot of connected() component +++ 1`] = `
+exports[`>>> L O G I N ---- Test & Snapshot <<< +++ Capturing Snapshot of Login component +++ 1`] = `
 <div
   className="float__container"
 >

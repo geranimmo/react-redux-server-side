@@ -24,15 +24,15 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		wrapper = mount(app);
 	});
 
-	it('+++ Render the connected() component', () => {
+	it('+++ Render the Login component', () => {
 		expect(wrapper.length).toEqual(1);
 	});
 
-	it('+++ Contains props that assigned to the connected() component', () => {
+	it('+++ Contains props that assigned to the Login component', () => {
 		expect(wrapper.find('form').prop('id')).toEqual(initialProps.formId);
 	});
 
-	it('+++ Capturing Snapshot of connected() component +++', () => {
+	it('+++ Capturing Snapshot of Login component +++', () => {
 		const renderedValue = renderer.create(app).toJSON();
 		
 		expect(renderedValue).toMatchSnapshot();
