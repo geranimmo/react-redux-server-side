@@ -1,5 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import expect from 'expect';
 import * as actions from '../../../src/components/actions';
 import * as types from '../../../src/components/actions/types';
 import * as reducers from '../../../src/components/reducers';

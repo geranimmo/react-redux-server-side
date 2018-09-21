@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of ConnectedHome component +++ 1`] = `
+exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home component +++ 1`] = `
 <div
   className="main__container"
 >
@@ -25,7 +25,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
       >
         <img
           alt="Default"
-          src="../../assets/images/client-default-logo.png"
+          src="client-default-logo.png"
         />
       </div>
     </nav>
@@ -34,6 +34,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
     >
       <div
         className="menu__btn__icon "
+        id="openCartView"
         onClick={[Function]}
       >
         <svg
@@ -45,13 +46,14 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
           />
         </svg>
         <div
-          className="cart__notif "
+          className="cart__notif"
         >
           2
         </div>
       </div>
       <div
         className="menu__btn__icon hidden"
+        id="closeCartView"
         onClick={[Function]}
       >
         <svg
@@ -282,7 +284,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                           <img
                             alt="Premium"
                             className="slider__images"
-                            src="../../assets/images/employeer-image-sample3.jpg"
+                            src="/assets/images/employeer-image-sample3.jpg"
                           />
                           <h2
                             className="no__margin__top block width__100"
@@ -350,7 +352,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                           <img
                             alt="Classic"
                             className="slider__images"
-                            src="../../assets/images/employeer-image-sample.jpg"
+                            src="/assets/images/employeer-image-sample.jpg"
                           />
                           <h2
                             className="no__margin__top block width__100"
@@ -418,7 +420,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                           <img
                             alt="Standout"
                             className="slider__images"
-                            src="../../assets/images/employeer-image-sample2.jpg"
+                            src="/assets/images/employeer-image-sample2.jpg"
                           />
                           <h2
                             className="no__margin__top block width__100"
@@ -486,7 +488,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                           <img
                             alt="Premium"
                             className="slider__images"
-                            src="../../assets/images/employeer-image-sample3.jpg"
+                            src="/assets/images/employeer-image-sample3.jpg"
                           />
                           <h2
                             className="no__margin__top block width__100"
@@ -553,7 +555,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                           <img
                             alt="Classic"
                             className="slider__images"
-                            src="../../assets/images/employeer-image-sample.jpg"
+                            src="/assets/images/employeer-image-sample.jpg"
                           />
                           <h2
                             className="no__margin__top block width__100"
@@ -620,7 +622,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                           <img
                             alt="Standout"
                             className="slider__images"
-                            src="../../assets/images/employeer-image-sample2.jpg"
+                            src="/assets/images/employeer-image-sample2.jpg"
                           />
                           <h2
                             className="no__margin__top block width__100"
@@ -687,7 +689,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                           <img
                             alt="Premium"
                             className="slider__images"
-                            src="../../assets/images/employeer-image-sample3.jpg"
+                            src="/assets/images/employeer-image-sample3.jpg"
                           />
                           <h2
                             className="no__margin__top block width__100"

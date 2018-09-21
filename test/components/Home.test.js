@@ -3,9 +3,10 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { mount } from 'enzyme';
+import expect from "expect";
 import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import ConnectedHome from '../../src/components/home';
+import Home from '../../src/components/home';
 import * as actions from '../../src/components/actions';
 import * as types from '../../src/components/actions/types';
 import ListPackages from '../../src/assets/json/packages__.json';
@@ -38,21 +39,22 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 		wrapper = mount(
 			<Provider store={store}>
 				<Router>
-					<ConnectedHome {...propHome}/>
+					<Home {...propHome}/>
 				</Router>
 			</Provider>
 		);
 	});
 
-	it('+++ Render the ConnectedHome component', () => {
+	it('+++ Render the Home component', () => {
 		expect(wrapper.length).toEqual(1);
 	});
 
-	it('+++ Contains props that assigned to the ConnectedHome component', () => {
-		expect(wrapper.find(`main`).prop('id')).toEqual(propHome.id);
+	it('+++ Contains props that assigned to the Home component', () => {
+		expect(wrapper.find(`main`).prop('id'))
+			.toEqual(propHome.id);
 	});
     
-	it('+++ Check ShoppingCart action in ConnectedHome ', () => {
+	it('+++ Check ShoppingCart action in Home ', () => {
 		const addCartData = {
 			id: "Classic",
 			buy_time: 1537425742447
@@ -61,15 +63,19 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 
 		store.dispatch(actions.addToCart(addCartData));
 		action = store.getActions();
-		expect(action[0].type).toBe(types.DISPATCH_PACKAGES_LIST);
-		expect(action[1].type).toBe(types.ADD_TO_CART);
+		
+		expect(action[0].type)
+			.toBe(types.DISPATCH_PACKAGES_LIST);
+
+		expect(action[1].type)
+			.toBe(types.ADD_TO_CART);
 	});
 
-	it('+++ Capturing Snapshot of ConnectedHome component +++', () => {
+	it('+++ Capturing Snapshot of Home component +++', () => {
 		const renderedValue = renderer.create(
 			<Provider store={store}>
 				<Router>
-					<ConnectedHome {...propHome}/>
+					<Home {...propHome}/>
 				</Router>
 			</Provider>
 		).toJSON();

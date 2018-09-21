@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Header +++ 1`] = `
+exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Header component +++ 1`] = `
 <header
   className="header__active"
   id="header"
@@ -22,7 +22,7 @@ exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Head
     >
       <img
         alt="Default"
-        src="../../assets/images/client-default-logo.png"
+        src="client-default-logo.png"
       />
     </div>
   </nav>
@@ -31,6 +31,7 @@ exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Head
   >
     <div
       className="menu__btn__icon hidden"
+      id="openCartView"
       onClick={[Function]}
     >
       <svg
@@ -42,13 +43,14 @@ exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Head
         />
       </svg>
       <div
-        className="cart__notif "
+        className="cart__notif"
       >
         2
       </div>
     </div>
     <div
       className="menu__btn__icon "
+      id="closeCartView"
       onClick={[Function]}
     >
       <svg

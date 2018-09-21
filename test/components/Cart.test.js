@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { mount } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
+import expect from 'expect';
 import renderer from 'react-test-renderer';
-import ConnectedCart from '../../src/components/cart';
+import Cart from '../../src/components/cart';
 import ListPackages from '../../src/assets/json/packages__.json';
 
 describe('>>> C A R T ---- Test & Snapshot <<<', () => {
@@ -36,29 +37,52 @@ describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 		wrapper = mount(
 			<Provider store={store}>
 				<Router>
-					<ConnectedCart {...propCart}/>
+					<Cart {...propCart}/>
 				</Router>
 			</Provider>
 		);
 	});
 
-	it('+++ Render the connectedCart component', () => {
+	it('+++ Render the Cart component', () => {
 		expect(wrapper.length).toEqual(1);
 	});
 
-	it('+++ Contains props that assigned to the connectedCart component', () => {
+	it('+++ Contains props that assigned to the Cart component', () => {
 		expect(wrapper.find(`main`).prop('id')).toEqual(propCart.id);
 	});
 
-	it('+++ Capturing Snapshot of connectedCart component +++', () => {
+	it('+++ Capturing Snapshot of Cart component +++', () => {
 		const renderedValue = renderer.create(
 			<Provider store={store}>
 				<Router>
-					<ConnectedCart {...propCart}/>
+					<Cart {...propCart}/>
 				</Router>
 			</Provider>
 		).toJSON();
 		
 		expect(renderedValue).toMatchSnapshot();
 	});
+
+	it('+++ Should simulate click on delete cart item button +++', () => {
+		expect(wrapper.find('.cart__delete').length)
+			.toEqual(2);
+
+		wrapper
+			.find('div.cart__delete')
+			.at(0)
+			.simulate('click');
+
+		expect(wrapper.find('div.cart__delete').length)
+			.toEqual(1);
+
+		wrapper
+			.find('div.cart__delete')
+			.at(0)
+			.simulate('click');
+
+		expect(wrapper.find('div.cart__delete').length)
+			.toEqual(0);
+	});
+
+	
 });

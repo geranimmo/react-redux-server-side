@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of connectedCart component +++ 1`] = `
+exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Cart component +++ 1`] = `
 <div
   className="main__container"
 >
@@ -25,7 +25,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of connecte
       >
         <img
           alt="Default"
-          src="../../assets/images/client-default-logo.png"
+          src="client-default-logo.png"
         />
       </div>
     </nav>
@@ -34,6 +34,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of connecte
     >
       <div
         className="menu__btn__icon hidden"
+        id="openCartView"
         onClick={[Function]}
       >
         <svg
@@ -45,13 +46,14 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of connecte
           />
         </svg>
         <div
-          className="cart__notif "
+          className="cart__notif"
         >
           2
         </div>
       </div>
       <div
         className="menu__btn__icon "
+        id="closeCartView"
         onClick={[Function]}
       >
         <svg
@@ -110,6 +112,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of connecte
         </div>
         <div
           className="cart__delete"
+          id="Classic__1537425742947"
           onClick={[Function]}
         >
           <svg
@@ -159,6 +162,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of connecte
         </div>
         <div
           className="cart__delete"
+          id="Premium__1537425742948"
           onClick={[Function]}
         >
           <svg

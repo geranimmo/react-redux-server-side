@@ -1,11 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { shallow } from 'enzyme';
+import configureMockStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import expect from "expect";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { Header } from '../../src/components/header';
+import Header from '../../src/components/header';
 
 describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
-	let wrapper;
+	const mockStore = configureMockStore([thunk]);
+	let wrapper, store;
 
 	const propHeader = {
 		onCart: true,
@@ -26,25 +31,60 @@ describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
 	};
 
 	beforeEach(() => {
-		wrapper = shallow(
-			<Router>
-				<Header {...propHeader}/>
-			</Router>
+		store = mockStore(propHeader);
+		wrapper = mount(
+			<Provider store={store}>
+				<Router>
+					<Header {...propHeader}/>
+				</Router>
+			</Provider>
 		);
 	});
 
-	it('+++ Render the DUMB component of Header +++', () => {
+	it('+++ Render the Header component +++', () => {
 		expect(wrapper.length).toEqual(1);
 	});
 
-	it('+++ Capturing Snapshot of Header +++', () => {
-		
+	it('+++ Should return of total Cart length in Cart notification +++', () => {
+		expect(wrapper.find('div#openCartView').text())
+			.toEqual(`${propHeader.ShoppingCart.length}`);
+	});
+
+	it('+++ Capturing Snapshot of Header component +++', () => {
 		const renderedValue = renderer.create(
-			<Router>
-				<Header {...propHeader}/>
-			</Router>
+			<Provider store={store}>
+				<Router>
+					<Header {...propHeader}/>
+				</Router>
+			</Provider>
 		).toJSON();
-		
+
 		expect(renderedValue).toMatchSnapshot();
+	});
+
+	it('+++ Should route to Cart when click openCartView +++', () => {
+		const historyMock = { push: jest.fn() };
+		const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
+			const routeProps = route.props();
+			pathMap[routeProps.path] = routeProps.component;
+			return pathMap;
+		}, {});
+
+		wrapper.find('div#openCartView').simulate('click');
+		expect(historyMock.push.mock.calls[0])
+			.toEqual(pathMap['/cart']);
+	});
+
+	it('+++ Should route to Home when click closeCartView +++', () => {
+		const historyMock = { push: jest.fn() };
+		const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
+			const routeProps = route.props();
+			pathMap[routeProps.path] = routeProps.component;
+			return pathMap;
+		}, {});
+
+		wrapper.find('div#closeCartView').simulate('click');
+		expect(historyMock.push.mock.calls[0])
+			.toEqual(pathMap['/home']);
 	});
 });

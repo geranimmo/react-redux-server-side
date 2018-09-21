@@ -6,7 +6,7 @@ import { Button } from '../common';
 import { addToCart } from '../actions/AddToCart';
 import './packages.less';
 
-export class PackageSlider extends Component {
+class PackageSlider extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
