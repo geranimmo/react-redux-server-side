@@ -92,11 +92,15 @@ const config = {
 		new SWPrecacheWebpackPlugin({
 			staticFileGlobs: [
 				'dist/assets/*/*.*',
+				'dist/*.ico',
 				'dist/*.css',
 				'dist/*.html'
 			],
 			stripPrefix: 'dist',
-			minify: true
+			minify: true,
+			runtimeCaching: [{
+				handler: 'fastest'
+			}]
 		})
 	],
 	devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
