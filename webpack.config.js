@@ -97,7 +97,11 @@ const config = {
 				'dist/*.html'
 			],
 			stripPrefix: 'dist',
-			minify: true
+			minify: true,
+			runtimeCaching: [{
+				urlPattern: '',
+				handler: 'fastest'
+			}]
 		})
 	],
 	devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
