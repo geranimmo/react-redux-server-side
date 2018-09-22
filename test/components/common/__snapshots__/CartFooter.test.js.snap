@@ -13,7 +13,7 @@ exports[`>>> C A R T  F O O T E R ---- Test & Snapshot <<< +++ Capturing Snapsho
       290
     </span>
     <button
-      className="button__checkout"
+      className="button__checkout "
       type="button"
       value="Checkout (2)"
     >

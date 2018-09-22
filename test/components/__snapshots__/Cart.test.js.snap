@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Cart component +++ 1`] = `
+exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of ConnectedCart component +++ 1`] = `
 <div
   className="main__container"
 >
@@ -21,7 +21,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Cart com
         />
       </a>
       <div
-        className="client__logo__wrapper"
+        className="client__logo__wrapper "
       >
         <img
           alt="Default"
@@ -30,7 +30,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Cart com
       </div>
     </nav>
     <nav
-      className="nav__right"
+      className="nav__right "
     >
       <div
         className="menu__btn__icon hidden"
@@ -46,7 +46,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Cart com
           />
         </svg>
         <div
-          className="cart__notif"
+          className="cart__notif "
         >
           2
         </div>
@@ -77,103 +77,113 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Cart com
       onScroll={[Function]}
     >
       <div
-        className="cart__list__wrapper"
-        id="Cart__Classic__0__1537425742947"
+        className="cart__empty hidden"
       >
+        Your Cart Still Empty
+      </div>
+      ;
+      <div>
         <div
-          className="cart__info__wrapper"
+          className="cart__list__wrapper"
+          id="Cart__Classic__0__1537425742947"
         >
           <div
-            className="cart__info"
+            className="cart__info__wrapper"
           >
-            <h1>
-              Classic
-              <label
-                className="info__recommended hidden"
+            <div
+              className="cart__info"
+            >
+              <h1>
+                Classic
+                <label
+                  className="info__recommended hidden"
+                >
+                  RECOMMENDED
+                </label>
+              </h1>
+              <h2>
+                Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
+              </h2>
+              <span
+                className="info__datetime"
               >
-                RECOMMENDED
-              </label>
-            </h1>
-            <h2>
-              Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting indu...
-            </h2>
-            <span
-              className="info__datetime"
-            >
-              09/20/2018, 1:42:22 PM
-            </span>
-            <span
-              className="info__price"
-            >
-              $
-              269.99
-            </span>
+                09/20/2018, 1:42:22 PM
+              </span>
+              <span
+                className="info__price"
+              >
+                $
+                269.99
+              </span>
+            </div>
           </div>
-        </div>
-        <div
-          className="cart__delete"
-          id="Classic__1537425742947"
-          onClick={[Function]}
-        >
-          <svg
-            clipRule="evenodd"
-            fillRule="evenodd"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            className="cart__delete"
+            id="Classic__1537425742947"
+            onClick={[Function]}
           >
-            <path
-              d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"
-            />
-          </svg>
+            <svg
+              clipRule="evenodd"
+              fillRule="evenodd"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"
+              />
+            </svg>
+          </div>
         </div>
       </div>
-      <div
-        className="cart__list__wrapper"
-        id="Cart__Premium__1__1537425742948"
-      >
+      <div>
         <div
-          className="cart__info__wrapper"
+          className="cart__list__wrapper"
+          id="Cart__Premium__1__1537425742948"
         >
           <div
-            className="cart__info"
+            className="cart__info__wrapper"
           >
-            <h1>
-              Premium
-              <label
-                className="info__recommended hidden"
+            <div
+              className="cart__info"
+            >
+              <h1>
+                Premium
+                <label
+                  className="info__recommended hidden"
+                >
+                  RECOMMENDED
+                </label>
+              </h1>
+              <h2>
+                Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting indu...
+              </h2>
+              <span
+                className="info__datetime"
               >
-                RECOMMENDED
-              </label>
-            </h1>
-            <h2>
-              Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting indu...
-            </h2>
-            <span
-              className="info__datetime"
-            >
-              09/20/2018, 1:42:22 PM
-            </span>
-            <span
-              className="info__price"
-            >
-              $
-              394.99
-            </span>
+                09/20/2018, 1:42:22 PM
+              </span>
+              <span
+                className="info__price"
+              >
+                $
+                394.99
+              </span>
+            </div>
           </div>
-        </div>
-        <div
-          className="cart__delete"
-          id="Premium__1537425742948"
-          onClick={[Function]}
-        >
-          <svg
-            clipRule="evenodd"
-            fillRule="evenodd"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            className="cart__delete"
+            id="Premium__1537425742948"
+            onClick={[Function]}
           >
-            <path
-              d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"
-            />
-          </svg>
+            <svg
+              clipRule="evenodd"
+              fillRule="evenodd"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -190,7 +200,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Cart com
         0
       </span>
       <button
-        className="button__checkout"
+        className="button__checkout "
         type="button"
         value="Checkout (2)"
       >

@@ -32,9 +32,10 @@ export class PackageSlider extends Component {
 			className: 'button__buy__items',
 			value: 'Buy Ad'
 		};
+		const displayClass = this.props.packagesList.length > 0 ? '' : 'hidden';
 
 		return (
-			<div className={`slider__container`}>
+			<div className={`slider__container ${displayClass}`}>
 				<div className={`slider__nav__wrapper`}>
 					<Slider
 						asNavFor={this.state.navSlider}

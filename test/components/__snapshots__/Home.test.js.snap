@@ -21,7 +21,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
         />
       </a>
       <div
-        className="client__logo__wrapper"
+        className="client__logo__wrapper "
       >
         <img
           alt="Default"
@@ -30,7 +30,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
       </div>
     </nav>
     <nav
-      className="nav__right"
+      className="nav__right "
     >
       <div
         className="menu__btn__icon "
@@ -46,7 +46,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
           />
         </svg>
         <div
-          className="cart__notif"
+          className="cart__notif "
         >
           2
         </div>
@@ -78,7 +78,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
       onScroll={[Function]}
     >
       <div
-        className="slider__container"
+        className="slider__container "
       >
         <div
           className="slider__nav__wrapper"
@@ -357,7 +357,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                           <h2
                             className="no__margin__top block width__100"
                           >
-                            Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                            Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
                           </h2>
                           <span
                             className="label__info hidden"
@@ -425,7 +425,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                           <h2
                             className="no__margin__top block width__100"
                           >
-                            Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                            Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry of Lorem Ipsum
                           </h2>
                           <span
                             className="label__info "
@@ -560,7 +560,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                           <h2
                             className="no__margin__top block width__100"
                           >
-                            Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                            Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
                           </h2>
                           <span
                             className="label__info hidden"
@@ -627,7 +627,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                           <h2
                             className="no__margin__top block width__100"
                           >
-                            Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                            Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry of Lorem Ipsum
                           </h2>
                           <span
                             className="label__info "
@@ -725,6 +725,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
           </div>
         </div>
       </div>
+      ;
     </div>
   </main>
 </div>

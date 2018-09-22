@@ -7,11 +7,6 @@ import PackageSlider from '../packages';
 import './home.less';
 
 export class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { packagesList: [] };
-	}
-
 	componentDidMount() {
 		if (!this.props.UserLogin) {
 			this.props.history.push('/');
@@ -48,15 +43,6 @@ export class Home extends Component {
 		}
 	}
 
-	renderPackageSlider() {
-		const { packagesList } = this.state;
-
-		if (packagesList.length > 0) {
-			return <PackageSlider packagesList={this.state.packagesList} />;
-		}
-		return '';
-	}
-
 	render() {
 		return (
 			<div className={`main__container`}>
@@ -67,7 +53,7 @@ export class Home extends Component {
 						onScroll={this.handleScroll.bind(this)}
 						className={`content__wrapper`}
 					>
-						{ this.renderPackageSlider() }
+						<PackageSlider {...this.state} />;
 					</div>
 				</main>
 			</div>

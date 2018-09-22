@@ -22,9 +22,50 @@ exports[`>>> L O G I N ---- Test & Snapshot <<< +++ Capturing Snapshot of Login 
           className="seek__logo"
         />
       </a>
-      
+      <div
+        className="client__logo__wrapper hidden"
+      >
+        <img />
+      </div>
     </nav>
-    
+    <nav
+      className="nav__right hidden"
+    >
+      <div
+        className="menu__btn__icon "
+        id="openCartView"
+        onClick={[Function]}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"
+          />
+        </svg>
+        <div
+          className="cart__notif hidden"
+        >
+          0
+        </div>
+      </div>
+      <div
+        className="menu__btn__icon hidden"
+        id="closeCartView"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon__close"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
+          />
+        </svg>
+      </div>
+    </nav>
   </header>
   <main
     className="login__component"

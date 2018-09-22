@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { removeFromCart } from '../actions';
 import Header from '../header';
-import { CartFooter } from '../common';
+import {
+	CartItem,
+	CartFooter
+} from '../common';
+import { removeFromCart } from '../actions';
 import './cart.less';
 
 export class Cart extends Component {
@@ -26,17 +29,14 @@ export class Cart extends Component {
 	}
     
 	componentWillMount() {
-		const { ShoppingCart, Packages } = this.props;
-
-		const myCartArr = _.map(ShoppingCart, (item) => {
-			return _.merge(item, _.find(Packages, { 'package_id' : item.id }));
-		});
-
-		this.setState({
-			myCartList: myCartArr
-		});
-        
 		if (this.props.UserLogin) {
+			const { ShoppingCart, Packages } = this.props;
+			const myCartArr = _.map(ShoppingCart, (item) => {
+				return _.merge(item, _.find(Packages, { 'package_id' : item.id }));
+			});
+
+			this.setState({ myCartList: myCartArr });
+
 			setTimeout(() => {
 				this.populatePromoItems();
 				this.populateTotalCost();
@@ -55,158 +55,102 @@ export class Cart extends Component {
     		header.classList.remove("header__on__scrolled");
     	}
     }
+	
+	removeCartItems = (data) => {
+		if (this.props.UserLogin) {
+			this.props.removeFromCart(data);
 
-    populateTotalCost() {
-    	const { myCartList } = this.state;
-    	let totalCost = 0;
+			const updateCartList = this.state.myCartList.filter(e => e.buy_time !== data);
 
-    	if ( myCartList.length > 0 ) {
-    		for ( let i = 0; i < myCartList.length; i++ ) {
-    			totalCost = parseFloat((totalCost + myCartList[i].package_price).toFixed(2));
-    		}
-    	}
-        
-    	this.setState({ totalCartCost: totalCost });
-    }
+			this.setState({ myCartList: updateCartList });
+			
+			setTimeout(() => {
+				this.populatePromoItems();
+				this.populateTotalCost();
+			}, 0);
+		}
+	};
 
-    populatePromoItems() {
-    	const { client_special } = this.props.Profile;
-    	const { myCartList } = this.state;
-        
-    	if (client_special.length > 0) {
-    		let totalDiscount = 0;
+	populateTotalCost() {
+		const { myCartList } = this.state;
+		let totalCost = 0;
+	
+		if ( myCartList.length > 0 ) {
+			for ( let i = 0; i < myCartList.length; i++ ) {
+				totalCost = parseFloat((totalCost + myCartList[i].package_price).toFixed(2));
+			}
+		}
+	
+		this.setState({ totalCartCost: totalCost });
+	}
 
-    		for ( let i = 0; i < client_special.length; i++ ) {
-    			let getInCartPromoItems = [];
-                
-    			if ( client_special[i].types === 'free__items' ) { // CALCULATE FREE-FOR-SAME-AD
-    				getInCartPromoItems = this.filterArrayById(client_special[i].package_id, myCartList);
+	populatePromoItems = () => {
+		const { myCartList } = this.state;
+		const { client_special } = this.props.Profile;
+		let totalDiscount = 0;
+	
+		if ( client_special.length > 0 ) {
+			for ( let i = 0; i < client_special.length; i++ ) {
+				let getInCartPromoItems = [];
+				
+				if ( client_special[i].types === 'free__items' ) {
+					// CALCULATE FREE-FOR-SAME-AD
+					getInCartPromoItems = this.filterArrayById(client_special[i].package_id, myCartList);
+	
+					if (getInCartPromoItems.length > 0) {
+						let pricePerItem = getInCartPromoItems[0].package_price;
+						let getTotalFreeItems = Math.floor(this.filterArrayById(client_special[i].package_id, myCartList).length / client_special[i].minimum_items);
+						totalDiscount = parseFloat((getTotalFreeItems * pricePerItem).toFixed(2));
+					}
+				} else if ( client_special[i].types === 'discount__items' ) {
+					// CALCULATE DISC-FOR-MIN-BUY
+					getInCartPromoItems = this.filterArrayById(client_special[i].package_id, myCartList);
+					
+					if (getInCartPromoItems.length >= client_special[i].minimum_items) {
+						let discountPrice = client_special[i].discount_price;
+						totalDiscount = parseFloat((discountPrice * getInCartPromoItems.length).toFixed(2));
+					}
+				}
+			}
+		}
+	
+		this.setState({ totalCartDiscount: totalDiscount });
+	};
 
-    				if (getInCartPromoItems.length > 0) {
-    					let pricePerItem = getInCartPromoItems[0].package_price;
-    					let getTotalFreeItems = Math.floor(this.filterArrayById(client_special[i].package_id, myCartList).length / client_special[i].minimum_items);
-    					totalDiscount = parseFloat((getTotalFreeItems * pricePerItem).toFixed(2));
-    				}
-    			} else if ( client_special[i].types === 'discount__items' ) { // CALCULATE DISC-FOR-MIN-BUY
-    				getInCartPromoItems = this.filterArrayById(client_special[i].package_id, myCartList);
-                    
-    				if (getInCartPromoItems.length >= client_special[i].minimum_items) {
-    					let discountPrice = client_special[i].discount_price;
-    					totalDiscount = parseFloat((discountPrice * getInCartPromoItems.length).toFixed(2));
-    				}
-    			}
-    		}
-            
-    		this.setState({
-    			totalCartDiscount: totalDiscount
-    		});
-    	}
-    }
+	filterArrayById = (id, datas) => {
+		return datas.filter(obj => obj.package_id === id);
+	};
 
-    filterArrayById(id, datas) {
-    	return datas.filter(obj => obj.package_id === id);
-    }
-
-    removeCartItems = (data) => {
-    	this.props.removeFromCart(data);
-    	this.setState({
-    		myCartList: this.state.myCartList.filter(e => e.buy_time !== data)
-    	});
-        
-    	if (this.props.UserLogin) {
-    		setTimeout(() => {
-    			this.populatePromoItems();
-    			this.populateTotalCost();
-    		}, 0);
-    	}
-    };
-    
-    renderBuyTime(data) {
-    	const humanizeDate = new Intl.DateTimeFormat('en-US', {
-    		year: 'numeric',
-    		month: '2-digit',
-    		day: '2-digit',
-    		hour: '2-digit',
-    		minute: '2-digit',
-    		second: '2-digit'
-    	}).format(data);
-    	return humanizeDate;
-    }
-
-    renderTrimDescription(data) {
-    	return data.substring(0, 80)+'...';
-    }
-
-    renderCartCollection() {
+	render() {
     	const { myCartList } = this.state;
 
-    	if ( myCartList.length > 0 ) {
-    		return (
-    			<div
-    				id={`content__scroller`}
-    				onScroll={this.handleScroll.bind(this)}
-    			>
-    				{ myCartList.map((item, idx) => {
-    					return (
-    						<div
-    							key={idx}
-    							id={`Cart__${item.id}__${idx}__${item.buy_time}`}
-    							className={`cart__list__wrapper`}
-    						>
-    							<div className={`cart__info__wrapper`}>
-    								<div className={`cart__info`}>
-    									<h1>
-    										{item.package_name}
-    										<label className={`info__recommended ${item.package_recommend ? '' : 'hidden'}`}>RECOMMENDED</label>
-    									</h1>
-    									<h2>{this.renderTrimDescription(item.package_description)}</h2>
-    									<span className={`info__datetime`}>
-    										{this.renderBuyTime(item.buy_time)}
-    									</span>
-    									<span className={`info__price`}>${item.package_price}</span>
-    								</div>
-    							</div>
-    							<div
-    								id={`${item.id}__${item.buy_time}`}
-    								className={`cart__delete`}
-    								onClick={() => this.removeCartItems(item.buy_time)}
-    							>
-    								<svg xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd">
-    									<path d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-9 4c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm-2-7h-4v1h4v-1z"/>
-    								</svg>
-    							</div>
-    						</div>
-    					);
-    				}) }
-    			</div>
-    		);
-    	}
-    	return <div className={`cart__empty`}>Your Cart Still Empty</div>;
-    }
-
-    renderCartFooter() {
-    	if ( this.state.myCartList.length > 0 ) {
-    		return (
-    			<CartFooter
-    				className={`cart__footer`}
-    				{...this.state}
-    			/>
-    		);
-    	}
-    	return null;
-    }
-
-    render() {
     	return (
     		<div className={`main__container`}>
     			<Header onCart={true} />
     			<main id={this.props.id} className={`cart__component`}>
-    				{ this.renderCartCollection() }
+    				<div
+    					id={`content__scroller`}
+    					onScroll={this.handleScroll.bind(this)}
+    				>
+    					<div className={`cart__empty ${myCartList.length ? 'hidden' : ''}`}>Your Cart Still Empty</div>;
+    					{ myCartList.map((item, index) => {
+    						return (
+								<div key={index}>
+									<CartItem
+										id={`Cart__${item.id}__${index}__${item.buy_time}`}
+										className={`cart__list__wrapper`}
+										removeCartItems={this.removeCartItems.bind(this, item.buy_time)}
+										item={item}
+									/>
+								</div>
+							);
+    					}) }
+    				</div>
     			</main>
-    			{ this.renderCartFooter() }
+    			<CartFooter className={`cart__footer`} {...this.state}/>
     		</div>
     	);
-    }
+	}
 }
 
 const mapStateToProps = state => {

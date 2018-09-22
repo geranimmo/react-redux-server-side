@@ -18,7 +18,7 @@ exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Head
       />
     </a>
     <div
-      className="client__logo__wrapper"
+      className="client__logo__wrapper "
     >
       <img
         alt="Default"
@@ -27,7 +27,7 @@ exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Head
     </div>
   </nav>
   <nav
-    className="nav__right"
+    className="nav__right "
   >
     <div
       className="menu__btn__icon hidden"
@@ -43,7 +43,7 @@ exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Head
         />
       </svg>
       <div
-        className="cart__notif"
+        className="cart__notif "
       >
         2
       </div>
