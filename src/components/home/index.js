@@ -7,6 +7,11 @@ import PackageSlider from '../packages';
 import './home.less';
 
 export class Home extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { packagesList: [] };
+	}
+
 	componentDidMount() {
 		if (!this.props.UserLogin) {
 			this.props.history.push('/');
