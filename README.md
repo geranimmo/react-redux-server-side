@@ -1,6 +1,6 @@
 # JOB~AD CART FRONTEND
 
-This is a public repository used for my assestment of Job Ad Cart. This repository is used specifically for frontend web/app.
+This is a public repository of JobAd Cart.
 
 ## Technology Stack
 1. ReactJS@16.5.0
@@ -42,7 +42,6 @@ npm stop
 ```
 email: client@[CLIENT_ID in lowercase].com
 password: [CLIENT_ID in lowercase]123
-
 ```
 
 ### Run Test
