@@ -42,7 +42,6 @@ npm stop
 ```
 email: client@[CLIENT_ID in lowercase].com
 password: [CLIENT_ID in lowercase]123
-
 ```
 
 ### Run Test
