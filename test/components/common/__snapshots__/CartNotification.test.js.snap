@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>> C A R T  N O T I F I C A T I O N ---- Test & Snapshot <<< +++ Capturing Snapshot of CartNotification +++ 1`] = `
+<div
+  className="cart__notif "
+>
+  9+
+</div>
+`;

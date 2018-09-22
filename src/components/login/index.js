@@ -69,7 +69,7 @@ export class Login extends Component {
 		usernameValue = usernameValue.replace(/(<([^>]+)>)/ig, '');
 		
 		this.setState({
-			usernameValue: this.validateEmail(usernameValue) ? usernameValue : null
+			usernameValue: validateEmail(usernameValue) ? usernameValue : null
 		});
 	};
 
@@ -78,11 +78,6 @@ export class Login extends Component {
 		passwordValue = passwordValue.replace(/(<([^>]+)>)/ig, '');
 
 		this.setState({ passwordValue });
-	};
-
-	validateEmail = (data) => {
-		const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  		return regEmail.test(data);
 	};
 
 	render() {
@@ -140,6 +135,11 @@ export class Login extends Component {
 		);
 	}
 }
+
+export const validateEmail = (data) => {
+	const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return regEmail.test(data);
+};
 
 const mapStateToProps = state => {
 	return state;

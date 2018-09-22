@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { mount } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import Login from '../../src/components/login';
+import Login, { validateEmail } from '../../src/components/login';
 import reducers from '../../src/components/reducers';
 
 describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
@@ -36,5 +36,10 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		const renderedValue = renderer.create(app).toJSON();
 		
 		expect(renderedValue).toMatchSnapshot();
+	});
+       
+	it('+++ Should validate email address format if valid will return true +++', () => {
+		expect(validateEmail('test@email.com')).toBe(true); // should return true
+		expect(validateEmail('test_email_com')).toBe(false); // should return false
 	});
 });

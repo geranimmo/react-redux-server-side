@@ -3,10 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Header from '../header';
-import {
-	CartItem,
-	CartFooter
-} from '../common';
+import { CartItem, CartFooter } from '../common';
 import { removeFromCart } from '../actions';
 import './cart.less';
 
@@ -95,16 +92,16 @@ export class Cart extends Component {
 				
 				if ( client_special[i].types === 'free__items' ) {
 					// CALCULATE FREE-FOR-SAME-AD
-					getInCartPromoItems = this.filterArrayById(client_special[i].package_id, myCartList);
+					getInCartPromoItems = filterPromoById(client_special[i].package_id, myCartList);
 	
 					if (getInCartPromoItems.length > 0) {
 						let pricePerItem = getInCartPromoItems[0].package_price;
-						let getTotalFreeItems = Math.floor(this.filterArrayById(client_special[i].package_id, myCartList).length / client_special[i].minimum_items);
+						let getTotalFreeItems = Math.floor(filterPromoById(client_special[i].package_id, myCartList).length / client_special[i].minimum_items);
 						totalDiscount = parseFloat((getTotalFreeItems * pricePerItem).toFixed(2));
 					}
 				} else if ( client_special[i].types === 'discount__items' ) {
 					// CALCULATE DISC-FOR-MIN-BUY
-					getInCartPromoItems = this.filterArrayById(client_special[i].package_id, myCartList);
+					getInCartPromoItems = filterPromoById(client_special[i].package_id, myCartList);
 					
 					if (getInCartPromoItems.length >= client_special[i].minimum_items) {
 						let discountPrice = client_special[i].discount_price;
@@ -115,10 +112,6 @@ export class Cart extends Component {
 		}
 	
 		this.setState({ totalCartDiscount: totalDiscount });
-	};
-
-	filterArrayById = (id, datas) => {
-		return datas.filter(obj => obj.package_id === id);
 	};
 
 	render() {
@@ -152,6 +145,10 @@ export class Cart extends Component {
     	);
 	}
 }
+
+export const filterPromoById = (id, datas) => {
+	return datas.filter(obj => obj.package_id === id);
+};
 
 const mapStateToProps = state => {
 	return state;
