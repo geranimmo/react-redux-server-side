@@ -46,7 +46,7 @@
 				"types": "discount__items",
 				"package_id": "Standout",
 				"minimum_items": 1,
-				"discount_price": "23"
+				"discount_price": 23
 			}
 		]
 	}, {
@@ -65,7 +65,7 @@
 				"types": "discount__items",
 				"package_id": "Premium",
 				"minimum_items": 4,
-				"discount_price": "15"
+				"discount_price": 15
 			}
 		]
 	}, {
@@ -89,12 +89,12 @@
 				"types": "discount__items",
 				"package_id": "Standout",
 				"minimum_items": 1,
-				"discount_price": "13"
+				"discount_price": 13
 			}, {
 				"types": "discount__items",
 				"package_id": "Premium",
 				"minimum_items": 3,
-				"discount_price": "5"
+				"discount_price": 5
 			}
 		]
 	}

@@ -146,7 +146,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
               className="cart__info"
             >
               <h1>
-                Premium
+                Classic
                 <label
                   className="info__recommended hidden"
                 >
@@ -154,7 +154,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                 </label>
               </h1>
               <h2>
-                Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting indu...
+                Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
               </h2>
               <span
                 className="info__datetime"
@@ -165,7 +165,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
                 className="info__price"
               >
                 $
-                394.99
+                269.99
               </span>
             </div>
           </div>
@@ -197,7 +197,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
           Total Cost:
         </label>
         $
-        0
+        NaN
       </span>
       <button
         className="button__checkout "

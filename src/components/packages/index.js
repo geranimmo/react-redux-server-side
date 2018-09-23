@@ -22,10 +22,6 @@ export class PackageSlider extends Component {
 		});
 	}
 
-	initBuyAd(data) {
-		this.props.addToCart({ id: data });
-	}
-
 	render() {
 		const buttonProps = {
 			className: 'button__buy__items',
@@ -73,7 +69,14 @@ export class PackageSlider extends Component {
 											</h2>
 											<span className={`label__info ${item.package_recommend ? '' : 'hidden'}`}>RECOMMENDED</span>
 											<span className={`pricing block width__100`}>${item.package_price}</span>
-											<Button onClick={this.initBuyAd.bind(this, item.package_id)} {...buttonProps}/>
+											<Button
+												onClick={
+													() => this.props.addToCart({
+														id: item.package_id
+													})
+												}
+												{...buttonProps}
+											/>
 										</div>
 									</div>
 								</div>

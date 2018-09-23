@@ -7,11 +7,7 @@ import {
 } from '../common';
 import Header from '../header';
 import './login.less';
-import {
-	loginFetch,
-	dispatchProfile,
-	dispatchShoppingCart
-} from '../actions';
+import { loginFetch } from '../actions';
 
 export class Login extends Component {
 	constructor(props) {
@@ -52,8 +48,6 @@ export class Login extends Component {
 			};
 
 			this.props.loginFetch(requestUserData);
-			this.props.dispatchProfile(requestUserData);
-			this.props.dispatchShoppingCart(requestUserData);
 		} else {
 			if (!usernameValue) {
 				alert('Username is empty');
@@ -145,8 +139,4 @@ const mapStateToProps = state => {
 	return state;
 };
 
-export default withRouter(connect(mapStateToProps, {
-	loginFetch,
-	dispatchProfile,
-	dispatchShoppingCart
-})(Login));
+export default withRouter(connect(mapStateToProps, { loginFetch })(Login));

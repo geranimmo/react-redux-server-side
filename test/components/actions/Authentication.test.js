@@ -15,48 +15,37 @@ describe('>>> A C T I O N ---- Test Authentication Actions <<<', () => {
 	const matchAccountData = AccountList.filter((obj) => {
 		return obj.email_address === loginData.username && obj.user_password === loginData.password;
 	});
+	
 	const resultAccountData = new Object(matchAccountData[0]);
+	const expectedDataProfile = {
+		client_id: resultAccountData.client_id,
+		first_name: resultAccountData.first_name,
+		last_name: resultAccountData.last_name,
+		business_name: resultAccountData.first_name,
+		phone_number: resultAccountData.phone_number,
+		client_logo: resultAccountData.client_logo,
+		client_special: resultAccountData.client_special
+	};
 	
 	it('+++ Action loginFetch', () => {
 		const store = createMockStore(reducers.UserLogin);
 		store.dispatch(actions.loginFetch(loginData));
 		const dispatchedActions = store.getActions();
 
-		expect(dispatchedActions).toEqual([{
-			type: types.DISPATCH_LOGIN,
-			payload: true
-		}]);
-	});
-
-	it('+++ Action dispatchProfile +++', () => {
-		const expectedDatas = {
-			client_id: resultAccountData.client_id,
-			first_name: resultAccountData.first_name,
-			last_name: resultAccountData.last_name,
-			business_name: resultAccountData.first_name,
-			phone_number: resultAccountData.phone_number,
-			client_logo: resultAccountData.client_logo,
-			client_special: resultAccountData.client_special
-		};
-		const store = createMockStore(reducers.Profile);
-		store.dispatch(actions.dispatchProfile(loginData));
-		const dispatchedActions = store.getActions();
-
-		expect(dispatchedActions).toEqual([{
-			type: types.DISPATCH_PROFILE_DATA,
-			payload: expectedDatas
-		}]);
-	});
-
-	it('+++ Action dispatchShoppingCart +++', () => {
-		const expectedDatas = resultAccountData.shopping_cart;
-		const store = createMockStore(reducers.ShoppingCart);
-		store.dispatch(actions.dispatchShoppingCart(loginData));
-		const dispatchedActions = store.getActions();
-
-		expect(dispatchedActions).toEqual([{
-			type: types.DISPATCH_SHOPPING_CART,
-			payload: expectedDatas
-		}]);
+		expect(dispatchedActions)
+			.toContainEqual(
+				expect.objectContaining(
+					{
+						type: types.DISPATCH_LOGIN,
+						payload: true
+					}, {
+						type: types.DISPATCH_PROFILE_DATA,
+						payload: expectedDataProfile
+					}, {
+						type: types.DISPATCH_SHOPPING_CART,
+						payload: resultAccountData.shopping_cart
+					}
+				)
+			);
 	});
 });
