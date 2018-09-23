@@ -41,9 +41,9 @@ export class PackageSlider extends Component {
 						swipeToSlide={true}
 						focusOnSelect={true}
 					>
-						{ this.props.packagesList.map((item, idx) => {
+						{ this.props.packagesList.map((item, index) => {
 							return (
-								<div key={idx} id={`nav${item.package_id}`} className={`slider__card__nav ${item.package_recommend ? 'nav__recommended' : ''}`}>
+								<div key={index} className={`slider__card__nav ${item.package_recommend ? 'nav__recommended' : ''}`}>
 									<h1 className={`no__margin`}>{item.package_name}</h1>
 								</div>
 							);
@@ -58,9 +58,9 @@ export class PackageSlider extends Component {
 						arrows={false}
 						slidesToShow={1}
 					>
-						{ this.props.packagesList.map((item, idx) => {
+						{ this.props.packagesList.map((item, index) => {
 							return (
-								<div key={idx} id={item.package_id} className={`section__carousel`} itemProp="itemListElement" itemScope itemType="http://schema.org/Product">
+								<div key={index} className={`section__carousel`} itemProp="itemListElement" itemScope itemType="http://schema.org/Product">
 									<div className={`slider__content`}>
 										<div className={`slider__card__body`}>
 											<img className={`slider__images`} src={item.package_image} alt={item.package_name}/>
@@ -70,6 +70,7 @@ export class PackageSlider extends Component {
 											<span className={`label__info ${item.package_recommend ? '' : 'hidden'}`}>RECOMMENDED</span>
 											<span className={`pricing block width__100`}>${item.package_price}</span>
 											<Button
+												className={`add__to__cart__button`}
 												onClick={
 													() => this.props.addToCart({
 														id: item.package_id

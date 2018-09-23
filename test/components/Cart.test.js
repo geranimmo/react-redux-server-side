@@ -8,6 +8,10 @@ import expect from 'expect';
 import renderer from 'react-test-renderer';
 import ConnectedCart from '../../src/components/cart';
 import ListPackages from '../../src/assets/json/packages__.json';
+import {
+	getTotalCost,
+	getTotalDiscount
+} from '../../src/components/actions';
 
 describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 	const mockStore = configureMockStore([thunk]);
@@ -46,7 +50,9 @@ describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 		},
 		UserLogin: true,
 		Packages: ListPackages,
-		id: 'shopping__cart__wrapper'
+		id: 'shopping__cart__wrapper',
+		getTotalCost,
+		getTotalDiscount
 	};
 
 	beforeEach(() => {
@@ -78,5 +84,32 @@ describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 		).toJSON();
 		
 		expect(renderedValue).toMatchSnapshot();
+	});
+
+	it('+++ Simulate Click Remove From Cart in Packages +++', () => {
+		const removeFromCart = jest.fn();
+		
+		expect(
+			wrapper
+				.find('div#content__scroller')
+				.find('.list__0')
+				.find('.cart__delete')
+				.length
+		).toEqual(1);
+		
+		wrapper
+			.find('div#content__scroller')
+			.find('.list__0')
+			.find('.cart__delete')
+			.simulate('click');
+
+		expect(removeFromCart).toEqual(expect.any(Function));
+	});
+
+	it('+++ Should call handle scroll function when scroll +++', () => {
+		const handleHeaderOnScroll = jest.fn();
+
+		wrapper.find('div#content__scroller').simulate('scroll', { deltaY: 50 });
+		expect(handleHeaderOnScroll).toEqual(expect.any(Function));
 	});
 });

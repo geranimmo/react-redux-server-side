@@ -82,4 +82,24 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 		
 		expect(renderedValue).toMatchSnapshot();
 	});
+
+	it('+++ Simulate Click Add To Cart in Packages +++', () => {
+		const addToCart = jest.fn();
+
+		expect(
+			wrapper
+				.find('.slider__content__wrapper')
+				.find('.slick-current')
+				.find('button.button__buy__items')
+				.length
+		).toEqual(1);
+		
+		wrapper
+			.find('.slider__content__wrapper')
+			.find('.slick-current')
+			.find('button.button__buy__items')
+			.simulate('click');
+
+		expect(addToCart).toEqual(expect.any(Function));
+	});
 });

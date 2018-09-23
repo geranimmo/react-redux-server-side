@@ -16,22 +16,14 @@ export class Cart extends Component {
 		this.state = {
 			myCartList: [],
 			totalCartCost: 0,
-			totalCartDiscount: 0
+			totalCartDiscount: 0,
+			headerScrollY: 0
 		};
 	}
 
-	componentDidMount() {
-		if (!this.props.UserLogin) {
-			this.props.history.push('/');
-		} else {
-			this.props.getTotalCost();
-			this.props.getTotalDiscount();
-		}
-		
-		document.addEventListener('scroll', this.handleScroll, true);
-	}
-
 	componentWillMount() {
+		this.props.getTotalCost();
+		this.props.getTotalDiscount();
 		this.createDataSource(this.props);
 	}
 	
@@ -47,39 +39,35 @@ export class Cart extends Component {
 		});
 	}
     
-    handleScroll = () => {
-    	let targetElm = document.getElementById("content__scroller").getBoundingClientRect();
-    	let targetOffsetTop = targetElm.top;
-    	let header = document.getElementById("header");
-		
-    	if (targetOffsetTop < 0) {
-    		header.classList.add("header__on__scrolled");
-    	} else {
-    		header.classList.remove("header__on__scrolled");
-    	}
+    handleHeaderOnScroll = () => {
+    	this.setState({ headerScrollY: window.scrollY });
     }
 
     render() {
     	const {
     		myCartList,
     		totalCartDiscount,
-    		totalCartCost
+    		totalCartCost,
+    		headerScrollY
     	} = this.state;
 
     	return (
     		<div className={`main__container`}>
-    			<Header onCart={true} />
+    			<Header
+    				headerScrollY={headerScrollY}
+    				onCart={true}
+    			/>
     			<main id={this.props.id} className={`cart__component`}>
     				<div
     					id={`content__scroller`}
-    					onScroll={this.handleScroll.bind(this)}
+    					onScroll={this.handleHeaderOnScroll.bind(this)}
     				>
     					<div className={`cart__empty ${myCartList.length ? 'hidden' : ''}`}>Your Cart Still Empty</div>
     					{ myCartList.map((item, index) => {
     						return (
     							<div
     								key={index}
-    								className={`wrapper__list${index}`}
+    								className={`wrapper__list list__${index}`}
     								id={`Cart__${item.id}__${index}__${item.buy_time}`}
     							>
     								<CartItem

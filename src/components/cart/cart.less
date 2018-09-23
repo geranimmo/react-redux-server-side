@@ -217,43 +217,49 @@
 }
 
 @media @media__all__devices {
-    .cart__list__wrapper {
-        padding: 5px 54px 5px 0;
+    .cart__component {
+        &>div {
+            padding-top: 90px !important;
+        }
+    
+        .cart__list__wrapper {
+            padding: 5px 54px 5px 0;
 
-        &>.cart__info__wrapper {
-            display: block;
-            width: 100%;
-            height: 100px;
-            float: left;
-            background-color: @white;
-            color: @seekblue;
-            box-shadow: 0 0 4px rgba(0,0,0,.3);
-            -moz-box-shadow: 0 0 4px rgba(0,0,0,.3);
-            -webkit-box-shadow: 0 0 4px rgba(0,0,0,.3);
+            &>.cart__info__wrapper {
+                display: block;
+                width: 100%;
+                height: 100px;
+                float: left;
+                background-color: @white;
+                color: @seekblue;
+                box-shadow: 0 0 4px rgba(0,0,0,.3);
+                -moz-box-shadow: 0 0 4px rgba(0,0,0,.3);
+                -webkit-box-shadow: 0 0 4px rgba(0,0,0,.3);
 
-            .cart__info {
-                padding-right: 90px !important;
+                .cart__info {
+                    padding-right: 90px !important;
 
-                h1, h1 { margin-bottom: 2px !important; }
+                    h1, h1 { margin-bottom: 2px !important; }
 
-                h1 { font-size: 1rem !important; }
+                    h1 { font-size: 1rem !important; }
 
-                h2 { font-size: .68rem !important; }
+                    h2 { font-size: .68rem !important; }
 
-                .info__recommended {
-                    right: -80px !important;
-                    margin-top: 0 !important;
-                }
+                    .info__recommended {
+                        right: -80px !important;
+                        margin-top: 0 !important;
+                    }
 
-                .info__price {
-                    width: 90px !important;
-                    font-size: .9rem !important;
+                    .info__price {
+                        width: 90px !important;
+                        font-size: .9rem !important;
+                    }
                 }
             }
-        }
-            
-        &>.cart__delete {
-            right: 5px !important;
+                
+            &>.cart__delete {
+                right: 5px !important;
+            }
         }
     }
 }

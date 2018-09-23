@@ -5,7 +5,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
   className="main__container"
 >
   <header
-    className="header__active"
+    className="header__active "
     id="header"
   >
     <nav
@@ -82,7 +82,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
         Your Cart Still Empty
       </div>
       <div
-        className="wrapper__list0"
+        className="wrapper__list list__0"
         id="Cart__Classic__0__1537425742947"
       >
         <div
@@ -136,7 +136,7 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
         </div>
       </div>
       <div
-        className="wrapper__list1"
+        className="wrapper__list list__1"
         id="Cart__Premium__1__1537425742948"
       >
         <div

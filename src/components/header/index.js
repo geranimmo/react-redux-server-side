@@ -14,12 +14,12 @@ export class Header extends Component {
 	}
 
 	render() {
-		const { UserLogin, Profile, onCart, ShoppingCart } = this.props;
+		const { UserLogin, Profile, onCart, ShoppingCart, headerScrollY } = this.props;
 
 		return (
 			<header
 				id={`header`}
-				className={UserLogin ? 'header__active' : ''}
+				className={`${UserLogin ? 'header__active ' : ''}${headerScrollY > 10 ? 'header__on__scrolled' : ''}`}
 			>
 				<nav className={`nav__left`}>
 					<NavLink to={UserLogin ? '/home' : '/'}>

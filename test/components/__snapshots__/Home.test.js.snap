@@ -5,7 +5,7 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
   className="main__container"
 >
   <header
-    className="header__active"
+    className="header__active "
     id="header"
   >
     <nav
@@ -122,7 +122,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="slider__card__nav "
-                      id="navClassic"
                       style={
                         Object {
                           "display": "inline-block",
@@ -155,7 +154,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="slider__card__nav nav__recommended"
-                      id="navStandout"
                       style={
                         Object {
                           "display": "inline-block",
@@ -188,7 +186,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="slider__card__nav "
-                      id="navPremium"
                       style={
                         Object {
                           "display": "inline-block",
@@ -263,7 +260,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="section__carousel"
-                      id="Premium"
                       itemProp="itemListElement"
                       itemScope={true}
                       itemType="http://schema.org/Product"
@@ -331,7 +327,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="section__carousel"
-                      id="Classic"
                       itemProp="itemListElement"
                       itemScope={true}
                       itemType="http://schema.org/Product"
@@ -399,7 +394,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="section__carousel"
-                      id="Standout"
                       itemProp="itemListElement"
                       itemScope={true}
                       itemType="http://schema.org/Product"
@@ -467,7 +461,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="section__carousel"
-                      id="Premium"
                       itemProp="itemListElement"
                       itemScope={true}
                       itemType="http://schema.org/Product"
@@ -534,7 +527,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="section__carousel"
-                      id="Classic"
                       itemProp="itemListElement"
                       itemScope={true}
                       itemType="http://schema.org/Product"
@@ -601,7 +593,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="section__carousel"
-                      id="Standout"
                       itemProp="itemListElement"
                       itemScope={true}
                       itemType="http://schema.org/Product"
@@ -668,7 +659,6 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
                   <div>
                     <div
                       className="section__carousel"
-                      id="Premium"
                       itemProp="itemListElement"
                       itemScope={true}
                       itemType="http://schema.org/Product"

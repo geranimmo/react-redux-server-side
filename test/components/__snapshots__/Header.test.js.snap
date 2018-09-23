@@ -2,7 +2,7 @@
 
 exports[`>>> H E A D E R ---- Test & Snapshot <<< +++ Capturing Snapshot of Header component +++ 1`] = `
 <header
-  className="header__active"
+  className="header__active "
   id="header"
 >
   <nav
