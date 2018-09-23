@@ -25,8 +25,8 @@ describe('>>> C A R T  L I S T  I T E M ---- Test & Snapshot <<<', () => {
 	});
        
 	it('+++ Should contains props that assigned +++', () => {
-		const targetComponent = wrapper.find(`div.${propsValue.className}`).prop('id');
-		expect(targetComponent).toContain(`${propsValue.id}`);
+		const targetComponent = wrapper.find(`div.${propsValue.className}`).prop('className');
+		expect(targetComponent).toContain(`${propsValue.className}`);
 	});
     
 	it('+++ Should hide Recommended label if package_recommend is false +++', () => {

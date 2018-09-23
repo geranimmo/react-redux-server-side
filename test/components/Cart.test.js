@@ -79,25 +79,4 @@ describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 		
 		expect(renderedValue).toMatchSnapshot();
 	});
-
-	// it('+++ Should simulate click on delete cart item button +++', () => {
-	// 	expect(wrapper.find('.cart__delete').length)
-	// 		.toEqual(2);
-	// 	console.log(wrapper.store().ShoppingCart);
-	// 	wrapper
-	// 		.find('div.cart__delete')
-	// 		.at(0)
-	// 		.simulate('click');
-
-	// 	expect(wrapper.find('div.cart__delete').length)
-	// 		.toEqual(1);
-
-	// 	wrapper
-	// 		.find('div.cart__delete')
-	// 		.at(0)
-	// 		.simulate('click');
-
-	// 	expect(wrapper.find('div.cart__delete').length)
-	// 		.toEqual(0);
-	// });
 });

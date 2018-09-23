@@ -81,11 +81,12 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
       >
         Your Cart Still Empty
       </div>
-      ;
-      <div>
+      <div
+        className="wrapper__list0"
+        id="Cart__Classic__0__1537425742947"
+      >
         <div
           className="cart__list__wrapper"
-          id="Cart__Classic__0__1537425742947"
         >
           <div
             className="cart__info__wrapper"
@@ -134,10 +135,12 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
           </div>
         </div>
       </div>
-      <div>
+      <div
+        className="wrapper__list1"
+        id="Cart__Premium__1__1537425742948"
+      >
         <div
           className="cart__list__wrapper"
-          id="Cart__Premium__1__1537425742948"
         >
           <div
             className="cart__info__wrapper"

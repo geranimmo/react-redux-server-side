@@ -4,10 +4,7 @@ import { DateTimeConverter } from './DateTimeConverter';
 
 const CartItem = props => {
 	return (
-		<div
-			id={props.id}
-			className={props.className}
-		>
+		<div className={props.className}>
 			<div className={`cart__info__wrapper`}>
 				<div className={`cart__info`}>
 					<h1>

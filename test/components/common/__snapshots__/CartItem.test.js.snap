@@ -3,7 +3,6 @@
 exports[`>>> C A R T  L I S T  I T E M ---- Test & Snapshot <<< +++ Capturing Snapshot of CartItem +++ 1`] = `
 <div
   className="cart__list__wrapper"
-  id="Cart__Item__List"
 >
   <div
     className="cart__info__wrapper"

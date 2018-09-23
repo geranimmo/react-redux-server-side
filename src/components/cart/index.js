@@ -11,6 +11,15 @@ import {
 import './cart.less';
 
 export class Cart extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			myCartList: [],
+			totalCartCost: 0,
+			totalCartDiscount: 0
+		};
+	}
+
 	componentDidMount() {
 		if (!this.props.UserLogin) {
 			this.props.history.push('/');
@@ -20,6 +29,22 @@ export class Cart extends Component {
 		}
 		
 		document.addEventListener('scroll', this.handleScroll, true);
+	}
+
+	componentWillMount() {
+		this.createDataSource(this.props);
+	}
+	
+	componentWillReceiveProps(nextProps) {
+		this.createDataSource(nextProps);
+	}
+
+	createDataSource(state) {
+		this.setState({
+			myCartList: state.ShoppingCart,
+			totalCartCost: state.TotalCost,
+			totalCartDiscount: state.TotalDiscount
+		});
 	}
     
     handleScroll = () => {
@@ -36,11 +61,10 @@ export class Cart extends Component {
 
     render() {
     	const {
-    		ShoppingCart,
-    		TotalCost,
-    		TotalDiscount,
-    		removeFromCart
-    	} = this.props;
+    		myCartList,
+    		totalCartDiscount,
+    		totalCartCost
+    	} = this.state;
 
     	return (
     		<div className={`main__container`}>
@@ -50,15 +74,18 @@ export class Cart extends Component {
     					id={`content__scroller`}
     					onScroll={this.handleScroll.bind(this)}
     				>
-    					<div className={`cart__empty ${ShoppingCart.length ? 'hidden' : ''}`}>Your Cart Still Empty</div>;
-    					{ ShoppingCart.map((item, index) => {
+    					<div className={`cart__empty ${myCartList.length ? 'hidden' : ''}`}>Your Cart Still Empty</div>
+    					{ myCartList.map((item, index) => {
     						return (
-    							<div key={index}>
+    							<div
+    								key={index}
+    								className={`wrapper__list${index}`}
+    								id={`Cart__${item.id}__${index}__${item.buy_time}`}
+    							>
     								<CartItem
-    									id={`Cart__${item.id}__${index}__${item.buy_time}`}
     									className={`cart__list__wrapper`}
     									removeCartItems={
-    										() => removeFromCart(item.buy_time)
+    										() => this.props.removeFromCart(item.buy_time)
     									}
     									item={item}
     								/>
@@ -69,9 +96,9 @@ export class Cart extends Component {
     			</main>
     			<CartFooter
     				className={`cart__footer`}
-    				totalCartCost={TotalCost}
-    				totalCartDiscount={TotalDiscount}
-    				myCartList={ShoppingCart}
+    				totalCartCost={totalCartCost}
+    				totalCartDiscount={totalCartDiscount}
+    				myCartList={myCartList}
     			/>
     		</div>
     	);
