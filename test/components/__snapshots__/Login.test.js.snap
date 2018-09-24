@@ -115,7 +115,7 @@ exports[`>>> L O G I N ---- Test & Snapshot <<< +++ Capturing Snapshot of Login 
             name="password"
             onChange={[Function]}
             onKeyPress={[Function]}
-            type="text"
+            type="password"
           />
         </div>
         <div

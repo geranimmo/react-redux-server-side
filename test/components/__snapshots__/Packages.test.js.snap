@@ -114,7 +114,7 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
             name="password"
             onChange={[Function]}
             onKeyPress={[Function]}
-            type="text"
+            type="password"
           />
         </div>
         <div

@@ -2,11 +2,12 @@ import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import expect from "expect";
+import expect from 'expect';
+// import sinon from 'sinon';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import Header from '../../src/components/header';
+import ConnectedHeader, { Header } from '../../src/components/header';
 
 describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
 	const mockStore = configureMockStore([thunk]);
@@ -27,7 +28,8 @@ describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
 			client_logo: "client-default-logo.png",
 			client_special: []
 		},
-		UserLogin: true
+		UserLogin: true,
+		showCart: jest.fn()
 	};
 
 	beforeEach(() => {
@@ -35,7 +37,7 @@ describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
 		wrapper = mount(
 			<Provider store={store}>
 				<Router>
-					<Header {...propHeader}/>
+					<ConnectedHeader {...propHeader}/>
 				</Router>
 			</Provider>
 		);
@@ -54,7 +56,7 @@ describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
 		const renderedValue = renderer.create(
 			<Provider store={store}>
 				<Router>
-					<Header {...propHeader}/>
+					<ConnectedHeader {...propHeader}/>
 				</Router>
 			</Provider>
 		).toJSON();
@@ -62,42 +64,25 @@ describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
 		expect(renderedValue).toMatchSnapshot();
 	});
 
-	// it('+++ Should route to Cart when click openCartView +++', () => {
-	// 	const showCart = jest.fn();
+	it('+++ Should call showCart() when click cart button +++', () => {
+		const history = { push: jest.fn() };
+		const wrappers = shallow(<Header {...propHeader} history={history}/>);
+		const showCart = jest.spyOn(wrappers.instance(), 'showCart');
 
-	// 	wrapper.find('div#openCartView').props('onClick')();
-	// 	expect(showCart).toEqual(expect.any(Function));
+		wrappers.instance().forceUpdate();
+		wrappers.update();
+		wrappers.find('div#openCartView').first().simulate('click');
+		expect(showCart.mock.calls.length).toBe(1);
+	});
 
-	// 	// const historyMock = { push: jest.fn() };
-	// 	// const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
-	// 	// 	const routeProps = route.props();
-	// 	// 	pathMap[routeProps.path] = routeProps.component;
-	// 	// 	return pathMap;
-	// 	// }, {});
+	it('+++ Should call closeCart() when click close cart button +++', () => {
+		const history = { push: jest.fn() };
+		const wrappers = shallow(<Header {...propHeader} history={history}/>);
+		const showCart = jest.spyOn(wrappers.instance(), 'closeCart');
 
-		
-	// 	// wrapper.find('div#openCartView').simulate('click');
-	// 	// console.log(historyMock.push.mock);
-	// 	// console.log(pathMap['/cart']);
-	// 	// expect(historyMock.push.mock.calls[0])
-	// 	// 	.toEqual(pathMap['/cart']);
-	// });
-
-	// it('+++ Should route to Home when click closeCartView +++', () => {
-	// 	const spy = jest.fn();
-
-	// 	wrapper.find('div#closeCartView').simulate('click');
-	// 	expect(spy).toHaveBeenCalled();
-
-	// 	// const historyMock = { push: jest.fn() };
-	// 	// const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
-	// 	// 	const routeProps = route.props();
-	// 	// 	pathMap[routeProps.path] = routeProps.component;
-	// 	// 	return pathMap;
-	// 	// }, {});
-
-	// 	// wrapper.find('div#closeCartView').simulate('click');
-	// 	// expect(historyMock.push.mock.calls[0])
-	// 	// 	.toEqual(pathMap['/home']);
-	// });
+		wrappers.instance().forceUpdate();
+		wrappers.update();
+		wrappers.find('div#closeCartView').first().simulate('click');
+		expect(showCart.mock.calls.length).toBe(1);
+	});
 });
