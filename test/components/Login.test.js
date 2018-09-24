@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import expect from 'expect';
 import { mount, shallow } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
@@ -139,8 +140,8 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		findInputUsername.simulate('change', { target: { value: usernameVal } });
 		findInputPassword.simulate('change', { target: { value: passwordVal } });
 
-		wrapper.instance().forceUpdate();
-		wrapper.update();
+		wrappers.instance().forceUpdate();
+		wrappers.update();
 
 		expect(wrappers.state()).toEqual(
 			expect.objectContaining({
@@ -151,8 +152,8 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 
 		findSubmitButton.simulate('click');
 
-		wrapper.instance().forceUpdate();
-		wrapper.update();
+		wrappers.instance().forceUpdate();
+		wrappers.update();
 		
 		expect(loginFetch).toHaveBeenCalledWith(
 			expect.objectContaining({
@@ -163,9 +164,20 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 
 		// handle change path if login success
 		wrappers.setProps({ UserLogin: true });
-		wrapper.instance().forceUpdate();
-		wrapper.update();
+		wrappers.instance().forceUpdate();
+		wrappers.update();
 
 		expect(pathChangeSpy.mock.calls.length).toBe(1);
+	});
+
+	it('+++ Should initialize componentWillMount() +++', () => {
+		const history = { push: jest.fn() };
+		const wrappers = shallow(
+			<Login {...initialProps} UserLogin={true} history={history}/>
+		);
+
+		wrappers.instance().forceUpdate();
+		wrappers.update();
+		expect(history.push).toHaveBeenCalledWith('/home');
 	});
 });
