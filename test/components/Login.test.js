@@ -66,18 +66,18 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 
 	it('+++ Simulate form password and handlePasswordField() should return value in state +++', () => {
 		const wrappers = shallow(<Login {...initialProps}/>);
-		const passValue = 'default123';
+		const passwordValue = 'default123';
 		
 		const finder = wrappers.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
 		const findInputPassword = findFormWrapper.find(InputField).at(1).dive();
 
-		findInputPassword.simulate('change', { target: { value: passValue } });
+		findInputPassword.simulate('change', { target: { value: passwordValue } });
 
 		wrapper.instance().forceUpdate();
 		wrapper.update();
 
-		expect(wrappers.state('passwordValue')).toEqual(passValue);
+		expect(wrappers.state('passwordValue')).toEqual(passwordValue);
 	});
 
 	it('+++ Simulate form username and handleUsernameField() should return value in state +++', () => {
@@ -86,9 +86,9 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		
 		const finder = wrappers.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
-		const findInputPassword = findFormWrapper.find(InputField).at(0).dive();
+		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
 
-		findInputPassword.simulate('change', { target: { value: usernameValue } });
+		findInputUsername.simulate('change', { target: { value: usernameValue } });
 
 		wrapper.instance().forceUpdate();
 		wrapper.update();
@@ -96,15 +96,15 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		expect(wrappers.state('usernameValue')).toEqual(usernameValue);
 	});
 
-	it('+++ Should show alert window if username and password is blank +++', () => {
+	it('+++ Should show alert window if username or password is null +++', () => {
 		window.alert = jest.fn();
 		const wrappers = shallow(<Login {...initialProps}/>);
 		
 		const finder = wrappers.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
-		const findInputPassword = findFormWrapper.find(Button).dive();
+		const findSubmitButton = findFormWrapper.find(Button).dive();
 
-		findInputPassword.simulate('click');
+		findSubmitButton.simulate('click');
 
 		wrapper.instance().forceUpdate();
 		wrapper.update();
@@ -112,5 +112,43 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		expect(window.alert).toHaveBeenCalledWith('Invalid username or password');
 		expect(wrappers.state('usernameValue')).toEqual(null);
 		expect(wrappers.state('passwordValue')).toEqual(null);
+	});
+
+	it('+++ Should initialize loginFetch() if username or password is valid +++', () => {
+		const loginFetch = jest.fn();
+		const wrappers = shallow(<Login {...initialProps} loginFetch={loginFetch}/>);
+		const usernameVal = 'client@default.com';
+		const passwordVal = 'default123';
+		
+		const finder = wrappers.find('form.sign__in__form');
+		const findFormWrapper = finder.find('.form__wrapper');
+		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
+		const findInputPassword = findFormWrapper.find(InputField).at(1).dive();
+		const findSubmitButton = findFormWrapper.find(Button).dive();
+
+		findInputUsername.simulate('change', { target: { value: usernameVal } });
+		findInputPassword.simulate('change', { target: { value: passwordVal } });
+
+		wrapper.instance().forceUpdate();
+		wrapper.update();
+
+		expect(wrappers.state()).toEqual(
+			expect.objectContaining({
+				usernameValue: usernameVal,
+				passwordValue: passwordVal
+			})
+		);
+
+		findSubmitButton.simulate('click');
+
+		wrapper.instance().forceUpdate();
+		wrapper.update();
+		
+		expect(loginFetch).toHaveBeenCalledWith(
+			expect.objectContaining({
+				username: usernameVal,
+				password: passwordVal
+			})
+		);
 	});
 });
