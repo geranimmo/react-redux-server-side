@@ -164,7 +164,7 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 			})
 		);
 
-		// handle change path is login success
+		// handle change path if login success
 		wrappers.setProps({ UserLogin: true });
 		wrapper.instance().forceUpdate();
 		wrapper.update();
