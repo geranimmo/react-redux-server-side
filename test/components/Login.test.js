@@ -13,6 +13,8 @@ import reducers from '../../src/components/reducers';
 describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 	const store = createStore(reducers, {}, applyMiddleware(thunk));
 	const initialProps = { formId: 'signInForm' };
+	const usernameVal = 'client@default.com';
+	const passwordVal = 'default123';
 
 	let wrapper;
 
@@ -66,34 +68,28 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 
 	it('+++ Simulate form password and handlePasswordField() should return value in state +++', () => {
 		const wrappers = shallow(<Login {...initialProps}/>);
-		const passwordValue = 'default123';
-		
 		const finder = wrappers.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
 		const findInputPassword = findFormWrapper.find(InputField).at(1).dive();
 
-		findInputPassword.simulate('change', { target: { value: passwordValue } });
-
+		findInputPassword.simulate('change', { target: { value: passwordVal } });
 		wrapper.instance().forceUpdate();
 		wrapper.update();
 
-		expect(wrappers.state('passwordValue')).toEqual(passwordValue);
+		expect(wrappers.state('passwordValue')).toEqual(passwordVal);
 	});
 
 	it('+++ Simulate form username and handleUsernameField() should return value in state +++', () => {
 		const wrappers = shallow(<Login {...initialProps}/>);
-		const usernameValue = 'client@default.com';
-		
 		const finder = wrappers.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
 		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
 
-		findInputUsername.simulate('change', { target: { value: usernameValue } });
-
+		findInputUsername.simulate('change', { target: { value: usernameVal } });
 		wrapper.instance().forceUpdate();
 		wrapper.update();
 
-		expect(wrappers.state('usernameValue')).toEqual(usernameValue);
+		expect(wrappers.state('usernameValue')).toEqual(usernameVal);
 	});
 
 	it('+++ Should show alert window if username or password is null +++', () => {
@@ -105,7 +101,23 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		const findSubmitButton = findFormWrapper.find(Button).dive();
 
 		findSubmitButton.simulate('click');
+		wrapper.instance().forceUpdate();
+		wrapper.update();
+		
+		expect(window.alert).toHaveBeenCalledWith('Invalid username or password');
+		expect(wrappers.state('usernameValue')).toEqual(null);
+		expect(wrappers.state('passwordValue')).toEqual(null);
+	});
 
+	it('+++ Should handle enter key when login +++', () => {
+		window.alert = jest.fn();
+		const wrappers = shallow(<Login {...initialProps}/>);
+		
+		const finder = wrappers.find('form.sign__in__form');
+		const findFormWrapper = finder.find('.form__wrapper');
+		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
+
+		findInputUsername.simulate("keypress", { key: 'Enter' });
 		wrapper.instance().forceUpdate();
 		wrapper.update();
 		
@@ -115,11 +127,12 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 	});
 
 	it('+++ Should initialize loginFetch() if username or password is valid +++', () => {
+		const history = { push: jest.fn() };
 		const loginFetch = jest.fn();
-		const wrappers = shallow(<Login {...initialProps} loginFetch={loginFetch}/>);
-		const usernameVal = 'client@default.com';
-		const passwordVal = 'default123';
-		
+		const wrappers = shallow(
+			<Login {...initialProps} history={history} loginFetch={loginFetch}/>
+		);
+		const pathChangeSpy = jest.spyOn(wrappers.instance(), 'createDataSource');
 		const finder = wrappers.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
 		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
@@ -150,5 +163,12 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 				password: passwordVal
 			})
 		);
+
+		// handle change path is login success
+		wrappers.setProps({ UserLogin: true });
+		wrapper.instance().forceUpdate();
+		wrapper.update();
+
+		expect(pathChangeSpy.mock.calls.length).toBe(1);
 	});
 });
