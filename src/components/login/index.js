@@ -54,12 +54,7 @@ export class Login extends Component {
 
 			this.props.loginFetch(requestUserData);
 		} else {
-			if (!usernameValue) {
-				alert('Username is empty');
-			}
-			if (!passwordValue) {
-				alert('Password is empty');
-			}
+			alert('Invalid username or password');
 		}
 	}
 

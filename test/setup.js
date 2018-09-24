@@ -7,4 +7,6 @@ const matchMedia = () => ({
 	removeListener() {}
 });
 window.matchMedia = window.matchMedia || matchMedia;
+window.alert = (msg) => { console.log(msg); };
 Enzyme.configure({ adapter: new Adapter() });
+

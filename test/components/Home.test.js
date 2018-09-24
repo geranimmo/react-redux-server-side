@@ -104,7 +104,7 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 		expect(addToCart).toEqual(expect.any(Function));
 	});
 
-	it('+++ Simulate componentWillReceiveProps when initialize getListPackage() +++', () => {
+	it('+++ Simulate componentWillReceiveProps +++', () => {
 		const history = { push: jest.fn() };
 		const getListPackage = jest.fn();
 		const wrappers = shallow(

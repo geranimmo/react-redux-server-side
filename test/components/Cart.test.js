@@ -2,11 +2,11 @@ import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import expect from 'expect';
 import renderer from 'react-test-renderer';
-import ConnectedCart from '../../src/components/cart';
+import ConnectedCart, { Cart } from '../../src/components/cart';
 import ListPackages from '../../src/assets/json/packages__.json';
 import {
 	getTotalCost,
@@ -104,6 +104,24 @@ describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 			.simulate('click');
 
 		expect(removeFromCart).toEqual(expect.any(Function));
+	});
+
+	it('+++ Simulate componentWillReceiveProps +++', () => {
+		const history = { push: jest.fn() };
+		const getListPackage = jest.fn();
+		const wrappers = shallow(
+			<Cart
+				{...propCart}
+				history={history}
+				getListPackage={getListPackage}
+			/>
+		);
+		const showCartSpy = jest.spyOn(wrappers.instance(), 'createDataSource');
+
+		wrappers.setProps({ UserLogin: false });
+		wrappers.instance().forceUpdate();
+		wrappers.update();
+		expect(showCartSpy.mock.calls.length).toBe(1);
 	});
 
 	it('+++ Should call handle scroll function when scroll +++', () => {

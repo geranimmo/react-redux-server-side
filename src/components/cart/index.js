@@ -26,14 +26,13 @@ export class Cart extends Component {
 	componentDidMount() {
 		if (!this.props.UserLogin) {
 			this.props.history.push('/');
-		} else {
-			this.props.getTotalCost();
-			this.props.getTotalDiscount();
 		}
 		window.addEventListener('scroll', this.handleHeaderOnScroll);
 	}
 
 	componentWillMount() {
+		this.props.getTotalCost();
+		this.props.getTotalDiscount();
 		this.createDataSource(this.props);
 		window.addEventListener('scroll', this.handleHeaderOnScroll);
 	}
