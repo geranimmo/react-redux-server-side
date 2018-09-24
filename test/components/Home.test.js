@@ -2,11 +2,12 @@ import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import expect from "expect";
+// import sinon from 'sinon';
 import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import Home from '../../src/components/home';
+import ConnectedHome, { Home } from '../../src/components/home';
 import * as actions from '../../src/components/actions';
 import * as types from '../../src/components/actions/types';
 import ListPackages from '../../src/assets/json/packages__.json';
@@ -39,7 +40,7 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 		wrapper = mount(
 			<Provider store={store}>
 				<Router>
-					<Home {...propHome}/>
+					<ConnectedHome {...propHome}/>
 				</Router>
 			</Provider>
 		);
@@ -75,7 +76,7 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 		const renderedValue = renderer.create(
 			<Provider store={store}>
 				<Router>
-					<Home {...propHome}/>
+					<ConnectedHome {...propHome}/>
 				</Router>
 			</Provider>
 		).toJSON();
@@ -101,5 +102,36 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 			.simulate('click');
 
 		expect(addToCart).toEqual(expect.any(Function));
+	});
+
+	it('+++ Simulate componentWillReceiveProps when initialize getListPackage() +++', () => {
+		const history = { push: jest.fn() };
+		const getListPackage = jest.fn();
+		const wrappers = shallow(
+			<Home
+				{...propHome}
+				history={history}
+				getListPackage={getListPackage}
+			/>
+		);
+		const showCartSpy = jest.spyOn(wrappers.instance(), 'createDataSource');
+
+		wrappers.setProps({
+			getListPackage: [{
+				"package_id": "Standout"
+			}]
+		});
+
+		wrappers.instance().forceUpdate();
+		wrappers.update();
+
+		expect(showCartSpy.mock.calls.length).toBe(1);
+	});
+
+	it('+++ Should call handle scroll function when scroll +++', () => {
+		const handleHeaderOnScroll = jest.fn();
+
+		wrapper.find('div#content__scroller').simulate('scroll', { deltaY: 50 });
+		expect(handleHeaderOnScroll).toEqual(expect.any(Function));
 	});
 });

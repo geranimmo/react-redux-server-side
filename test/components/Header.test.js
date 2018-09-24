@@ -3,7 +3,6 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import expect from 'expect';
-// import sinon from 'sinon';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { mount, shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
@@ -67,22 +66,24 @@ describe('>>> H E A D E R ---- Test & Snapshot <<<', () => {
 	it('+++ Should call showCart() when click cart button +++', () => {
 		const history = { push: jest.fn() };
 		const wrappers = shallow(<Header {...propHeader} history={history}/>);
-		const showCart = jest.spyOn(wrappers.instance(), 'showCart');
+		const showCartSpy = jest.spyOn(wrappers.instance(), 'showCart');
 
 		wrappers.instance().forceUpdate();
 		wrappers.update();
-		wrappers.find('div#openCartView').first().simulate('click');
-		expect(showCart.mock.calls.length).toBe(1);
+		expect(showCartSpy.mock.calls.length).toBe(0);
+		wrappers.find('div#openCartView').simulate('click');
+		expect(showCartSpy.mock.calls.length).toBe(1);
 	});
 
 	it('+++ Should call closeCart() when click close cart button +++', () => {
 		const history = { push: jest.fn() };
 		const wrappers = shallow(<Header {...propHeader} history={history}/>);
-		const showCart = jest.spyOn(wrappers.instance(), 'closeCart');
+		const closeCartSpy = jest.spyOn(wrappers.instance(), 'closeCart');
 
 		wrappers.instance().forceUpdate();
 		wrappers.update();
-		wrappers.find('div#closeCartView').first().simulate('click');
-		expect(showCart.mock.calls.length).toBe(1);
+		expect(closeCartSpy.mock.calls.length).toBe(0);
+		wrappers.find('div#closeCartView').simulate('click');
+		expect(closeCartSpy.mock.calls.length).toBe(1);
 	});
 });

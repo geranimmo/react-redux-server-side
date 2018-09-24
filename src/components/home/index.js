@@ -9,9 +9,12 @@ import './home.less';
 export class Home extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { packagesList: [] };
+		this.state = {
+			packagesList: [],
+			headerScrollY: 0
+		};
 
-		this.handleScroll = this.handleScroll.bind(this);
+		this.handleHeaderOnScroll = this.handleHeaderOnScroll.bind(this);
 	}
 
 	componentDidMount() {
@@ -21,11 +24,16 @@ export class Home extends Component {
 			this.props.getListPackage();
 		}
 		
-		document.addEventListener('scroll', this.handleScroll, true);
+		window.addEventListener('scroll', this.handleHeaderOnScroll);
 	}
 
 	componentWillMount() {
 		this.createDataSource(this.props);
+		window.addEventListener('scroll', this.handleHeaderOnScroll);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleHeaderOnScroll);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -38,26 +46,20 @@ export class Home extends Component {
 		});
 	}
 	
-	handleScroll = () => {
-		let targetElm = document.getElementById("content__scroller").getBoundingClientRect();
-		let targetOffsetTop = targetElm.top;
-		let header = document.getElementById("header");
-		
-		if (targetOffsetTop < 0) {
-			header.classList.add("header__on__scrolled");
-		} else {
-			header.classList.remove("header__on__scrolled");
-		}
+	handleHeaderOnScroll = () => {
+		this.setState({ headerScrollY: window.scrollY });
 	}
 
 	render() {
+		const { headerScrollY } = this.state;
+
 		return (
 			<div className={`main__container`}>
-				<Header />
+				<Header headerScrollY={headerScrollY}/>
 				<main id={this.props.id} className={`home__component`}>
 					<div
 						id={`content__scroller`}
-						onScroll={this.handleScroll}
+						onScroll={this.handleHeaderOnScroll}
 						className={`content__wrapper`}
 					>
 						<PackageSlider {...this.state} />;

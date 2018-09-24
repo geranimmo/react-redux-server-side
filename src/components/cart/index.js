@@ -23,10 +23,19 @@ export class Cart extends Component {
 		this.handleHeaderOnScroll = this.handleHeaderOnScroll.bind(this);
 	}
 
+	componentDidMount() {
+		window.addEventListener('scroll', this.handleHeaderOnScroll);
+	}
+
 	componentWillMount() {
 		this.props.getTotalCost();
 		this.props.getTotalDiscount();
 		this.createDataSource(this.props);
+		window.addEventListener('scroll', this.handleHeaderOnScroll);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleHeaderOnScroll);
 	}
 	
 	componentWillReceiveProps(nextProps) {
@@ -43,7 +52,7 @@ export class Cart extends Component {
     
     handleHeaderOnScroll = () => {
     	this.setState({ headerScrollY: window.scrollY });
-    }
+    };
 
     render() {
     	const {
