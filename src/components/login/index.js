@@ -91,7 +91,7 @@ export class Login extends Component {
 			onKeyPress: this.handleEnterForm
 		};
 		const passwordProps = {
-			type: 'text',
+			type: 'password',
 			id: 'password',
 			name: 'password',
 			maxLength: 50,
