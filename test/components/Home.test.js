@@ -1,20 +1,20 @@
 import React from 'react';
-import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { mount, shallow } from 'enzyme';
 import expect from "expect";
-// import sinon from 'sinon';
 import { BrowserRouter as Router } from 'react-router-dom';
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 import ConnectedHome, { Home } from '../../src/components/home';
-import * as actions from '../../src/components/actions';
-import * as types from '../../src/components/actions/types';
+// import { Button } from '../../src/components/common/Button';
+// import * as actions from '../../src/components/actions';
+// import * as types from '../../src/components/actions/types';
+import reducers from '../../src/components/reducers';
 import ListPackages from '../../src/assets/json/packages__.json';
 
 describe('>>> H O M E ---- Test & Snapshot <<<', () => {
-	const mockStore = configureMockStore([thunk]);
-	let wrapper, store;
+	let store, mountWrapper;
 
 	const propHome = {
 		ShoppingCart: [
@@ -36,8 +36,8 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 	};
 
 	beforeEach(() => {
-		store = mockStore(propHome);
-		wrapper = mount(
+		store = createStore(reducers, {}, applyMiddleware(thunk));
+		mountWrapper = mount(
 			<Provider store={store}>
 				<Router>
 					<ConnectedHome {...propHome}/>
@@ -46,92 +46,138 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 		);
 	});
 
-	it('+++ Render the Home component', () => {
-		expect(wrapper.length).toEqual(1);
+	it('+++ Render the Home component +++', () => {
+		const finder = mountWrapper.find('div.main__container');
+		expect(finder.length).toEqual(1);
 	});
 
-	it('+++ Contains props that assigned to the Home component', () => {
-		expect(wrapper.find(`main`).prop('id'))
-			.toEqual(propHome.id);
-	});
-    
-	it('+++ Check ShoppingCart action in Home ', () => {
-		const addCartData = {
-			id: "Classic",
-			buy_time: 1537425742447
-		};
-		let action;
-
-		store.dispatch(actions.addToCart(addCartData));
-		action = store.getActions();
-		
-		expect(action[0].type)
-			.toBe(types.DISPATCH_PACKAGES_LIST);
-
-		expect(action[1].type)
-			.toBe(types.ADD_TO_CART);
-	});
-
-	it('+++ Capturing Snapshot of Home component +++', () => {
-		const renderedValue = renderer.create(
-			<Provider store={store}>
-				<Router>
-					<ConnectedHome {...propHome}/>
-				</Router>
-			</Provider>
-		).toJSON();
-		
-		expect(renderedValue).toMatchSnapshot();
-	});
-
-	it('+++ Simulate Click Add To Cart in Packages +++', () => {
-		const addToCart = jest.fn();
-
-		expect(
-			wrapper
-				.find('.slider__content__wrapper')
-				.find('.slick-current')
-				.find('button.button__buy__items')
-				.length
-		).toEqual(1);
-		
-		wrapper
-			.find('.slider__content__wrapper')
-			.find('.slick-current')
-			.find('button.button__buy__items')
-			.simulate('click');
-
-		expect(addToCart).toEqual(expect.any(Function));
-	});
-
-	it('+++ Simulate componentWillReceiveProps +++', () => {
+	it('+++ Initialize componentDidMount() if not login route to Login +++', () => {
 		const history = { push: jest.fn() };
-		const getListPackage = jest.fn();
-		const wrappers = shallow(
+		const shallWrapper = shallow(
 			<Home
-				{...propHome}
 				history={history}
-				getListPackage={getListPackage}
+				UserLogin={false}
 			/>
 		);
-		const showCartSpy = jest.spyOn(wrappers.instance(), 'createDataSource');
 
-		wrappers.setProps({
-			getListPackage: [{
-				"package_id": "Standout"
-			}]
-		});
-
-		wrappers.instance().forceUpdate();
-		wrappers.update();
-
-		expect(showCartSpy.mock.calls.length).toBe(1);
+		shallWrapper.update();
+		expect(history.push).toHaveBeenCalledWith('/');
 	});
 
-	it('+++ Should call handle scroll function when scroll +++', () => {
-		const handleHeaderOnScroll = jest.fn();
+	it('+++ Initialize componentDidMount() if login route to Home +++', () => {
+		const getListPackage = jest.fn();
+		const shallWrapper = shallow(
+			<Home
+				getListPackage={getListPackage}
+				UserLogin={true}
+			/>
+		);
 
-		wrapper.find('div#content__scroller').simulate('scroll', { deltaY: 50 });
-		expect(handleHeaderOnScroll).toEqual(expect.any(Function));
+		shallWrapper.update();
+		expect(getListPackage).toHaveBeenCalled();
 	});
+    
+	// it('+++ Check ShoppingCart action in Home ', () => {
+	// 	const addCartData = {
+	// 		id: "Classic",
+	// 		buy_time: 1537425742447
+	// 	};
+	// 	let action;
+
+	// 	store.dispatch(actions.addToCart(addCartData));
+	// 	action = store.getActions();
+		
+	// 	expect(action[0].type)
+	// 		.toBe(types.DISPATCH_PACKAGES_LIST);
+
+	// 	expect(action[1].type)
+	// 		.toBe(types.ADD_TO_CART);
+	// });
+
+	// it('+++ Capturing Snapshot of Home component +++', () => {
+	// 	const renderedValue = renderer.create(
+	// 		<Provider store={store}>
+	// 			<Router>
+	// 				<ConnectedHome {...propHome}/>
+	// 			</Router>
+	// 		</Provider>
+	// 	).toJSON();
+		
+	// 	expect(renderedValue).toMatchSnapshot();
+	// });
+
+	// it('+++ Simulate Click Add To Cart in Packages +++', () => {
+	// 	const finder = wrapper.find('.slider__content__wrapper');
+	// 	expect(finder.length).toEqual(1);
+
+	// 	const findActiveSlide = finder.find('.slick-current');
+	// 	expect(findActiveSlide.length).toEqual(1);
+
+	// 	const findActionButton = findActiveSlide.find('button');
+
+	// 	findActionButton.simulate('click');
+	// 	expect(addToCart).toHaveBeenCalledWith(
+	// 		expect.objectContaining({ id: expect.anything() })
+	// 	);
+
+	// 	// const findInputPassword = findFormWrapper.find('input[name="password"]');
+	// 	// expect(findInputPassword.length).toEqual(1);
+
+	// 	// const findSubmitButton = findFormWrapper.find('button');
+
+	// 	// expect(
+	// 	// 	wrapper
+	// 	// 		.find('.slider__content__wrapper')
+	// 	// 		.find('.slick-current')
+	// 	// 		.find('button.button__buy__items')
+	// 	// 		.length
+	// 	// ).toEqual(1);
+		
+	// 	// wrapper
+	// 	// 	.find('.slider__content__wrapper')
+	// 	// 	.find('.slick-current')
+	// 	// 	.find(Button)
+	// 	// 	.dive()
+	// 	// 	.simulate('click');
+
+	// 	// wrapper.instance().forceUpdate();
+	// 	// wrapper.update();
+
+	// 	// expect(addToCart).toHaveBeenCalledWith(
+	// 	// 	expect.objectContaining({
+	// 	// 		id: expect.anything()
+	// 	// 	})
+	// 	// );
+	// });
+
+	// it('+++ Simulate componentWillReceiveProps +++', () => {
+	// 	const history = { push: jest.fn() };
+	// 	const getListPackage = jest.fn();
+	// 	const wrappers = shallow(
+	// 		<Home
+	// 			{...propHome}
+	// 			history={history}
+	// 			getListPackage={getListPackage}
+	// 		/>
+	// 	);
+	// 	const showCartSpy = jest.spyOn(wrappers.instance(), 'createDataSource');
+
+	// 	wrappers.setProps({
+	// 		getListPackage: [{
+	// 			"package_id": "Standout"
+	// 		}]
+	// 	});
+
+	// 	wrappers.instance().forceUpdate();
+	// 	wrappers.update();
+
+	// 	expect(showCartSpy.mock.calls.length).toBe(1);
+	// });
+
+	// it('+++ Should call handle scroll function when scroll +++', () => {
+	// 	const handleHeaderOnScroll = jest.fn();
+
+	// 	wrapper.find('div#content__scroller').simulate('scroll', { wrapper: {deltaY: 100 }});
+	// 	expect(handleHeaderOnScroll).toEqual(expect.any(Function));
+	// });
 });

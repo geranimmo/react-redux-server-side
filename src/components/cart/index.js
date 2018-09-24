@@ -33,8 +33,8 @@ export class Cart extends Component {
 		} else {
 			this.props.getTotalCost();
 			this.props.getTotalDiscount();
-			this.createDataSource(this.props);
 		}
+		this.createDataSource(this.props);
 		window.addEventListener('scroll', this.handleHeaderOnScroll);
 	}
 

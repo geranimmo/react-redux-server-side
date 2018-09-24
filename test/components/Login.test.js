@@ -12,28 +12,35 @@ import { Button } from '../../src/components/common/Button';
 import reducers from '../../src/components/reducers';
 
 describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
-	const store = createStore(reducers, {}, applyMiddleware(thunk));
 	const initialProps = { formId: 'signInForm' };
 	const usernameVal = 'client@default.com';
 	const passwordVal = 'default123';
 
-	let wrapper, shallWrapper;
+	let store, mountWrapper, shallWrapper, history, loginFetch;
 
 	beforeEach(() => {
-		wrapper = mount(
+		store = createStore(reducers, {}, applyMiddleware(thunk));
+		mountWrapper = mount(
 			<Provider store={store}>
 				<Router>
 					<ConnectedLogin {...initialProps}/>
 				</Router>
 			</Provider>
 		);
+		history = { push: jest.fn() };
+		loginFetch = jest.fn();
+		window.alert = jest.fn();
 		shallWrapper = shallow(
-			<Login {...initialProps}/>
+			<Login
+				history={history}
+				loginFetch={loginFetch}
+				{...initialProps}
+			/>
 		);
 	});
 
-	it('+++ Render the Login component should display all child components', () => {
-		const finder = wrapper.find('form.sign__in__form');
+	it('+++ Render the Login component should display all child components +++', () => {
+		const finder = mountWrapper.find('form.sign__in__form');
 		expect(finder.length).toEqual(1);
 
 		const findFormWrapper = finder.find('.form__wrapper');
@@ -49,8 +56,8 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		expect(findSubmitButton.length).toEqual(1);
 	});
 
-	it('+++ Contains props that assigned to the Login component', () => {
-		expect(wrapper.find('form').prop('id')).toEqual(initialProps.formId);
+	it('+++ Contains props that assigned to the Login component +++', () => {
+		expect(mountWrapper.find('form').prop('id')).toEqual(initialProps.formId);
 	});
 
 	it('+++ Capturing Snapshot of Login component +++', () => {
@@ -76,9 +83,6 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		const findInputPassword = findFormWrapper.find(InputField).at(1).dive();
 
 		findInputPassword.simulate('change', { target: { value: passwordVal } });
-		wrapper.instance().forceUpdate();
-		wrapper.update();
-
 		expect(shallWrapper.state('passwordValue')).toEqual(passwordVal);
 	});
 
@@ -88,50 +92,34 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
 
 		findInputUsername.simulate('change', { target: { value: usernameVal } });
-		wrapper.instance().forceUpdate();
-		wrapper.update();
-
 		expect(shallWrapper.state('usernameValue')).toEqual(usernameVal);
 	});
 
 	it('+++ Should show alert window if username or password is null +++', () => {
-		window.alert = jest.fn();
 		const finder = shallWrapper.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
 		const findSubmitButton = findFormWrapper.find(Button).dive();
 
 		findSubmitButton.simulate('click');
-		wrapper.instance().forceUpdate();
-		wrapper.update();
-		
 		expect(window.alert).toHaveBeenCalledWith('Invalid username or password');
 		expect(shallWrapper.state('usernameValue')).toEqual(null);
 		expect(shallWrapper.state('passwordValue')).toEqual(null);
 	});
 
 	it('+++ Should handle enter key when login +++', () => {
-		window.alert = jest.fn();
 		const finder = shallWrapper.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
 		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
 
 		findInputUsername.simulate("keypress", { key: 'Enter' });
-		wrapper.instance().forceUpdate();
-		wrapper.update();
-		
 		expect(window.alert).toHaveBeenCalledWith('Invalid username or password');
 		expect(shallWrapper.state('usernameValue')).toEqual(null);
 		expect(shallWrapper.state('passwordValue')).toEqual(null);
 	});
 
 	it('+++ Should initialize loginFetch() if username or password is valid +++', () => {
-		const history = { push: jest.fn() };
-		const loginFetch = jest.fn();
-		const wrappers = shallow(
-			<Login {...initialProps} history={history} loginFetch={loginFetch}/>
-		);
-		const pathChangeSpy = jest.spyOn(wrappers.instance(), 'createDataSource');
-		const finder = wrappers.find('form.sign__in__form');
+		const pathChangeSpy = jest.spyOn(shallWrapper.instance(), 'createDataSource');
+		const finder = shallWrapper.find('form.sign__in__form');
 		const findFormWrapper = finder.find('.form__wrapper');
 		const findInputUsername = findFormWrapper.find(InputField).at(0).dive();
 		const findInputPassword = findFormWrapper.find(InputField).at(1).dive();
@@ -140,10 +128,7 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		findInputUsername.simulate('change', { target: { value: usernameVal } });
 		findInputPassword.simulate('change', { target: { value: passwordVal } });
 
-		wrappers.instance().forceUpdate();
-		wrappers.update();
-
-		expect(wrappers.state()).toEqual(
+		expect(shallWrapper.state()).toEqual(
 			expect.objectContaining({
 				usernameValue: usernameVal,
 				passwordValue: passwordVal
@@ -151,10 +136,6 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		);
 
 		findSubmitButton.simulate('click');
-
-		wrappers.instance().forceUpdate();
-		wrappers.update();
-		
 		expect(loginFetch).toHaveBeenCalledWith(
 			expect.objectContaining({
 				username: usernameVal,
@@ -163,21 +144,21 @@ describe('>>> L O G I N ---- Test & Snapshot <<<', () => {
 		);
 
 		// handle change path if login success
-		wrappers.setProps({ UserLogin: true });
-		wrappers.instance().forceUpdate();
-		wrappers.update();
-
+		shallWrapper.setProps({ UserLogin: true });
 		expect(pathChangeSpy.mock.calls.length).toBe(1);
 	});
 
 	it('+++ Should initialize componentWillMount() +++', () => {
-		const history = { push: jest.fn() };
-		const wrappers = shallow(
-			<Login {...initialProps} UserLogin={true} history={history}/>
+		const tempWrapper = shallow(
+			<Login
+				history={history}
+				loginFetch={loginFetch}
+				{...initialProps}
+				UserLogin={true}
+			/>
 		);
-
-		wrappers.instance().forceUpdate();
-		wrappers.update();
+		
+		tempWrapper.update();
 		expect(history.push).toHaveBeenCalledWith('/home');
 	});
 });
