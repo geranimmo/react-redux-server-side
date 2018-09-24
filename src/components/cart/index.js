@@ -19,6 +19,8 @@ export class Cart extends Component {
 			totalCartDiscount: 0,
 			headerScrollY: 0
 		};
+
+		this.handleHeaderOnScroll = this.handleHeaderOnScroll.bind(this);
 	}
 
 	componentWillMount() {
@@ -60,7 +62,7 @@ export class Cart extends Component {
     			<main id={this.props.id} className={`cart__component`}>
     				<div
     					id={`content__scroller`}
-    					onScroll={this.handleHeaderOnScroll.bind(this)}
+    					onScroll={this.handleHeaderOnScroll}
     				>
     					<div className={`cart__empty ${myCartList.length ? 'hidden' : ''}`}>Your Cart Still Empty</div>
     					{ myCartList.map((item, index) => {

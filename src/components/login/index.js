@@ -16,6 +16,11 @@ export class Login extends Component {
 			usernameValue: null,
 			passwordValue: null
 		};
+
+		this.handleUsernameField = this.handleUsernameField.bind(this);
+		this.handlePasswordField = this.handlePasswordField.bind(this);
+		this.handleEnterForm = this.handleEnterForm.bind(this);
+		this.initSignin = this.initSignin.bind(this);
 	}
 	
 	componentWillMount() {
@@ -82,8 +87,8 @@ export class Login extends Component {
 			maxLength: 50,
 			minLength: 6,
 			autoComplete: 'off',
-			onChange: this.handleUsernameField.bind(this),
-			onKeyPress: this.handleEnterForm.bind(this)
+			onChange: this.handleUsernameField,
+			onKeyPress: this.handleEnterForm
 		};
 		const passwordProps = {
 			type: 'text',
@@ -92,12 +97,12 @@ export class Login extends Component {
 			maxLength: 50,
 			minLength: 6,
 			autoComplete: 'off',
-			onChange: this.handlePasswordField.bind(this),
-			onKeyPress: this.handleEnterForm.bind(this)
+			onChange: this.handlePasswordField,
+			onKeyPress: this.handleEnterForm
 		};
 		const buttonProps = {
 			className: 'button__sign__in',
-			onClick: this.initSignin.bind(this),
+			onClick: this.initSignin,
 			value: 'Sign in'
 		};
 

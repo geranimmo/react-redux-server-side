@@ -10,6 +10,8 @@ export class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { packagesList: [] };
+
+		this.handleScroll = this.handleScroll.bind(this);
 	}
 
 	componentDidMount() {
@@ -55,7 +57,7 @@ export class Home extends Component {
 				<main id={this.props.id} className={`home__component`}>
 					<div
 						id={`content__scroller`}
-						onScroll={this.handleScroll.bind(this)}
+						onScroll={this.handleScroll}
 						className={`content__wrapper`}
 					>
 						<PackageSlider {...this.state} />;
