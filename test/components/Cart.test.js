@@ -1,21 +1,25 @@
 import React from 'react';
-import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { mount, shallow } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import expect from 'expect';
 import renderer from 'react-test-renderer';
 import ConnectedCart, { Cart } from '../../src/components/cart';
+import { CartItem } from '../../src/components/common';
+import reducers from '../../src/components/reducers';
 import ListPackages from '../../src/assets/json/packages__.json';
-import {
-	getTotalCost,
-	getTotalDiscount
-} from '../../src/components/actions';
 
 describe('>>> C A R T ---- Test & Snapshot <<<', () => {
-	const mockStore = configureMockStore([thunk]);
-	let wrapper, store;
+	let store,
+		mountWrapper,
+		shallWrapper,
+		removeFromCart,
+		getTotalCost,
+		getTotalDiscount,
+		getListPackage,
+		history;
 
 	const propCart = {
 		ShoppingCart: [
@@ -50,28 +54,59 @@ describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 		},
 		UserLogin: true,
 		Packages: ListPackages,
-		id: 'shopping__cart__wrapper',
-		getTotalCost,
-		getTotalDiscount
+		id: 'shopping__cart__wrapper'
 	};
 
 	beforeEach(() => {
-		store = mockStore(propCart);
-		wrapper = mount(
+		store = createStore(reducers, {}, applyMiddleware(thunk));
+
+		history = { push: jest.fn() };
+		getTotalCost = jest.fn();
+		getTotalDiscount = jest.fn();
+		getListPackage = jest.fn();
+		window.alert = jest.fn();
+		removeFromCart = jest.fn();
+
+		mountWrapper = mount(
 			<Provider store={store}>
 				<Router>
-					<ConnectedCart {...propCart}/>
+					<ConnectedCart
+						{...propCart}
+						history={history}
+						getTotalCost={getTotalCost}
+						getTotalDiscount={getTotalDiscount}
+						getListPackage={getListPackage}
+					/>
 				</Router>
 			</Provider>
+		);
+
+		shallWrapper = shallow(
+			<Cart
+				{...propCart}
+				history={history}
+				getTotalCost={getTotalCost}
+				getTotalDiscount={getTotalDiscount}
+				getListPackage={getListPackage}
+				removeFromCart={removeFromCart}
+			/>
 		);
 	});
 
 	it('+++ Render the ConnectedCart component', () => {
-		expect(wrapper.length).toEqual(1);
+		const container = shallWrapper.find('.cart__component');
+		expect(container.length).toEqual(1);
+
+		const findWrapper = container.find('#content__scroller');
+		expect(findWrapper.length).toEqual(1);
+
+		const findCartItemsWrapper = findWrapper.find('.wrapper__list');
+		// total items should same as propCart.ShoppingCart.length
+		expect(findCartItemsWrapper.length).toEqual(propCart.ShoppingCart.length);
 	});
 
 	it('+++ Contains props that assigned to the ConnectedCart component', () => {
-		expect(wrapper.find(`main`).prop('id')).toEqual(propCart.id);
+		expect(mountWrapper.find(`main`).prop('id')).toEqual(propCart.id);
 	});
 
 	it('+++ Capturing Snapshot of ConnectedCart component +++', () => {
@@ -87,47 +122,34 @@ describe('>>> C A R T ---- Test & Snapshot <<<', () => {
 	});
 
 	it('+++ Simulate Click Remove From Cart in Packages +++', () => {
-		const removeFromCart = jest.fn();
-		
-		expect(
-			wrapper
-				.find('div#content__scroller')
-				.find('.list__0')
-				.find('.cart__delete')
-				.length
-		).toEqual(1);
-		
-		wrapper
-			.find('div#content__scroller')
-			.find('.list__0')
-			.find('.cart__delete')
-			.simulate('click');
+		const container = shallWrapper.find('.cart__component');
+		const findWrapper = container.find('#content__scroller');
+		const findCartItemsWrapper = findWrapper.find('.wrapper__list');
 
-		expect(removeFromCart).toEqual(expect.any(Function));
+		// get the first item of cart items
+		const cartItemList = findCartItemsWrapper.first().find(CartItem).dive();
+		const removeCartBtn = cartItemList.find('.cart__delete');
+
+		removeCartBtn.simulate('click');
+		
+		const attributValue = propCart.ShoppingCart[0].buy_time;
+		// call request should be the same with first items buy_time
+		expect(removeFromCart).toHaveBeenCalledWith(attributValue);
 	});
 
 	it('+++ Simulate componentWillReceiveProps +++', () => {
-		const history = { push: jest.fn() };
-		const getListPackage = jest.fn();
-		const wrappers = shallow(
-			<Cart
-				{...propCart}
-				history={history}
-				getListPackage={getListPackage}
-			/>
-		);
-		const showCartSpy = jest.spyOn(wrappers.instance(), 'createDataSource');
+		const showCartSpy = jest.spyOn(shallWrapper.instance(), 'createDataSource');
 
-		wrappers.setProps({ UserLogin: false });
-		wrappers.instance().forceUpdate();
-		wrappers.update();
+		shallWrapper.setProps({ UserLogin: false });
+		shallWrapper.instance().forceUpdate();
+		shallWrapper.update();
 		expect(showCartSpy.mock.calls.length).toBe(1);
 	});
 
 	it('+++ Should call handle scroll function when scroll +++', () => {
 		const handleHeaderOnScroll = jest.fn();
 
-		wrapper.find('div#content__scroller').simulate('scroll', { deltaY: 50 });
+		mountWrapper.find('div#content__scroller').simulate('scroll', { deltaY: 50 });
 		expect(handleHeaderOnScroll).toEqual(expect.any(Function));
 	});
 });
