@@ -55,20 +55,10 @@ describe('>>> P A C K A G E S  L I S T ---- Test & Snapshot <<<', () => {
 		const buttonWrapper = sliderContent.find('.slick-current');
 		const buttonAddToCart = buttonWrapper.find(Button);
 		expect(buttonAddToCart.length).toEqual(1);
+		expect(buttonAddToCart.props().onClick).toEqual(
+			expect.any(Function)
+		);
 	});
-
-	// it('+++ Should initialize addToCart when Button clicked in active slide +++', () => {
-	// 	const finder = mountWrapper.find('.slider__container');
-	// 	const sliderContentWrapper = finder.find('.slider__content__wrapper');
-	// 	const sliderContent = sliderContentWrapper.find(Slider);
-	// 	const buttonWrapper = sliderContent.find('.slick-current');
-	// 	const buttonAddToCart = buttonWrapper.find(Button);
-		
-	// 	buttonAddToCart.simulate('click');
-	// 	expect(addToCart).toBe(
-	// 		expect.anything()
-	// 	);
-	// });
 
 	it('+++ Capturing Snapshot of PackageSlider component +++', () => {
 		const renderedValue = renderer.create(
