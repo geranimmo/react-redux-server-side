@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { mount, shallow } from 'enzyme';
 import expect from "expect";
+import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ConnectedHome, { Home } from '../../src/components/home';
 import reducers from '../../src/components/reducers';
@@ -71,5 +72,17 @@ describe('>>> H O M E ---- Test & Snapshot <<<', () => {
 
 		shallWrapper.update();
 		expect(getListPackage).toHaveBeenCalled();
+	});
+
+	it('+++ Capturing Snapshot of Home component +++', () => {
+		const renderedValue = renderer.create(
+			<Provider store={store}>
+				<Router>
+					<ConnectedHome {...propHome}/>
+				</Router>
+			</Provider>
+		).toJSON();
+		
+		expect(renderedValue).toMatchSnapshot();
 	});
 });

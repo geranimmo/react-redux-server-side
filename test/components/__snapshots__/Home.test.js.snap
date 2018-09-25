@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home component +++ 1`] = `
+<div
+  className="main__container"
+>
+  <header
+    className=""
+    id="header"
+  >
+    <nav
+      className="nav__left"
+    >
+      <a
+        aria-current="page"
+        className="active"
+        href="/"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <div
+          className="seek__logo"
+        />
+      </a>
+      <div
+        className="client__logo__wrapper hidden"
+      >
+        <img />
+      </div>
+    </nav>
+    <nav
+      className="nav__right hidden"
+    >
+      <div
+        className="menu__btn__icon "
+        id="openCartView"
+        onClick={[Function]}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"
+          />
+        </svg>
+        <div
+          className="cart__notif hidden"
+        >
+          0
+        </div>
+      </div>
+      <div
+        className="menu__btn__icon hidden"
+        id="closeCartView"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon__close"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
+          />
+        </svg>
+      </div>
+    </nav>
+  </header>
+  <main
+    className="home__component"
+    id="home__page__wrapper"
+  >
+    <div
+      className="content__wrapper"
+      id="content__scroller"
+      onScroll={[Function]}
+    >
+      <div
+        className="slider__container hidden"
+      >
+        <div
+          className="slider__nav__wrapper"
+        >
+          <div
+            className="slick-slider slick-initialized"
+          >
+            
+            <div
+              className="slick-list"
+            >
+              <div
+                className="slick-track"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                style={
+                  Object {
+                    "WebkitTransform": "translate3d(0px, 0px, 0px)",
+                    "WebkitTransition": "-webkit-transform 500ms ease",
+                    "msTransform": "translateX(0px)",
+                    "opacity": 1,
+                    "transform": "translate3d(0px, 0px, 0px)",
+                    "transition": "transform 500ms ease",
+                  }
+                }
+              />
+            </div>
+            
+            
+          </div>
+        </div>
+        <div
+          className="slider__content__wrapper"
+        >
+          <div
+            className="slick-slider slick-initialized"
+          >
+            
+            <div
+              className="slick-list"
+            >
+              <div
+                className="slick-track"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                style={
+                  Object {
+                    "WebkitTransform": "translate3d(0px, 0px, 0px)",
+                    "WebkitTransition": "-webkit-transform 500ms ease",
+                    "msTransform": "translateX(0px)",
+                    "opacity": 1,
+                    "transform": "translate3d(0px, 0px, 0px)",
+                    "transition": "transform 500ms ease",
+                  }
+                }
+              />
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+      ;
+    </div>
+  </main>
+</div>
+`;
