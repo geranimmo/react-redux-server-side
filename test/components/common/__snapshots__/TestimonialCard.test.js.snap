@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>> T E S T I M O N I A L  C A R D ---- Test & Snapshot <<< +++ Capturing Snapshot of TestimonialCard +++ 1`] = `
+<div
+  className="test__class__props"
+  style={
+    Object {
+      "display": "inline-block",
+    }
+  }
+>
+  <span>
+    childText
+  </span>
+</div>
+`;

@@ -72,11 +72,12 @@ export class Cart extends Component {
     				headerScrollY={headerScrollY}
     				onCart={true}
     			/>
-    			<main id={this.props.id} className={`cart__component`}>
-    				<div
-    					id={`content__scroller`}
-    					onScroll={this.handleHeaderOnScroll}
-    				>
+    			<main
+    				id={this.props.id}
+    				className={`cart__component`}
+    				onScroll={this.handleHeaderOnScroll}
+    			>
+    				<div id={`content__scroller`}>
     					<div className={`cart__empty ${myCartList.length ? 'hidden' : ''}`}>Your Cart Still Empty</div>
     					{ myCartList.map((item, index) => {
     						return (

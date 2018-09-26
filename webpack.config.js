@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 const ENV = process.env.NODE_ENV || 'development';
-const CSS_MAPS = ENV!=='production';
+const CSS_MAPS = ENV !== 'production';
 
 const config = {
 	context: path.resolve(__dirname, "src"),
@@ -62,7 +62,7 @@ const config = {
 				use: [ { loader: "url-loader?limit=10000&mimetype=image/svg+xml" } ]
 			}, {
 				test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
-				use: ENV==='production' ? 'file-loader' : 'url-loader'
+				use: CSS_MAPS ? 'url-loader' : 'file-loader'
 			}, {
 				test: /\.(xml|html|txt|md)$/,
 				use: 'raw-loader'
@@ -87,11 +87,11 @@ const config = {
 			{ from: './favicon.ico', to: './' },
 			{ from: './manifest.json', to: './' },
 			{ from: './robots.txt', to: './' },
-			{ from: './assets/*/*.*', to: './', toType: 'dir' }
+			{ from: './assets/**/*.*', to: './', toType: 'dir' }
 		]),
 		new SWPrecacheWebpackPlugin({
 			staticFileGlobs: [
-				'dist/assets/*/*.*',
+				'dist/assets/**/*.*',
 				'dist/*.ico',
 				'dist/*.css',
 				'dist/*.html'
@@ -104,7 +104,7 @@ const config = {
 			}]
 		})
 	],
-	devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
+	devtool: CSS_MAPS ? 'cheap-module-eval-source-map' : 'source-map',
 	devServer: {
 		host: process.env.HOST,
 		port: process.env.PORT,

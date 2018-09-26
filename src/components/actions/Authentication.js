@@ -25,8 +25,11 @@ export const loginFetch = (datas) => {
 			type: DISPATCH_LOGIN,
 			payload: matchAccountData.length > 0
 		});
-		dispatch(dispatchProfile(profileData));
-		dispatch(dispatchShoppingCart(newData.shopping_cart));
+		
+		if ( matchAccountData.length > 0 ) {
+			dispatch(dispatchProfile(profileData));
+			dispatch(dispatchShoppingCart(newData.shopping_cart));
+		}
 	};
 };
 

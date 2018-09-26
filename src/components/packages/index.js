@@ -38,6 +38,7 @@ class PackageSlider extends Component {
 						dots={false}
 						arrows={false}
 						slidesToShow={3}
+						initialSlide={1}
 						swipeToSlide={true}
 						focusOnSelect={true}
 					>
@@ -56,29 +57,29 @@ class PackageSlider extends Component {
 						ref={slider => (this.sliderNav = slider)}
 						dots={false}
 						arrows={false}
+						initialSlide={1}
 						slidesToShow={1}
+						adaptiveHeight={true}
 					>
 						{ this.props.packagesList.map((item, index) => {
 							return (
 								<div key={index} className={`section__carousel`} itemProp="itemListElement" itemScope itemType="http://schema.org/Product">
-									<div className={`slider__content`}>
-										<div className={`slider__card__body`}>
-											<img className={`slider__images`} src={item.package_image} alt={item.package_name}/>
-											<h2 className={`no__margin__top block width__100`}>
-												{item.package_description}
-											</h2>
-											<span className={`label__info ${item.package_recommend ? '' : 'hidden'}`}>RECOMMENDED</span>
-											<span className={`pricing block width__100`}>${item.package_price}</span>
-											<Button
-												className={`add__to__cart__button`}
-												onClick={
-													() => this.props.addToCart({
-														id: item.package_id
-													})
-												}
-												{...buttonProps}
-											/>
-										</div>
+									<div className={`slider__card__body`}>
+										<img className={`slider__images`} src={item.package_image} alt={item.package_name}/>
+										<h2 className={`no__margin__top block width__100`}>
+											{item.package_description}
+										</h2>
+										<span className={`label__info ${item.package_recommend ? '' : 'hidden'}`}>RECOMMENDED</span>
+										<span className={`pricing block width__100`}>${item.package_price}</span>
+										<Button
+											className={`add__to__cart__button`}
+											onClick={
+												() => this.props.addToCart({
+													id: item.package_id
+												})
+											}
+											{...buttonProps}
+										/>
 									</div>
 								</div>
 							);

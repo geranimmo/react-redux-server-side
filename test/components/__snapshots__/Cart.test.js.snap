@@ -70,10 +70,10 @@ exports[`>>> C A R T ---- Test & Snapshot <<< +++ Capturing Snapshot of Connecte
   <main
     className="cart__component"
     id="shopping__cart__wrapper"
+    onScroll={[Function]}
   >
     <div
       id="content__scroller"
-      onScroll={[Function]}
     >
       <div
         className="cart__empty "

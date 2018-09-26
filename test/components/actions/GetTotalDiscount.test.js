@@ -6,7 +6,7 @@ import * as types from '../../../src/components/actions/types';
 
 describe('>>> A C T I O N ---- Test GetTotalDiscount Actions <<<', () => {
 	const mockStore = configureMockStore([thunk]);
-
+	
 	it('+++ Total discount - Free for minimum buy +++', () => {
 		const sampleData = {
 			ShoppingCart: [

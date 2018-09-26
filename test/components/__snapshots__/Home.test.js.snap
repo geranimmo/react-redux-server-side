@@ -70,11 +70,10 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
   <main
     className="home__component"
     id="home__page__wrapper"
+    onScroll={[Function]}
   >
     <div
       className="content__wrapper"
-      id="content__scroller"
-      onScroll={[Function]}
     >
       <div
         className="slider__container hidden"
@@ -142,7 +141,50 @@ exports[`>>> H O M E ---- Test & Snapshot <<< +++ Capturing Snapshot of Home com
           </div>
         </div>
       </div>
-      ;
+    </div>
+    <div
+      className="testimonial__container"
+    >
+      <div
+        className="testimonial__wrapper"
+      >
+        <div
+          className="section__title"
+        >
+          Testimonials
+        </div>
+        <div
+          className="testimonial__content__wrapper"
+        >
+          <div
+            className="slick-slider slick-initialized"
+          >
+            
+            <div
+              className="slick-list"
+            >
+              <div
+                className="slick-track"
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                style={
+                  Object {
+                    "WebkitTransform": "translate3d(0px, 0px, 0px)",
+                    "WebkitTransition": "-webkit-transform 500ms ease",
+                    "msTransform": "translateX(0px)",
+                    "opacity": 1,
+                    "transform": "translate3d(0px, 0px, 0px)",
+                    "transition": "transform 500ms ease",
+                  }
+                }
+              />
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 </div>

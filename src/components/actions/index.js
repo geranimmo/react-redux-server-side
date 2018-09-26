@@ -4,3 +4,4 @@ export * from './AddToCart';
 export * from './RemoveFromCart';
 export * from './GetTotalCost';
 export * from './GetTotalDiscount';
+export * from './GetListTestimonial';

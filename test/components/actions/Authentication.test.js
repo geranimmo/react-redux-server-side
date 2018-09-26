@@ -27,7 +27,7 @@ describe('>>> A C T I O N ---- Test Authentication Actions <<<', () => {
 		client_special: resultAccountData.client_special
 	};
 	
-	it('+++ Action loginFetch', () => {
+	it('+++ Action loginFetch if user exist', () => {
 		const store = createMockStore(reducers.UserLogin);
 		store.dispatch(actions.loginFetch(loginData));
 		const dispatchedActions = store.getActions();
@@ -44,6 +44,25 @@ describe('>>> A C T I O N ---- Test Authentication Actions <<<', () => {
 					}, {
 						type: types.DISPATCH_SHOPPING_CART,
 						payload: resultAccountData.shopping_cart
+					}
+				)
+			);
+	});
+
+	it('+++ Action loginFetch if not user exist', () => {
+		const store = createMockStore(reducers.UserLogin);
+		store.dispatch(actions.loginFetch({
+			username: 'client@test.com',
+			password: 'test123'
+		}));
+		const dispatchedActions = store.getActions();
+
+		expect(dispatchedActions)
+			.toContainEqual(
+				expect.objectContaining(
+					{
+						type: types.DISPATCH_LOGIN,
+						payload: false
 					}
 				)
 			);

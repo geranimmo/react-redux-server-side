@@ -31,18 +31,37 @@
                     -moz-transition: background-color 0.3s ease-in-out;
                     transition: background-color 0.3s ease-in-out;
 
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        bottom: -10px;
+                        left: 50%;
+                        -webkit-transform: translateX(-50%);
+                        -moz-transform: translateX(-50%);
+                        transform: translateX(-50%);
+                        width: 0; 
+                        height: 0; 
+                        opacity: 0;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        -moz-transition: all 0.3s ease-in-out;
+                        transition: all 0.3s ease-in-out;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid @seekblue;
+                    }
+
                     &:hover { background-color: @seekblue; }
 
                     &.nav__recommended {
                         &::before {
-                            border-top: 20px solid @seekpink;
+                            border-top: 10px solid @seekpink;
                         }
     
                         &:hover {
                             background-color: @seekpink;
 
                             &::before {
-                                border-top: 20px solid @seekpink;
+                                border-top: 10px solid @seekpink;
                             }
                         }
                     }
@@ -54,21 +73,7 @@
                         z-index: 30;
 
                         &::before {
-                            content: '';
-                            position: absolute;
-                            bottom: -15px;
-                            left: 50%;
-                            -webkit-transform: translateX(-50%);
-                            -moz-transform: translateX(-50%);
-                            transform: translateX(-50%);
-                            width: 0; 
-                            height: 0; 
-                            border-left: 20px solid transparent;
-                            border-right: 20px solid transparent;
-                            border-top: 20px solid @seekblue;
-                            -webkit-transition: border-color 0.3s ease-in-out;
-                            -moz-transition: border-color 0.3s ease-in-out;
-                            transition: border-color 0.3s ease-in-out;
+                            opacity: 1;
                         }
     
                         &:hover {
@@ -83,7 +88,7 @@
                             transform: scale(1.3);
         
                             &::before {
-                                border-top: 20px solid @seekpink;
+                                border-top: 10px solid @seekpink;
                             }
         
                             &:hover {
@@ -124,7 +129,10 @@
                 overflow: hidden;
                 margin: 0;
                 padding: 0;
-            
+                background-color: @white;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                transition: all 0.3s;
     
                 .slick-track {
                     position: relative;
@@ -151,10 +159,7 @@
                         .section__carousel {
                             position: relative;
                             padding-bottom: 20px;
-                            background: @white;
-                            -webkit-transition: all 0.3s;
-                            -moz-transition: all 0.3s;
-                            transition: all 0.3s;
+                            min-height: 400px;
 
                             &:focus { outline: none; }
 
@@ -163,71 +168,68 @@
                                 cursor: hand;
                             }
 
-                            .slider__content {
+                            .slider__card__body {
+                                position: relative;
                                 background-color: @white;
                                 color: @seekblue;
-
-                                .slider__card__body {
+        
+                                h2 {
+                                    padding: 20px;
+                                    margin: 0;
+                                    font-size: 2rem;
+                                    font-weight: @font__normal;
+                                }
+                                
+                                span {
+                                    display: inline-block;
+                                    padding: 30px 20px;
+                                }
+                                
+                                .label__info {
+                                    background-color: @seekpink;
+                                    color: @white;
+                                    font-weight: @font__bold;
+                                    padding: 8px 10px;
+                                }
+    
+                                .pricing {
+                                    padding: 20px;
+                                    font-size: 3rem;
+                                    font-weight: @font__bold;
+                                }
+                                
+                                img {
+                                    width: 100%;
+                                    height: auto;
+                                }
+    
+                                .button__buy__items {
                                     position: relative;
-            
-                                    h2 {
-                                        padding: 20px;
-                                        margin: 0;
-                                        font-size: 2rem;
-                                        font-weight: @font__normal;
-                                    }
-                                    
-                                    span {
-                                        display: inline-block;
-                                        padding: 30px 20px;
-                                    }
-                                    
-                                    .label__info {
-                                        background-color: @seekpink;
-                                        color: @white;
-                                        font-weight: @font__bold;
-                                        padding: 8px 10px;
-                                    }
+                                    display: block;
+                                    width: 80%;
+                                    max-width: 250px;
+                                    margin: 0 auto 20px;
+                                    text-align: center;
+                                    font-size: 1.7rem;
+                                    background-color: @seekblue;
+                                    color: @white;
+                                    border: 1px solid @seekblue;
+                                    padding: 8px 0;
+                                    border-radius: 5px;
+                                    -webkit-border-radius: 5px;
+                                    -moz-border-radius: 5px;
+                                    white-space: nowrap;
+                                    cursor: pointer;
+                                    outline: none;
+                                    font-weight: @font__bold;
+                                    text-transform: uppercase;
+                                    -webkit-transition: all 0.4s;
+                                    transition: all 0.4s;
         
-                                    .pricing {
-                                        padding: 20px;
-                                        font-size: 3rem;
-                                        font-weight: @font__bold;
-                                    }
-                                    
-                                    img {
-                                        width: 100%;
-                                        height: auto;
-                                    }
-        
-                                    .button__buy__items {
-                                        position: relative;
-                                        display: block;
-                                        width: 80%;
-                                        max-width: 250px;
-                                        margin: 0 auto 20px;
-                                        text-align: center;
-                                        font-size: 1.7rem;
-                                        background-color: @seekblue;
+                                    &:hover {
                                         color: @white;
-                                        border: 1px solid @seekblue;
-                                        padding: 8px 0;
-                                        border-radius: 5px;
-                                        -webkit-border-radius: 5px;
-                                        -moz-border-radius: 5px;
-                                        white-space: nowrap;
-                                        cursor: pointer;
-                                        outline: none;
-                                        font-weight: @font__bold;
-                                        text-transform: uppercase;
-                                        -webkit-transition: all 0.4s;
-                                        transition: all 0.4s;
-            
-                                        &:hover {
-                                            color: @white;
-                                            border-color: @seekpink;
-                                            background-color: @seekpink
-                                        }
+                                        border-color: @seekpink;
+                                        background-color: @seekpink
                                     }
                                 }
                             }

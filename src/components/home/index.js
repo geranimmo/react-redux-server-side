@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import { getListPackage } from '../actions';
+import {
+	getListPackage,
+	getListTestimonial
+} from '../actions';
 import Header from '../header';
 import PackageSlider from '../packages';
+import TestimonialSlider from '../testimonial';
 import './home.less';
 
 export class Home extends Component {
@@ -11,6 +15,7 @@ export class Home extends Component {
 		super(props);
 		this.state = {
 			packagesList: [],
+			testimonialList: [],
 			headerScrollY: 0
 		};
 
@@ -22,6 +27,7 @@ export class Home extends Component {
 			this.props.history.push('/');
 		} else {
 			this.props.getListPackage();
+			this.props.getListTestimonial();
 		}
 		
 		window.addEventListener('scroll', this.handleHeaderOnScroll);
@@ -42,7 +48,8 @@ export class Home extends Component {
 
 	createDataSource(state) {
 		this.setState({
-			packagesList: state.Packages
+			packagesList: state.Packages,
+			testimonialList: state.Testimonials
 		});
 	}
 	
@@ -51,19 +58,24 @@ export class Home extends Component {
 	}
 
 	render() {
-		const { headerScrollY } = this.state;
+		const {
+			packagesList,
+			testimonialList,
+			headerScrollY
+		} = this.state;
 
 		return (
 			<div className={`main__container`}>
 				<Header headerScrollY={headerScrollY}/>
-				<main id={this.props.id} className={`home__component`}>
-					<div
-						id={`content__scroller`}
-						onScroll={this.handleHeaderOnScroll}
-						className={`content__wrapper`}
-					>
-						<PackageSlider {...this.state} />;
+				<main
+					id={this.props.id}
+					className={`home__component`}
+					onScroll={this.handleHeaderOnScroll}
+				>
+					<div className={`content__wrapper`}>
+						<PackageSlider packagesList={packagesList} />
 					</div>
+					<TestimonialSlider testimonialList={testimonialList}/>
 				</main>
 			</div>
 		);
@@ -74,4 +86,7 @@ const mapStateToProps = state => {
 	return state;
 };
 
-export default withRouter(connect(mapStateToProps, { getListPackage })(Home));
+export default withRouter(connect(mapStateToProps, {
+	getListPackage,
+	getListTestimonial
+})(Home));

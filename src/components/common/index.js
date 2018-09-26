@@ -5,3 +5,4 @@ export { DateTimeConverter } from './DateTimeConverter';
 export { SubstringText } from './SubstringText';
 export { CartItem } from './CartItem';
 export { CartNotification } from './CartNotification';
+export { TestimonialCard } from './TestimonialCard';

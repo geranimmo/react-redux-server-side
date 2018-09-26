@@ -31,8 +31,8 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
           }
         >
           <div
-            aria-hidden={false}
-            className="slick-slide slick-active slick-current"
+            aria-hidden={true}
+            className="slick-slide"
             data-index={0}
             onClick={[Function]}
             style={
@@ -64,7 +64,7 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
           </div>
           <div
             aria-hidden={false}
-            className="slick-slide slick-active"
+            className="slick-slide slick-active slick-current"
             data-index={1}
             onClick={[Function]}
             style={
@@ -196,48 +196,44 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
                 tabIndex={-1}
               >
                 <div
-                  className="slider__content"
+                  className="slider__card__body"
                 >
-                  <div
-                    className="slider__card__body"
+                  <img
+                    alt="Premium"
+                    className="slider__images"
+                    src="/assets/images/employeer-image-sample3.jpg"
+                  />
+                  <h2
+                    className="no__margin__top block width__100"
                   >
-                    <img
-                      alt="Premium"
-                      className="slider__images"
-                      src="/assets/images/employeer-image-sample3.jpg"
-                    />
-                    <h2
-                      className="no__margin__top block width__100"
-                    >
-                      Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                    </h2>
-                    <span
-                      className="label__info hidden"
-                    >
-                      RECOMMENDED
-                    </span>
-                    <span
-                      className="pricing block width__100"
-                    >
-                      $
-                      394.99
-                    </span>
-                    <button
-                      className="button__buy__items"
-                      onClick={[Function]}
-                      type="button"
-                      value="Buy Ad"
-                    >
-                      Buy Ad
-                    </button>
-                  </div>
+                    Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                  </h2>
+                  <span
+                    className="label__info hidden"
+                  >
+                    RECOMMENDED
+                  </span>
+                  <span
+                    className="pricing block width__100"
+                  >
+                    $
+                    394.99
+                  </span>
+                  <button
+                    className="button__buy__items"
+                    onClick={[Function]}
+                    type="button"
+                    value="Buy Ad"
+                  >
+                    Buy Ad
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div
-            aria-hidden={false}
-            className="slick-slide slick-active slick-current"
+            aria-hidden={true}
+            className="slick-slide"
             data-index={0}
             onClick={[Function]}
             style={
@@ -263,48 +259,44 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
                 tabIndex={-1}
               >
                 <div
-                  className="slider__content"
+                  className="slider__card__body"
                 >
-                  <div
-                    className="slider__card__body"
+                  <img
+                    alt="Classic"
+                    className="slider__images"
+                    src="/assets/images/employeer-image-sample.jpg"
+                  />
+                  <h2
+                    className="no__margin__top block width__100"
                   >
-                    <img
-                      alt="Classic"
-                      className="slider__images"
-                      src="/assets/images/employeer-image-sample.jpg"
-                    />
-                    <h2
-                      className="no__margin__top block width__100"
-                    >
-                      Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
-                    </h2>
-                    <span
-                      className="label__info hidden"
-                    >
-                      RECOMMENDED
-                    </span>
-                    <span
-                      className="pricing block width__100"
-                    >
-                      $
-                      269.99
-                    </span>
-                    <button
-                      className="button__buy__items"
-                      onClick={[Function]}
-                      type="button"
-                      value="Buy Ad"
-                    >
-                      Buy Ad
-                    </button>
-                  </div>
+                    Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
+                  </h2>
+                  <span
+                    className="label__info hidden"
+                  >
+                    RECOMMENDED
+                  </span>
+                  <span
+                    className="pricing block width__100"
+                  >
+                    $
+                    269.99
+                  </span>
+                  <button
+                    className="button__buy__items"
+                    onClick={[Function]}
+                    type="button"
+                    value="Buy Ad"
+                  >
+                    Buy Ad
+                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div
-            aria-hidden={true}
-            className="slick-slide"
+            aria-hidden={false}
+            className="slick-slide slick-active slick-current"
             data-index={1}
             onClick={[Function]}
             style={
@@ -330,41 +322,37 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
                 tabIndex={-1}
               >
                 <div
-                  className="slider__content"
+                  className="slider__card__body"
                 >
-                  <div
-                    className="slider__card__body"
+                  <img
+                    alt="Standout"
+                    className="slider__images"
+                    src="/assets/images/employeer-image-sample2.jpg"
+                  />
+                  <h2
+                    className="no__margin__top block width__100"
                   >
-                    <img
-                      alt="Standout"
-                      className="slider__images"
-                      src="/assets/images/employeer-image-sample2.jpg"
-                    />
-                    <h2
-                      className="no__margin__top block width__100"
-                    >
-                      Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry of Lorem Ipsum
-                    </h2>
-                    <span
-                      className="label__info "
-                    >
-                      RECOMMENDED
-                    </span>
-                    <span
-                      className="pricing block width__100"
-                    >
-                      $
-                      322.99
-                    </span>
-                    <button
-                      className="button__buy__items"
-                      onClick={[Function]}
-                      type="button"
-                      value="Buy Ad"
-                    >
-                      Buy Ad
-                    </button>
-                  </div>
+                    Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry of Lorem Ipsum
+                  </h2>
+                  <span
+                    className="label__info "
+                  >
+                    RECOMMENDED
+                  </span>
+                  <span
+                    className="pricing block width__100"
+                  >
+                    $
+                    322.99
+                  </span>
+                  <button
+                    className="button__buy__items"
+                    onClick={[Function]}
+                    type="button"
+                    value="Buy Ad"
+                  >
+                    Buy Ad
+                  </button>
                 </div>
               </div>
             </div>
@@ -397,41 +385,37 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
                 tabIndex={-1}
               >
                 <div
-                  className="slider__content"
+                  className="slider__card__body"
                 >
-                  <div
-                    className="slider__card__body"
+                  <img
+                    alt="Premium"
+                    className="slider__images"
+                    src="/assets/images/employeer-image-sample3.jpg"
+                  />
+                  <h2
+                    className="no__margin__top block width__100"
                   >
-                    <img
-                      alt="Premium"
-                      className="slider__images"
-                      src="/assets/images/employeer-image-sample3.jpg"
-                    />
-                    <h2
-                      className="no__margin__top block width__100"
-                    >
-                      Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                    </h2>
-                    <span
-                      className="label__info hidden"
-                    >
-                      RECOMMENDED
-                    </span>
-                    <span
-                      className="pricing block width__100"
-                    >
-                      $
-                      394.99
-                    </span>
-                    <button
-                      className="button__buy__items"
-                      onClick={[Function]}
-                      type="button"
-                      value="Buy Ad"
-                    >
-                      Buy Ad
-                    </button>
-                  </div>
+                    Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                  </h2>
+                  <span
+                    className="label__info hidden"
+                  >
+                    RECOMMENDED
+                  </span>
+                  <span
+                    className="pricing block width__100"
+                  >
+                    $
+                    394.99
+                  </span>
+                  <button
+                    className="button__buy__items"
+                    onClick={[Function]}
+                    type="button"
+                    value="Buy Ad"
+                  >
+                    Buy Ad
+                  </button>
                 </div>
               </div>
             </div>
@@ -463,41 +447,37 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
                 tabIndex={-1}
               >
                 <div
-                  className="slider__content"
+                  className="slider__card__body"
                 >
-                  <div
-                    className="slider__card__body"
+                  <img
+                    alt="Classic"
+                    className="slider__images"
+                    src="/assets/images/employeer-image-sample.jpg"
+                  />
+                  <h2
+                    className="no__margin__top block width__100"
                   >
-                    <img
-                      alt="Classic"
-                      className="slider__images"
-                      src="/assets/images/employeer-image-sample.jpg"
-                    />
-                    <h2
-                      className="no__margin__top block width__100"
-                    >
-                      Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
-                    </h2>
-                    <span
-                      className="label__info hidden"
-                    >
-                      RECOMMENDED
-                    </span>
-                    <span
-                      className="pricing block width__100"
-                    >
-                      $
-                      269.99
-                    </span>
-                    <button
-                      className="button__buy__items"
-                      onClick={[Function]}
-                      type="button"
-                      value="Buy Ad"
-                    >
-                      Buy Ad
-                    </button>
-                  </div>
+                    Classic Ad Lorem Ipsum is simply dummy text of the printing and typesetting
+                  </h2>
+                  <span
+                    className="label__info hidden"
+                  >
+                    RECOMMENDED
+                  </span>
+                  <span
+                    className="pricing block width__100"
+                  >
+                    $
+                    269.99
+                  </span>
+                  <button
+                    className="button__buy__items"
+                    onClick={[Function]}
+                    type="button"
+                    value="Buy Ad"
+                  >
+                    Buy Ad
+                  </button>
                 </div>
               </div>
             </div>
@@ -529,41 +509,37 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
                 tabIndex={-1}
               >
                 <div
-                  className="slider__content"
+                  className="slider__card__body"
                 >
-                  <div
-                    className="slider__card__body"
+                  <img
+                    alt="Standout"
+                    className="slider__images"
+                    src="/assets/images/employeer-image-sample2.jpg"
+                  />
+                  <h2
+                    className="no__margin__top block width__100"
                   >
-                    <img
-                      alt="Standout"
-                      className="slider__images"
-                      src="/assets/images/employeer-image-sample2.jpg"
-                    />
-                    <h2
-                      className="no__margin__top block width__100"
-                    >
-                      Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry of Lorem Ipsum
-                    </h2>
-                    <span
-                      className="label__info "
-                    >
-                      RECOMMENDED
-                    </span>
-                    <span
-                      className="pricing block width__100"
-                    >
-                      $
-                      322.99
-                    </span>
-                    <button
-                      className="button__buy__items"
-                      onClick={[Function]}
-                      type="button"
-                      value="Buy Ad"
-                    >
-                      Buy Ad
-                    </button>
-                  </div>
+                    Standout Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry of Lorem Ipsum
+                  </h2>
+                  <span
+                    className="label__info "
+                  >
+                    RECOMMENDED
+                  </span>
+                  <span
+                    className="pricing block width__100"
+                  >
+                    $
+                    322.99
+                  </span>
+                  <button
+                    className="button__buy__items"
+                    onClick={[Function]}
+                    type="button"
+                    value="Buy Ad"
+                  >
+                    Buy Ad
+                  </button>
                 </div>
               </div>
             </div>
@@ -595,41 +571,37 @@ exports[`>>> P A C K A G E S  L I S T ---- Test & Snapshot <<< +++ Capturing Sna
                 tabIndex={-1}
               >
                 <div
-                  className="slider__content"
+                  className="slider__card__body"
                 >
-                  <div
-                    className="slider__card__body"
+                  <img
+                    alt="Premium"
+                    className="slider__images"
+                    src="/assets/images/employeer-image-sample3.jpg"
+                  />
+                  <h2
+                    className="no__margin__top block width__100"
                   >
-                    <img
-                      alt="Premium"
-                      className="slider__images"
-                      src="/assets/images/employeer-image-sample3.jpg"
-                    />
-                    <h2
-                      className="no__margin__top block width__100"
-                    >
-                      Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                    </h2>
-                    <span
-                      className="label__info hidden"
-                    >
-                      RECOMMENDED
-                    </span>
-                    <span
-                      className="pricing block width__100"
-                    >
-                      $
-                      394.99
-                    </span>
-                    <button
-                      className="button__buy__items"
-                      onClick={[Function]}
-                      type="button"
-                      value="Buy Ad"
-                    >
-                      Buy Ad
-                    </button>
-                  </div>
+                    Premium Ad Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                  </h2>
+                  <span
+                    className="label__info hidden"
+                  >
+                    RECOMMENDED
+                  </span>
+                  <span
+                    className="pricing block width__100"
+                  >
+                    $
+                    394.99
+                  </span>
+                  <button
+                    className="button__buy__items"
+                    onClick={[Function]}
+                    type="button"
+                    value="Buy Ad"
+                  >
+                    Buy Ad
+                  </button>
                 </div>
               </div>
             </div>

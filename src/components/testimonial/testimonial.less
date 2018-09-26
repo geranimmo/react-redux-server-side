@@ -1,0 +1,230 @@
+@import '~style/helpers';
+
+.testimonial__container {
+    display: inline-block;
+	width: 100%;
+	padding: 50px 0;
+	margin: 30px 0 0;
+	text-align: center;
+    z-index: 1;
+    background-color: @seekblue;
+
+    .testimonial__wrapper {
+        display: block;
+        width: 100%;
+        max-width: 980px;
+        margin: 0 auto;
+
+        .section__title {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: @font__bold;
+            padding-bottom: 50px;
+            text-transform: uppercase;
+        }
+    
+        .testimonial__content__wrapper {
+            display: inline;
+    
+            .slick-slider {
+                position: relative;
+                display: block;
+                box-sizing: border-box;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                    -ms-user-select: none;
+                        user-select: none;
+                -webkit-touch-callout: none;
+                -khtml-user-select: none;
+                -ms-touch-action: pan-y;
+                    touch-action: pan-y;
+                -webkit-tap-highlight-color: transparent;
+        
+                .slick-list {
+                    position: relative;
+                    display: block;
+                    overflow: hidden;
+                    margin: 0;
+                    padding: 0;
+                    -webkit-transition: all 0.3s;
+                    -moz-transition: all 0.3s;
+                    transition: all 0.3s;
+        
+                    .slick-track {
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        display: block;
+                        -webkit-transform: translate3d(0, 0, 0);
+                        -moz-transform: translate3d(0, 0, 0);
+                        -ms-transform: translate3d(0, 0, 0);
+                        -o-transform: translate3d(0, 0, 0);
+                        transform: translate3d(0, 0, 0);
+    
+                        &::before,
+                        &::after {
+                            display: table;
+                            content: '';
+                        }
+    
+                        &::after {
+                            clear: both;
+                        }
+    
+                        .slick-slide {
+                            padding: 0 50px;
+                            
+                            &>div {
+                                position: relative;
+                                padding: 0;
+                                
+                                &:focus { outline: none; }
+    
+                                &.dragging {
+                                    cursor: pointer;
+                                    cursor: hand;
+                                }
+    
+                                .testimonial__list {
+                                    display: inline;
+                                    background: @white;
+                                    border-radius: 40px 0 40px;
+                                    -webkit-border-radius: 40px 0 40px;
+                                    -moz-border-radius: 40px 0 40px;
+    
+                                    .info__user {
+                                        position: relative;
+                                        display: inline-block;
+                                        width: 100%;
+                                        padding: 5px;
+    
+                                        .user__photo {
+                                            position: absolute;
+                                            top: -5px;
+                                            left: -5px;
+                                            display: block;
+                                            width: 80px;
+                                            height: 80px;
+                                            border-radius: 50%;
+                                            -webkit-border-radius: 50%;
+                                            -moz-border-radius: 50%;
+                                            border: 5px solid @seekblue;
+                                            overflow: hidden;
+    
+                                            img {
+                                                width: 100%;
+                                                height: auto;
+                                            }
+                                        }
+    
+                                        .user__description {
+                                            padding: 15px 15px 0 85px;
+                                            text-align: left;
+    
+                                            span {
+                                                display: block;
+                                                color: @dark__gray;
+    
+                                                &.user__name {
+                                                    font-size: 1rem;
+                                                    font-weight: @font__bold;
+                                                    margin-bottom: 2px;
+                                                }
+    
+                                                &.company__name {
+                                                    font-size: .8rem;
+                                                }
+                                            }
+                                        }
+    
+                                        .user_testimonial {
+                                            padding: 15px 15px 0 ;
+    
+                                            &>* {
+                                                display: inline-block;
+                                                width: 100%;
+                                                text-align: left;
+                                                color: @dark__gray;
+                                            }
+    
+                                            h1 {
+                                                font-size: 1.5rem;
+                                                font-weight: @font__bold;
+                                                margin: 20px 0 0;
+                                            }
+    
+                                            h2 {
+                                                font-size: 1.2rem;
+                                                font-weight: @font__normal;
+                                                line-height: 1.4;
+                                                margin: 15px 0;
+                                            }
+                                        }
+                                    }
+                                }
+    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+	.slick-loading .slick-track {
+        visibility: hidden;
+    }
+
+    .slick-slide {
+        display: none;
+        float: left;
+        height: 100%;
+        min-height: 1px;
+
+        img {
+            display: block;
+        }
+
+        &.slick-loading img {
+            display: none;
+        }
+
+        &.dragging img {
+            pointer-events: none;
+        }
+    }
+
+    [dir='rtl'] .slick-slide {
+        float: right;
+    }
+
+    .slick-initialized .slick-slide {
+        display: block;
+    }
+
+    .slick-loading .slick-slide {
+        visibility: hidden;
+    }
+
+    .slick-vertical .slick-slide {
+        display: block;
+        height: auto;
+        border: 1px solid transparent;
+    }
+    
+    .slick-arrow.slick-hidden {
+        display: none;
+    }
+}
+
+@media @media__all__devices {
+    .testimonial__container {
+        margin-top: 0 !important;
+
+        .slick-slide {
+            padding: 0 20px !important;
+        }
+    }
+}
