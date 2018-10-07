@@ -3,4 +3,5 @@ npm-debug.log
 package-lock.json
 node_modules/
 .vscode/
+public/bundle.js
 coverage/
