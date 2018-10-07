@@ -9,12 +9,12 @@ import reducers from './reducers';
 
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
-const store = createStore(reducers, preloadedState, applyMiddleware(thunk));
+const store = createStore(reducers, {}, applyMiddleware(thunk));
 
 hydrate(
     <Provider store={store}>
         <Router>
-            <App {...preloadedState}/>
+            <App loadData={preloadedState}/>
         </Router>
     </Provider>,
     document.getElementById('app'),

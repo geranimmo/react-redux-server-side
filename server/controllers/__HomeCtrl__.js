@@ -11,7 +11,6 @@ import Routes from '../../src/Routes';
 
 module.exports = (req, res) => {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
-    
     let context = {};
     const html = renderToString(
         <Provider store={store}>
@@ -22,6 +21,7 @@ module.exports = (req, res) => {
     );
 
     const preloadedState = {
+        path: req.url,
         title: 'HOME | React Redux Server Side Render',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThFzbVT9vuJj7b1LZbFBsQue6yaG8U4LrEg2fAr6T8KzivlYb4'
     };
