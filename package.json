@@ -1,15 +1,17 @@
 {
   "name": "react-redux-ssr",
   "version": "0.1.0",
-  "description": "React Redux Server Side Render",
+  "description": "React Server Side Render with Redux and React-Router",
   "main": "server.js",
   "scripts": {
-    "start": "npm run webpack && nodemon server.js",
+    "start": "npm run webpack && node server.js",
     "webpack": "webpack --mode production"
   },
   "keywords": [
     "NodeJS",
     "React",
+    "Redux",
+    "React-Router",
     "Webpack",
     "Express",
     "Server Side"
