@@ -1,0 +1,1 @@
+export const TEST_DATA_REDUCER = 'test_data_reducer';

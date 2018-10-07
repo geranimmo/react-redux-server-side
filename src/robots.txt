@@ -1,5 +1,0 @@
-User-agent: Googlebot
-Disallow: /error
-
-User-agent: Googlebot-Mobile
-Disallow: /error

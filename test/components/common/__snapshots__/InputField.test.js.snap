@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`>>> I N P U T ---- Test & Snapshot <<< +++ Capturing Snapshot of InputField +++ 1`] = `
-<input
-  type="text"
-  value="This is input component"
-/>
-`;

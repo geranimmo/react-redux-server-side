@@ -1,5 +1,5 @@
-{
-    "presets": [
+require('@babel/register')({
+    presets: [
         ["@babel/preset-env", {
             "targets": {
               "node": "current",
@@ -8,4 +8,6 @@
           }],
           "@babel/preset-react"
     ]
-}
+});
+
+module.exports = require('./server/index.js');
