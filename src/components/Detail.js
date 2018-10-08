@@ -7,18 +7,27 @@ import { fetchInitialData } from '../actions';
 class DetailComponent extends React.Component {
     constructor(props) {
         super(props);
+
+        let InitialData;
+        if (typeof window !== 'undefined') {
+            InitialData = window.__PRELOADED_STATE__;
+            delete window.__PRELOADED_STATE__;
+        } else {
+            InitialData = props.staticContext.data;
+        }
+
         this.state = {
-            title: 'DETAIL | React Redux Server Side',
-            image: null
+            InitialData,
+            loading: InitialData ? false : true
         };
-    }
-    componentDidMount() {
-        const { fetchInitialData, match } = this.props;
-        fetchInitialData(match.params);
+
+        this.fetchData = this.fetchData.bind(this);
     }
 
-    componentWillMount() {
-        this.createDateSource(this.props);
+    componentDidMount() {
+        if (!this.state.InitialData) {
+            this.fetchData(this.props.match.params);
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -28,26 +37,40 @@ class DetailComponent extends React.Component {
     createDateSource(state) {
         const { InitialData } = state;
         this.setState({
-            title: InitialData.reward_name,
-            image: InitialData.reward_picture
+            InitialData,
+            loading: false
         });
+        
+    }
+
+    fetchData(params) {
+        this.setState({
+            loading: true
+        });
+
+        this.props.fetchInitialData(params);
     }
 
     render() {
-        const { title, image } = this.state;
-        const schemaOrg = {
-            "@context": "http://schema.org",
-            "@type": "WebSite",
-            "url": "http://www.example.com",
-            "name": title,
-            "image": image
-        };
+        const { InitialData, loading } = this.state;
 
+        if ( loading ) {
+            return <h1>LOADING...</h1>;
+        }
+        
         return (
             <div>
                 <Helmet>
-                    <title>{ title }</title>
-                    <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
+                    <title>{ InitialData.reward_name }</title>
+                    <script type="application/ld+json">
+                        { JSON.stringify({
+                            "@context": "http://schema.org",
+                            "@type": "WebSite",
+                            "url": "http://www.example.com",
+                            "name": `${InitialData.reward_name}`,
+                            "image": `${InitialData.reward_picture}`
+                        }) }
+                    </script>
                 </Helmet>
                 <main>
                     <h1>Detail Page is Open</h1>

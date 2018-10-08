@@ -4,8 +4,7 @@
   "description": "React Server Side Render with Redux and React-Router",
   "main": "server.js",
   "scripts": {
-    "start": "npm run webpack && node server.js",
-    "webpack": "webpack --mode production"
+    "start": "webpack --mode production && node server.js"
   },
   "keywords": [
     "NodeJS",
@@ -19,7 +18,6 @@
   "author": "Riky Liang",
   "license": "ISC",
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
@@ -35,10 +33,10 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "body-parser": "^1.18.3",
-    "es6-promise": "^4.2.5",
     "eslint": "^5.6.1",
     "express": "^4.16.3",
     "mongoose": "^5.3.1",

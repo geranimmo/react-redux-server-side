@@ -10,8 +10,6 @@ const Routes = [
     }, {
         path: '/detail/:id',
         component: DetailComponent
-    }, {
-        component: NotFound
     }
 ];
 

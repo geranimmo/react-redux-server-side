@@ -68,9 +68,9 @@ module.exports = (req, res) => {
         if (err) {
             res.status(500).send('Oops, better luck next time!');
         } else {
-            const data = result[0];
             const store = createStore(reducers, {}, applyMiddleware(thunk));
-            let context = {};
+            const data = result[0];
+            const context = {data};
             const html = renderToString(
                 <Provider store={store}>
                     <StaticRouter location={req.url} context={context}>
@@ -79,7 +79,6 @@ module.exports = (req, res) => {
                 </Provider>
             );
             const preloadedState = {
-                path: req.url,
                 title: data.reward_name,
                 image: data.reward_picture,
                 enthusiasts: data.list_user_enthusiasts,

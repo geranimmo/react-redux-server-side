@@ -1,30 +1,19 @@
+import axios from 'axios';
 import { INITIAL_DATA_REDUCER } from './types';
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-
-export const SetInitialData = (data) => {
-    return (dispatch) => {
-        dispatch({
-            type: INITIAL_DATA_REDUCER,
-            payload: data
-        });
-    };
-};
 
 export const fetchInitialData = props => {
     return (dispatch) => {
-        fetch(`/api/getRewardById/${props.id}`)
+        axios.get(`http://localhost:3000/api/getRewardById/${props.id}`)
             .then(response => {
-                if (response.status >= 400) {
-                    throw new Error('Oops, better luck next time!');
+                if (response.status === 200) {
+                    dispatch({
+                        type: INITIAL_DATA_REDUCER,
+                        payload: response.data
+                    });
                 }
-                return response.json();
             })
-            .then(data => {
-                dispatch({
-                    type: INITIAL_DATA_REDUCER,
-                    payload: data
-                });
+            .catch(error => {
+                console.error(error);
             });
     }
 };

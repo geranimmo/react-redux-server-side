@@ -1,20 +1,21 @@
 const staticPath = '/public';
 
 const renderHtml = (html, preloadedState) => {
+    const { title, image } = preloadedState;
     return `
         <!DOCTYPE html>
         <html>
             <head>
                 <meta charset="UTF8">
-                <title>${preloadedState.title}</title>
+                <title>${title}</title>
                 <link rel="stylesheet" href="${staticPath}/style.css">
                 <script type="application/ld+json" data-react-helmet="true">
                 {
                     "@context": "http://schema.org",
                     "@type": "WebSite",
                     "url": "http://www.example.com",
-                    "name": "${preloadedState.title}",
-                    "image": "${preloadedState.image}"
+                    "name": "${title}",
+                    "image": "${image}"
                 }
                 </script>   
             </head>

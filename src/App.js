@@ -6,11 +6,9 @@ import {
     NavLink,
     withRouter
 } from 'react-router-dom';
-import {
-    testAction,
-    SetInitialData
-} from './actions';
+import { testAction } from './actions';
 import Routes from './Routes';
+import NotFound from './components/NotFound';
 
 class App extends React.Component {
     constructor(props) {
@@ -21,7 +19,6 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-        this.props.SetInitialData(this.props);
         this.props.testAction();
         this.createDataSource(this.props);
     }
@@ -51,11 +48,17 @@ class App extends React.Component {
                     </ul>
                 </nav>
                 <Switch>
-                    {
-                        Routes.map(routes => {
-                            return <Route {...routes}/>;
-                        })
-                    }
+                    {Routes.map(({ path, component: C, exact, ...rest }) => (
+                        <Route
+                            key={path}
+                            path={path}
+                            exact={exact}
+                            render={(props) => (
+                                <C {...props} {...rest}/>
+                            )}
+                        />
+                    ))}
+                    <Route render={(props) => <NotFound {...props}/>} />
                 </Switch>
             </div>
         );
@@ -66,7 +69,4 @@ const mapStateToProps = state => {
     return state;
 };
 
-export default withRouter(connect(mapStateToProps, {
-    testAction,
-    SetInitialData
-})(App));
+export default withRouter(connect(mapStateToProps, { testAction })(App));
