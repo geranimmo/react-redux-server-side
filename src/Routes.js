@@ -8,7 +8,7 @@ const Routes = [
         exact: true,
         component: HomeComponent
     }, {
-        path: '/detail',
+        path: '/detail/:id',
         component: DetailComponent
     }, {
         component: NotFound

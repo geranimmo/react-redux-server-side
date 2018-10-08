@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, NavLink, withRouter } from 'react-router-dom';
+import {
+    Switch,
+    Route,
+    NavLink,
+    withRouter
+} from 'react-router-dom';
 import {
     testAction,
     SetInitialData
@@ -16,7 +21,7 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-        this.props.SetInitialData(this.props.loadData);
+        this.props.SetInitialData(this.props);
         this.props.testAction();
         this.createDataSource(this.props);
     }

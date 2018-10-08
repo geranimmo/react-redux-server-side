@@ -8,8 +8,11 @@ import { renderRoutes } from 'react-router-config';
 import reducers from '../../src/reducers';
 import { renderHtml } from '../template';
 import Routes from '../../src/Routes';
+import Rewards from '../datasets/Rewards';
 
 module.exports = (req, res) => {
+    
+
     const store = createStore(reducers, {}, applyMiddleware(thunk));
     let context = {};
     const html = renderToString(

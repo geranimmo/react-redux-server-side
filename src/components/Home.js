@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 
 class HomeComponent extends React.Component {
     render() {
-        const structureData = {
+        const schemaOrg = {
             "@context": "http://schema.org",
             "@type": "WebSite",
             "url": "http://www.example.com",
@@ -15,16 +15,9 @@ class HomeComponent extends React.Component {
         return (
             <div>
                 <Helmet>
-                    <meta charSet="utf-8" />
                     <title>My Title</title>
-                    <link rel="canonical" href="http://mysite.com/example" />
+                    <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
                 </Helmet>
-                <Helmet
-					title={ 'My Title' }
-					script={[
-						{ type: "application/ld+json", content: structureData }
-					]}
-				/>
                 <main>
                     <h1>Home Page is Open</h1>
                 </main>

@@ -1,16 +1,6 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { StaticRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import reducers from '../../src/reducers';
-import { renderHtml } from '../template';
-import Routes from '../../src/Routes';
 import Rewards from '../datasets/Rewards';
 
-module.exports = (req, res) => {
+module.exports.getRewardById = (req, res) => {
     Rewards.aggregate([
         {
             $match: { reward_id: Number(req.params.id) }
@@ -61,33 +51,15 @@ module.exports = (req, res) => {
                             name: '$$list_enthusiast.name'
                         }
                     }
+                   
                 }
             }
         }
-    ], function(err, result) {
+    ], (err, result) => {
         if (err) {
-            res.status(500).send('Oops, better luck next time!');
+            res.status(400).send('Oops, better luck next time!');
         } else {
-            const data = result[0];
-            const store = createStore(reducers, {}, applyMiddleware(thunk));
-            let context = {};
-            const html = renderToString(
-                <Provider store={store}>
-                    <StaticRouter location={req.url} context={context}>
-                        {renderRoutes(Routes)}
-                    </StaticRouter>
-                </Provider>
-            );
-            const preloadedState = {
-                path: req.url,
-                title: data.reward_name,
-                image: data.reward_picture,
-                enthusiasts: data.list_user_enthusiasts,
-                bookmarks: data.list_user_bookmarks
-            };
-
-            res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
-            res.send(renderHtml(html, preloadedState));
+            res.status(200).json(result[0]);
         }
     });
 };

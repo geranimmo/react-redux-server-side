@@ -8,13 +8,13 @@ const renderHtml = (html, preloadedState) => {
                 <meta charset="UTF8">
                 <title>${preloadedState.title}</title>
                 <link rel="stylesheet" href="${staticPath}/style.css">
-                <script type="application/ld+json">
+                <script type="application/ld+json" data-react-helmet="true">
                 {
                     "@context": "http://schema.org",
                     "@type": "WebSite",
                     "url": "http://www.example.com",
                     "name": "${preloadedState.title}",
-                    "description": "${preloadedState.image}"
+                    "image": "${preloadedState.image}"
                 }
                 </script>   
             </head>
