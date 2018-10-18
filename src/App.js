@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import {
     Switch,
     Route,
-    NavLink,
     withRouter
 } from 'react-router-dom';
 import { testAction } from './actions';
 import Routes from './Routes';
+import Navigation from './components/common/Navigation';
 import NotFound from './components/NotFound';
 
 class App extends React.Component {
@@ -37,18 +37,9 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Redux is running: {this.state.TestData}</h1>
-                <nav>
-                    <ul>
-                        <li>
-                            <NavLink to="/">Home</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/detail/133">Detail</NavLink>
-                        </li>
-                    </ul>
-                </nav>
+                <Navigation/>
                 <Switch>
-                    {Routes.map(({ path, component: C, exact, ...rest }) => (
+                    { Routes.map(({ path, component: C, exact, ...rest }) => (
                         <Route
                             key={path}
                             path={path}
@@ -57,7 +48,7 @@ class App extends React.Component {
                                 <C {...props} {...rest}/>
                             )}
                         />
-                    ))}
+                    )) }
                     <Route render={(props) => <NotFound {...props}/>} />
                 </Switch>
             </div>

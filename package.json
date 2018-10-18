@@ -4,7 +4,7 @@
   "description": "React Server Side Render with Redux and React-Router",
   "main": "server.js",
   "scripts": {
-    "start": "webpack --mode production && node server.js"
+    "start": "webpack --mode production --progress && PORT=3000 node server.js"
   },
   "keywords": [
     "NodeJS",
@@ -13,7 +13,8 @@
     "React-Router",
     "Webpack",
     "Express",
-    "Server Side"
+    "Server Side",
+    "Isomorphic"
   ],
   "author": "Riky Liang",
   "license": "ISC",
@@ -40,7 +41,9 @@
     "eslint": "^5.6.1",
     "express": "^4.16.3",
     "mongoose": "^5.3.1",
+    "pg-promise": "^8.4.6",
     "react-helmet": "^5.2.0",
+    "serve-favicon": "^2.5.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   }

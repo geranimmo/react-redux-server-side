@@ -2,57 +2,72 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { fetchInitialData } from '../actions';
+import {
+    fetchInitialData,
+    setInitialData
+} from '../actions';
 
 class DetailComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        let InitialData;
+        let datas;
         if (typeof window !== 'undefined') {
-            InitialData = window.__PRELOADED_STATE__;
+            datas = window.__PRELOADED_STATE__;
             delete window.__PRELOADED_STATE__;
         } else {
-            InitialData = props.staticContext.data;
+            datas = props.staticContext.data;
         }
-
+        
         this.state = {
-            InitialData,
-            loading: InitialData ? false : true
+            datas,
+            loading: datas ? false : true
         };
-
-        this.fetchData = this.fetchData.bind(this);
+        this.fetchingData = this.fetchingData.bind(this);
+        
+        // this is for testing if the server receive
+        // the initial datas for SSR purpose
+        // do not do this in production environment
+        console.log(datas);
     }
 
     componentDidMount() {
-        if (!this.state.InitialData) {
-            this.fetchData(this.props.match.params);
+        const { match, setInitialData } = this.props;
+        const { datas } = this.state;
+    
+        if (!datas) {
+            this.fetchingData(match.params);
+        } else {
+            setInitialData(datas);
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        this.createDateSource(nextProps);
+        this.createDataSource(nextProps);
     }
 
-    createDateSource(state) {
-        const { InitialData } = state;
-        this.setState({
-            InitialData,
-            loading: false
-        });
-        
+    createDataSource(state) {
+        const { match, InitialData } = state;
+
+        if (match.params.id !== InitialData.id) {
+            this.fetchingData(match.params);
+        } else {
+            this.setState({
+                datas: InitialData,
+                loading: false
+            });
+        }
     }
 
-    fetchData(params) {
+    fetchingData(datas) {
+        this.props.fetchInitialData(datas);
         this.setState({
             loading: true
         });
-
-        this.props.fetchInitialData(params);
     }
 
     render() {
-        const { InitialData, loading } = this.state;
+        const { datas, loading } = this.state;
 
         if ( loading ) {
             return <h1>LOADING...</h1>;
@@ -61,19 +76,20 @@ class DetailComponent extends React.Component {
         return (
             <div>
                 <Helmet>
-                    <title>{ InitialData.reward_name }</title>
+                    <title>{ datas.name }</title>
                     <script type="application/ld+json">
                         { JSON.stringify({
                             "@context": "http://schema.org",
                             "@type": "WebSite",
                             "url": "http://www.example.com",
-                            "name": `${InitialData.reward_name}`,
-                            "image": `${InitialData.reward_picture}`
+                            "name": `${datas.name}`,
+                            "image": `${datas.cover_url}`
                         }) }
                     </script>
                 </Helmet>
                 <main>
-                    <h1>Detail Page is Open</h1>
+                    <img src={datas.cover_url} alt={datas.name} width="200" height="200"/>
+                    <h1>{datas.name}</h1>
                 </main>
             </div>
         );
@@ -84,4 +100,7 @@ const mapStateToProps = state => {
     return state;
 };
 
-export default withRouter(connect(mapStateToProps, { fetchInitialData })(DetailComponent));
+export default withRouter(connect(mapStateToProps, {
+    fetchInitialData,
+    setInitialData
+})(DetailComponent));

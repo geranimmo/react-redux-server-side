@@ -17,3 +17,12 @@ export const fetchInitialData = props => {
             });
     }
 };
+
+export const setInitialData = props => {
+    return (dispatch) => {
+        dispatch({
+            type: INITIAL_DATA_REDUCER,
+            payload: props
+        });
+    };
+};

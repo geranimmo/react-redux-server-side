@@ -1,6 +1,5 @@
 import HomeComponent from './components/Home';
 import DetailComponent from './components/Detail';
-import NotFound from './components/NotFound';
 
 const Routes = [
     {
@@ -8,7 +7,7 @@ const Routes = [
         exact: true,
         component: HomeComponent
     }, {
-        path: '/detail/:id',
+        path: '/reward/:id/:title_split',
         component: DetailComponent
     }
 ];

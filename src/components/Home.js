@@ -24,8 +24,8 @@ class HomeComponent extends React.Component {
     componentWillMount() {
         this.setState({
             InitialData: {
-                title: 'HOME | React Redux Server Side Render',
-                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThFzbVT9vuJj7b1LZbFBsQue6yaG8U4LrEg2fAr6T8KzivlYb4'
+                name: 'HOME | React Redux Server Side Render',
+                cover_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThFzbVT9vuJj7b1LZbFBsQue6yaG8U4LrEg2fAr6T8KzivlYb4'
             },
             loading: false
         });
@@ -41,14 +41,14 @@ class HomeComponent extends React.Component {
         return (
             <div>
                 <Helmet>
-                    <title>{ InitialData.title }</title>
+                    <title>{ InitialData.name }</title>
                     <script type="application/ld+json">
                         { JSON.stringify({
                             "@context": "http://schema.org",
                             "@type": "WebSite",
                             "url": "http://www.example.com",
-                            "name": `${InitialData.title}`,
-                            "image": `${InitialData.image}`
+                            "name": `${InitialData.name}`,
+                            "image": `${InitialData.cover_url}`
                         }) }
                     </script>
                 </Helmet>
@@ -63,6 +63,6 @@ class HomeComponent extends React.Component {
 
 const mapStateToProps = state => {
     return state;
-}
+};
 
 export default withRouter(connect(mapStateToProps, {})(HomeComponent));

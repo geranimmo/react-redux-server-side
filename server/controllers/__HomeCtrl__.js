@@ -8,22 +8,21 @@ import { renderRoutes } from 'react-router-config';
 import reducers from '../../src/reducers';
 import { renderHtml } from '../template';
 import Routes from '../../src/Routes';
-import Rewards from '../datasets/Rewards';
 
 module.exports = (req, res) => {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
-    let context = {};
+    
     const html = renderToString(
         <Provider store={store}>
-            <StaticRouter location={req.url} context={context}>
+            <StaticRouter location={req.url} context={{}}>
                 {renderRoutes(Routes)}
             </StaticRouter>
         </Provider>
     );
 
     const preloadedState = {
-        title: 'HOME | React Redux Server Side Render',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThFzbVT9vuJj7b1LZbFBsQue6yaG8U4LrEg2fAr6T8KzivlYb4'
+        name: 'HOME | React Redux Server Side Render',
+        cover_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThFzbVT9vuJj7b1LZbFBsQue6yaG8U4LrEg2fAr6T8KzivlYb4'
     };
 
     res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
